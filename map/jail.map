@@ -1,0 +1,44 @@
+_map = [
+"WWWWWWWWWWWWWWWWWWWWWWWWWW",
+"W...t.Bt.Bt.Bt.Bt.Bt.Bt.BW",
+"W...|.b|.b|.b|.b|.b|.b|.bW",
+"W...l.rl.rl.rl.rl.rl.rl.rW",
+"W...gggggggggggggggggggggW",
+"W...___________________GGW",
+"Wd..i?????????????????IGGW",
+"Wu..i?????????????????IGGW",
+"W...-------------------GGW",
+"W...gggggggggggggggggggggW",
+"WL.RL.RL.RL.RL.RL.RL.RL.RW",
+"W|.b|.b|.b|.b|.b|.b|.b|.bW",
+"Wt.Bt.Bt.Bt.Bt.Bt.Bt.Bt.BW",
+"WWWWWWWWWWWWWWWWWWWWWWWWWW",
+]
+
+images = {
+'t' : 'img/toilet.png',
+'.' : 'img/cell_floor.png',
+'B' : 'img/bed_top.png',
+'b' : 'img/bed_bottom.png',
+'|' : 'img/cell_wall.png',
+'l' : 'img/cell_left.png',
+'r' : 'img/cell_right.png',
+'g' : 'img/jail_grate.png',
+'G' : 'img/jail_grate_reversed.png',
+'L' : 'img/cell_wall_invert.png',
+'R' : 'img/cell_right_invert.png',
+'d' : 'img/down_stairs.png',
+'u' : 'img/up_stairs.png',
+'i' : 'img/rail_side.png',
+'I' : 'img/rail_side_other.png',
+'_' : 'img/rail_top.png',
+'-' : 'img/rail_bottom.png',
+'?' : 'img/missing.png'
+}
+
+_mapinfo = {
+ 'passable' : ['.','g','b','B','t','G']
+
+}
+
+sprites = []

@@ -1,0 +1,60 @@
+(dp0
+I1
+(S'Start'
+p1
+S'You are in a room with two doors'
+p2
+(S'2'
+p3
+S'3'
+p4
+tp5
+tp6
+sI2
+(S'Right door'
+p7
+S'Its locked!'
+p8
+(S'1'
+p9
+tp10
+tp11
+sI3
+(S'Left Door'
+p12
+S'The door opens into a room with two windows.'
+p13
+(S'4'
+p14
+S'5'
+p15
+tp16
+tp17
+sI4
+(S'Look out window'
+p18
+S'Wow, it looks like a great day out there!'
+p19
+(g4
+tp20
+tp21
+sI5
+(S'Jump out the window'
+p22
+S'Crunch! That hurt!'
+p23
+(S'6'
+p24
+tp25
+tp26
+sI6
+(S'Escape!'
+p27
+S'You have escape from the house of two rooms! You rock!'
+p28
+(S'0'
+p29
+tp30
+tp31
+s.
+

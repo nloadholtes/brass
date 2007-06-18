@@ -1,0 +1,54 @@
+
+Warnings...
+
+/Library/Frameworks/Python.framework/Versions/2.4/lib/python2.4/site-packages/pygame/color.py:58: Code appears to be unreachable
+
+/Users/njl/projects/games/brass/src/Character.py:102: Local variable (randint) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/Character.py:102: Local variable (randint) shadows global defined on line 9 in file EncounterManager.py
+/Users/njl/projects/games/brass/src/Character.py:109: Local variable (randint) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/Character.py:109: Local variable (randint) shadows global defined on line 9 in file EncounterManager.py
+/Users/njl/projects/games/brass/src/Character.py:139: No class attribute (manager) found
+
+/Users/njl/projects/games/brass/src/EncounterManager.py:29: Local variable (who) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:76: Local variable (stillgoing) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:86: Parameter (level) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:86: Parameter (type) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:89: Local variable (badguylist) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:92: Invalid arguments to (__init__), got 2, expected 4
+
+/Users/njl/projects/games/brass/src/EventMngr.py:28: (observer) cannot be used after being deleted on line 25
+
+/Users/njl/projects/games/brass/src/Group.py:12: Parameter (name) not used
+/Users/njl/projects/games/brass/src/Group.py:13: No global (group) found
+/Users/njl/projects/games/brass/src/Group.py:17: Local variable (x) not used
+/Users/njl/projects/games/brass/src/Group.py:23: No global (characters) found
+
+/Users/njl/projects/games/brass/src/tileengine.py:101: No class attribute (images) found
+/Users/njl/projects/games/brass/src/tileengine.py:107: Parameter (stats) not used
+/Users/njl/projects/games/brass/src/tileengine.py:196: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:200: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:204: No class attribute (paintStats) found
+
+Items.py:31: Variable (_bob) not used
+Items.py:32: Variable (_joe) not used
+
+game.py:22: Code appears to be unreachable
+
+
+
+***** output *****
+
+['/Users/njl/projects/games/brass/src/game.py', 'brass.game']
+Loading game file
+loading sprites
+XY:  160 128  LeftTop:  240 172  Location: (5, 4)  Offset: [235, 168]
+XY:  160 128  LeftTop:  240 172  Location: (5, 4)  Offset: [235, 168]
+XY:  160 128  LeftTop:  240 172  Location: (5, 4)  Offset: [235, 168]
+XY:  160 128  LeftTop:  240 172  Location: (5, 4)  Offset: [235, 168]
+XY:  160 128  LeftTop:  240 172  Location: (5, 4)  Offset: [235, 168]
+Old:  (5, 4)  New: (6, 4)  Direction:  (1, 0)
+XY:  224 128  LeftTop:  176 172  Location: (5, 4)  Offset: [171, 168]
+XY:  224 128  LeftTop:  176 172  Location: (5, 4)  Offset: [171, 168]
+Old:  [7, 4]  New: (8, 4)  Direction:  (1, 0)
+XY:  288 128  LeftTop:  112 172  Location: (5, 4)  Offset: [107, 168]
+XY:  288 128  LeftTop:  112 172  Location: (5, 4)  Offset: [107, 168]

@@ -1,0 +1,69 @@
+_map = [
+"###############################################",
+"#/===========================================\\#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#<                                           |#",
+"#+-------------------------------------------?#",
+"###############################################"
+]
+
+_mapinfo = { 'startx' :    6,
+'starty' :    6,
+'staffx' :    2,
+'staffy' :    5,
+#
+# (Door location), (which map it leads to, which door in map), messg type
+'door' : (
+	((2,2), ('map/dungeon.map', 1), 0),
+	((4, 2), ('map/dungeon.map', 0), 1),
+	((27, 13), ('map/dungeon.map', 2), 1)
+	),
+'spawnChance' : 6,
+'spawnIncrease' : 2,
+ 'passable' : ['.', ' ']
+}
+
+#
+# Sprites
+#
+# format: [ (x,y location), type of sprite, sprite image
+
+sprites = [
+# (x,y location), type of sprite, graphic symbol, metadata
+# types of sprites, 1-door, 0-other
+# Metadata for doors - index into door list
+	[(5,5), 0, 'a'],
+	[(2,2), 1, 's', 0],
+	[(4,2), 1, 's', 1],
+	[(27,13), 1, 's', 2],
+	[(2, 8), 4, '$'],
+	[(5, 8), 3, 'd'],
+	[(6, 8), 4, 'c']
+	]
+images = { '.' : 'img/floor.png',
+' ' : 'img/floor.png',
+'|' : 'img/eastWall.png',
+'-' : 'img/southWall.png',
+'/' : 'img/northWestWall.png',
+'\\' : 'img/northEastWall.png',
+'?' : 'img/southEastWall.png',
+'+' : 'img/southWestWall.png',
+'=' : 'img/northWall.png',
+'<' : 'img/westWall.png',
+'}' : 'img/northEastWallInternal.png',
+']' : 'img/southEastWallInternal.png',
+'{' : 'img/northWestWallInternal.png',
+'[' : 'img/southWestWallInternal.png',
+'a' : 'img/adventurer.png',
+'s' : 'img/stairs.png',
+'$' : 'img/treasure.png',
+'d' : 'img/desk.png',
+'c' : 'img/cabinet.png'
+}

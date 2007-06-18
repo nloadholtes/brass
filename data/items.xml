@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<items>
+	<item>
+		<name>M-16</name>
+		<damage>2d8</damage>
+		<critical>20</critical>
+		<size>large</size>
+		<weight>8</weight>
+		<ammotype>5.56</ammotype>
+	</item>
+	<item>
+		<name>AK-47</name>
+		<damage>2d8</damage>
+		<critical>20</critical>
+		<size>large</size>
+		<weight>10</weight>
+		<ammotype>7.62</ammotype>
+	</item>
+</items>

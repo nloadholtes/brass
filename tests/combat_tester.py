@@ -1,0 +1,93 @@
+#
+# This file is ment to test out encounter (combat) details
+#
+# June 25, 2006
+#
+
+from Item import *
+from Items import *
+from Character import *
+from EventMngr import *
+from EncounterManager import *
+
+bob = None
+joe = None
+tom = None
+
+def createPlayers():
+    global bob, joe, tom
+    mngr = EventManager()
+    bob =  Character(mngr, 'Bob', (0,0), 'none')
+    joe =  Character(mngr, 'Joe', (0,0), 'none')
+    gun = Gun(mngr)
+    ammo = Ammo(mngr)
+    gun.updateData(ak47)
+    joe.pickup(gun)
+    joe.pickup(ammo)
+    joe.equipWeapon(gun)
+    joe.reload()
+    tom = Character(mngr, 'Tom', (0,0), 'none')
+    tom.initative = 12
+    
+def encounter():
+    print 'Staring the Encounter'
+    from EncounterManager import createBadGuys
+    global bob, joe, tom
+    goodguys = [joe, tom]
+    badguys = createBadGuys(2, 2, 0)
+    ee = EncounterEngine(badguys)
+    ee.setOrders(joe, 'attack', bob)
+    ee.startEncounter(goodguys)
+    while ee.stillFighting():
+        print 'Next round!'
+        displayStats(goodguys, badguys)
+        getOrders(goodguys, badguys)
+        ee.playRound()
+    print '\t\t***************Battle over!********************'
+   
+def displayStats(goodguys, badguys):
+    print '\t------Good guys:------'
+    for guy in goodguys:
+        print '\t',guy.name, guy.health
+        
+    print '\t----Bad guys ------'
+    print badguys
+    for dude in badguys.characters:
+        print '\t',dude.name, dude.health
+    print '\t------------------------'
+   
+def getBadguyOrders(badguys, goodguys, agressivelevel):
+    '''A first attempt at an AI system to control the bad guys
+    and have them attack the goodguys.'''
+    for dude in badguys.characters:
+        print dude.name,'is thinking...'
+         
+def getOrders(party, badguys):
+    for x in party:
+        print 'Orders for: ', x.name
+        print 'a) Attack'
+        print 'b) Evade'
+        print 'c) Reload'
+        action = raw_input()
+        print action
+        if action == 'a':
+            print 'Who do you want to attack?'
+            y = 1
+            for dude in badguys.characters:
+                print '\t',y,')', dude.name
+                y += 1
+            target = raw_input()
+            #Shove this into the orders for X
+            order = ActionOrder(x, 'attack', badguys.characters[int(target)-1])
+            x.orders.append(order)
+        elif action == 'b':
+            print 'Passing'
+        elif action == 'c':
+            print 'Reload'
+    
+
+if __name__ == '__main__':
+    createPlayers()
+    encounter()
+    
+
