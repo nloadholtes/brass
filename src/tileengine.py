@@ -145,9 +145,6 @@ class TileEngine:
 		self._offset[0] = (screenSize[0]/2 - self._location[0] - (spriteXY[0] * self._tilewidth))
 		self._offset[1] = (screenSize[1]/2 - self._location[1] - (spriteXY[1] * self._tileheight))
 
-	def getMapInfo(self):
-		return self._mapinfo
-
 	#
 	# This method checks to see if we can move and gets any messages
 	# or events that are necessary.
@@ -179,7 +176,6 @@ class TileEngine:
 		y *= self._tileheight
 		left = self._location[0] + self._offset[0]
 		top = self._location[1] + self._offset[1]
-#		print "XY: ",x,y," LeftTop: ", left, top, " Location:", self._location, " Offset:",self._offset
 		self._screen.blit(sprite.image, (x+left, y+ top))
 	
 	def paint(self):
@@ -226,10 +222,6 @@ class TileEngine:
 		self._displaymsg = True
 		self._msgstr = messagestr
 		
-	def parseInfo(self, line):
-		key, value = line.split('=')
-		self._mapinfo[key.strip()] = value.strip()
-
 	def removeSprite(self, sprite):
 		self._sprites.remove(sprite)
 		try:
