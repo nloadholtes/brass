@@ -245,7 +245,7 @@ class TileEngine:
 		result = self.moveOk(newX, newY)
 		print "Old: ", self.ego.position, " New:",(newX,newY), " Direction: ", direction
 		if result == None:
-			self.ego.updatePosition(dx + newX, dy + newY)
+			self.ego.updatePosition(newX, newY) 
 		return result
  			
 	def messageBox(self, message, screen):

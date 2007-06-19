@@ -13,19 +13,6 @@ class Character(object):
     position = []
     orders = []
 
-    #
-    # Is it even possible that this constructor is
-    #somehow calling the Entity constructor which
-    #happens to expect a manager as its first argument?
-    #The Entity init is already commented out, yet
-    #when this class runs I see the player being moved
-    #twice! Somehow the TileEngine's notify is being
-    #called twice...
-    #
-    # Need to try commenting out the notify in this class
-    #then test, followed by removing the Entity in the class
-    #declaration.
-    #
     def __init__(self, manager, name, position, imageFileName):
         #Entity.__init__(self, manager)
         #TileSprite.__init__(self, imageFileName, manager, position[0], position[1], 0)
@@ -151,6 +138,6 @@ class Character(object):
 #        self.manager.notify(evt)
 #    
     def updatePosition(self, x, y):
-        '''This method will update the Character's position (because we can't assign the tuple individually)'''
+        '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]
         
