@@ -28,6 +28,4 @@ hammer = {}
 #
 thug = { 'name': 'Thug'}
 cop = {'name': 'Cop'}
-_bob = {'name' : 'Bob'}
-_joe = {'name': 'Joe'}
 
