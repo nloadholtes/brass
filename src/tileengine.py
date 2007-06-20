@@ -2,7 +2,7 @@ from Character import *
 from EncounterManager import EncounterEngine
 from EventMngr import *
 from Events import *
-from gui import MessageBox, StatsDisplay
+from gui import MessageBox, StatsDisplay, EncounterMessageBox
 from pygame.constants import *
 import pygame
 from tilesprite import *
@@ -78,6 +78,7 @@ class TileEngine:
 
 		#Ok, we are having the fight! (this is following the tests/combat_tester.py file)
 		enceng = EncounterEngine(evt)
+		emb = EncounterMessageBox()
 		# Get the orders for the good guys
 		enceng.startEncounter([self.ego])
 		while enceng.stillFighting():
@@ -85,7 +86,9 @@ class TileEngine:
 			#Display the stats
 			#Get the orders for the good guys
 			#Get the orders for the bad guys
-			enceng.playRound()
+
+			#Play the round and show the results to the EncounterMessageBox
+			emb.display(enceng.playRound())
 		print "Encounter over"
 	
 	def addPlayer(self, image, startpos, stats):
