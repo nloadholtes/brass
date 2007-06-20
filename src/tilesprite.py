@@ -48,11 +48,11 @@ class TileSprite:
 	def getXY(self):
 		return (self._x, self._y)
 	
-##	def setDoorData(self, dat):
-##		self._doordata = dat
+	def setDoorData(self, dat):
+		self._doordata = dat
 		
-##	def getDoorData(self):
-##		return self._doordata
+	def getDoorData(self):
+		return self._doordata
 
 	def getType(self):
 		return self._type
