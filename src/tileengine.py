@@ -238,7 +238,6 @@ class TileEngine:
 		newX = self.ego.position[0] + dx
 		newY = self.ego.position[1] + dy
 		result = self.moveOk(newX, newY)
-		print "Old: ", self.ego.position, " New:",(newX,newY), " Direction: ", direction
 		if result == None:
 			self.ego.updatePosition(newX, newY) 
 		return result
