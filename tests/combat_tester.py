@@ -36,12 +36,12 @@ def encounter():
     goodguys = [joe, tom]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine(badguys)
-    ee.setOrders(joe, 'attack', bob)
     ee.startEncounter(goodguys)
     while ee.stillFighting():
         print 'Next round!'
         displayStats(goodguys, badguys)
         getOrders(goodguys, badguys)
+        ee.getBadguyOrders(badguys, goodguys, 1)
         ee.playRound()
     print '\t\t***************Battle over!********************'
    
@@ -60,7 +60,7 @@ def getBadguyOrders(badguys, goodguys, agressivelevel):
     '''A first attempt at an AI system to control the bad guys
     and have them attack the goodguys.'''
     for dude in badguys.characters:
-        print dude.name,'is thinking...'
+        print '->',dude.name,'is thinking...'
          
 def getOrders(party, badguys):
     for x in party:
@@ -68,6 +68,7 @@ def getOrders(party, badguys):
         print 'a) Attack'
         print 'b) Evade'
         print 'c) Reload'
+        print 'q) Quit'
         action = raw_input()
         print action
         if action == 'a':
@@ -84,6 +85,9 @@ def getOrders(party, badguys):
             print 'Passing'
         elif action == 'c':
             print 'Reload'
+        elif action == 'q':
+            print 'Goodbye!'
+            exit()
     
 
 if __name__ == '__main__':
