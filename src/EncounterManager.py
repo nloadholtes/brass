@@ -21,6 +21,7 @@ class EncounterEngine:
         self.orders = []
         
     def playRound(self):
+        '''This method will execute one round of combat'''
         print 'Staring a round'
         for person in self.fightorder:
             orders = person.orders
@@ -55,7 +56,7 @@ class EncounterEngine:
         return True
     
     def isPartyDead(self, players):
-        '''Checks for vital signs. If someone is still kickin then return true'''
+        '''Checks for vital signs. If someone is still kicking then return true'''
         for player in players:
             print "Checking: ", player.name, player.health
             if player.health <= 0:
@@ -69,13 +70,24 @@ class EncounterEngine:
         order = ActionOrder(who, what, target)
         self.orders.append(order)
         return None
-    
+
+    def getBadguyOrders(self, badguys, goodguys, agressivelevel):
+        '''A first attempt at an AI system to control the bad guys
+    and have them attack the goodguys.'''
+        for dude in badguys.characters:
+            print '->',dude.name,'is thinking...'
+
+
     def startEncounter(self, goodguys):
+        '''This starts the encounter, determining the order and then playing
+        a round.'''
         print 'Starting!'
         self.goodguys = goodguys
         stillgoing = True
         self.determineOrder()
-        self.playRound()
+        #Clear out the orders for everyone
+        for person in self.fightorder:
+            person.orders = []
             
 #
 # Helper functions for these classes
