@@ -15,7 +15,6 @@ class Character(object):
 
     def __init__(self, manager, name, position, imageFileName):
         #Entity.__init__(self, manager)
-        #TileSprite.__init__(self, imageFileName, manager, position[0], position[1], 0)
         self.name = name
         self.position = position
         self.equipped = {'weapon' : None, 'armor' :None}

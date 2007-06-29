@@ -1,4 +1,3 @@
-#from tilesprite import TileSprite
 from Character import Character
 import copy
 
@@ -10,7 +9,6 @@ class Group:
     characters = []
 
     def __init__(self, manager, name, position, imageFileName):
-        #TileSprite.__init__(self, imageFileName, manager, position[0], position[1], group)
         pass
 
     def populateClones(self, who, numberof):
