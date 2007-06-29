@@ -42,6 +42,7 @@ class TileEngine:
 		self._displaymsg = False
 		self._msgbox = None
 		self._messages = ()
+		self.ego = None
 		screenSize = self._screen.get_size()
 		self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
 		self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
@@ -78,7 +79,7 @@ class TileEngine:
 
 		#Ok, we are having the fight! (this is following the tests/combat_tester.py file)
 		enceng = EncounterEngine(evt)
-		emb = EncounterMessageBox()
+		#emb = EncounterMessageBox()
 		# Get the orders for the good guys
 		enceng.startEncounter([self.ego])
 		while enceng.stillFighting():
@@ -129,7 +130,7 @@ class TileEngine:
 			s = TileSprite(img, self, sprite[0][0], sprite[0][1], sprite[1])
 			if len(sprite) == 4:
 				s.setDoorData(sprite[3])
-			self.addSprite(s, sprite[1]) 
+			self._sprites.append(s) 
 
 	def getImage(self, imagename):
 		'''This loads up the image (via the magic of pygame'''
@@ -137,9 +138,6 @@ class TileEngine:
 			image = pygame.image.load(imagename)
 			image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
 		return image.convert()
-		
-	def addSprite(self, sprite, npc = 0):
-		self._sprites.append(sprite)
 		
 	def centerOn(self, sprite):
 		'''convert sprite co-ords to screen co-ords'''
