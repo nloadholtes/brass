@@ -5,16 +5,18 @@
 
 from Entity import *
 from Item import *
+from tilesprite import *
 
 MAX_ITEMS = 50
     
-class Character(object):
+class Character(object, TileSprite):
     name = 'person'
     position = []
     orders = []
+#    sprite = None
 
     def __init__(self, manager, name, position, imageFileName):
-        #Entity.__init__(self, manager)
+        TileSprite.__init__(self, imageFileName, self, position[0], position[1], npc)
         self.name = name
         self.position = position
         self.equipped = {'weapon' : None, 'armor' :None}
@@ -24,6 +26,7 @@ class Character(object):
         self.value = -2
         self.initative = 10
         self.level = 1
+        #self.sprite = TileSprite(imageFileName, self, position[0], position[1], npc)
     
     def __setattr__(self, key, val):
         if key == 'health':
@@ -133,9 +136,10 @@ class Character(object):
     def getInit(self):
         return self.initative
     
-#    def notify(self, evt):
-#        self.manager.notify(evt)
-#    
+    def notify(self, evt):
+        '''The result of an encounter'''
+        print self.name,": What do you want?"
+    
     def updatePosition(self, x, y):
         '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]
