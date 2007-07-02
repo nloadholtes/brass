@@ -214,10 +214,11 @@ class TileEngine:
 		else:
 			self.paintStats(screen,self.ego)
 		self.paintSprite(self.ego)
-		if(self._displaymsg):
-			self.messageBox(self._msgstr, screen)
-			#screen.blit(self._msgbox, self._screenCenter)
-			self._displaymsg = False
+		# Paint text in window
+#		if(self._displaymsg):
+#			#self.messageBox(self._msgstr, screen)
+#			#screen.blit(self._msgbox, self._screenCenter)
+#			self._displaymsg = False
 		pygame.display.flip()
 
 	#
@@ -243,15 +244,15 @@ class TileEngine:
 			self.ego.updatePosition(newX, newY) 
 		return result
  			
-	def messageBox(self, message, screen):
-		msg_rect = pygame.Rect(( 0, 0, 500, 300))
-		white = (225, 255, 255)
-		backgrnd = (48, 48, 48)
-		msgbox = MessageBox(screen)
-		msgbox.render_textrect(message, self._font, msg_rect, white, backgrnd,  2)
+#	def messageBox(self, message, screen):
+#		msg_rect = pygame.Rect(( 0, 0, 500, 300))
+#		white = (225, 255, 255)
+#		backgrnd = (48, 48, 48)
+#		msgbox = MessageBox(screen)
+#		msgbox.render_textrect(message, self._font, msg_rect, white, backgrnd,  2)
 
-	def flipMessagePane(self):
-		self._display = not self._display
+#	def flipMessagePane(self):
+#		self._display = not self._display
 		
 	
 
