@@ -86,7 +86,11 @@ class Character(object, TileSprite):
         else:
             if weapon.amt > 0:
                 weapon.modifier = self.skills['attack']
-        weapon.use(target)
+        #Check to make sure target is alive first
+        if(target.health > 0):
+            weapon.use(target)
+        else:
+            print self.name," holds off because ", target.name, "is dead"
                 
 #        else:
 #            print self.name,'-Needs to hit with the gun'
