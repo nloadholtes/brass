@@ -29,18 +29,16 @@ class EncounterEngine:
                 #print 'Executing: ', order
                 who = order.who
                 what = "who." + str(order.what) + "(order.target)" 
-                #print "What ->", what
+                #print "\tWho ->", person.name, "What ->", what
                 eval(what)
             person.orders = []
 
         
     def determineOrder(self):
-        '''This method currently just puts the good guys first,
-        bad guys 2nd.'''
-        for guy in self.goodguys:
-            self.fightorder.append(guy)
-        for guy in self.badguys:
-            self.fightorder.append(guy)
+        '''This method looks at each persons\'s initiative and uses that
+        to determine the fight order.'''
+        [self.fightorder.append(guy) for guy in self.goodguys]
+        [self.fightorder.append(guy) for guy in self.badguys]
         self.fightorder.sort(initativeSorter)
         for person in self.fightorder:
             print "fight order =>", person.name
@@ -74,8 +72,12 @@ class EncounterEngine:
     def getBadguyOrders(self, badguys, goodguys, agressivelevel):
         '''A first attempt at an AI system to control the bad guys
     and have them attack the goodguys.'''
-        for dude in badguys.characters:
-            print '->',dude.name,'is thinking...'
+        for dude in self.badguys:
+            gsize = len(self.goodguys)
+            t = randint(0, gsize-1)
+            order = ActionOrder(dude, 'attack', goodguys[t])
+            dude.orders.append(order)
+            print '->',dude.name,'is thinking...', order
 
 
     def startEncounter(self, goodguys):
@@ -97,8 +99,7 @@ def initativeSorter(x, y):
 
 def createBadGuys(amount, level, type):
     '''Create a list of bad guys'''
-
-    badguylist = []
+#    badguylist = []
     mngr = EventManager()
     group = Group(mngr, "Gangsters", (0,0), "img/player.png")
     group.populateClones(Character(mngr, 'Bad Guy', (0,0), 'none'), amount)
