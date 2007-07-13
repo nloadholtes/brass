@@ -88,8 +88,7 @@ class EncounterEngine:
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
-        for person in self.fightorder:
-            person.orders = []
+        [ person.orders = [] for person in self.fightorder]
             
 #
 # Helper functions for these classes
@@ -108,7 +107,7 @@ def createBadGuys(amount, level, type):
 class ActionOrder:
     '''This class is that data structure to describe the orders that a character
     should do during an Encounter round.'''
-    WHAT = ('attack', 'EVADE', 'USE')
+    WHAT = ('attack', 'EVADE', 'USE', 'TALK')
     def __init__(self, who, what, target):
         self.who = who
         self.what = what
