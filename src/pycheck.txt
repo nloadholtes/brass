@@ -3,22 +3,24 @@ Warnings...
 
 /Library/Frameworks/Python.framework/Versions/2.4/lib/python2.4/site-packages/pygame/color.py:58: Code appears to be unreachable
 
-/Users/njl/projects/games/brass/src/EncounterManager.py:30: Local variable (who) not used
+/Users/njl/projects/games/brass/src/Character.py:18: Parameter (manager) not used
+/Users/njl/projects/games/brass/src/Character.py:103: Local variable (randint) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/Character.py:103: Local variable (randint) shadows global defined on line 10 in file EncounterManager.py
+/Users/njl/projects/games/brass/src/Character.py:110: Local variable (randint) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/Character.py:110: Local variable (randint) shadows global defined on line 10 in file EncounterManager.py
+/Users/njl/projects/games/brass/src/Character.py:139: Parameter (evt) not used
+
+/Users/njl/projects/games/brass/src/EncounterManager.py:32: Local variable (who) not used
 /Users/njl/projects/games/brass/src/EncounterManager.py:74: Parameter (agressivelevel) not used
-/Users/njl/projects/games/brass/src/EncounterManager.py:74: Parameter (goodguys) not used
-/Users/njl/projects/games/brass/src/EncounterManager.py:86: Local variable (stillgoing) not used
-/Users/njl/projects/games/brass/src/EncounterManager.py:98: Parameter (level) not used
-/Users/njl/projects/games/brass/src/EncounterManager.py:98: Parameter (type) not used
-/Users/njl/projects/games/brass/src/EncounterManager.py:101: Local variable (badguylist) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:74: Parameter (badguys) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:90: Local variable (stillgoing) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:102: Parameter (level) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:102: Parameter (type) not used
+/Users/njl/projects/games/brass/src/EncounterManager.py:106: Local variable (group) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/EncounterManager.py:107: Local variable (group) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/EncounterManager.py:108: Local variable (group) shadows global defined on line 0 in file <unknown>
 
 /Users/njl/projects/games/brass/src/EventMngr.py:28: (observer) cannot be used after being deleted on line 25
-
-Character.py:16: Parameter (imageFileName) not used
-Character.py:16: Parameter (manager) not used
-Character.py:100: Local variable (randint) shadows global defined on line 0 in file <unknown>
-Character.py:100: Local variable (randint) shadows global defined on line 10 in file EncounterManager.py
-Character.py:107: Local variable (randint) shadows global defined on line 0 in file <unknown>
-Character.py:107: Local variable (randint) shadows global defined on line 10 in file EncounterManager.py
 
 Group.py:16: Local variable (x) not used
 
@@ -30,20 +32,19 @@ tileengine.py:114: Setting class attribute (_tilewidth) not set in __init__
 tileengine.py:115: Setting class attribute (_tileheight) not set in __init__
 tileengine.py:128: No class attribute (images) found
 tileengine.py:129: Local variable (image) not used
-tileengine.py:146: No class attribute (_tilewidth) found
-tileengine.py:147: No class attribute (_tileheight) found
-tileengine.py:168: Local variable (door) shadows global defined on line 0 in file <unknown>
-tileengine.py:169: Local variable (door) shadows global defined on line 0 in file <unknown>
-tileengine.py:176: No class attribute (_tilewidth) found
-tileengine.py:177: No class attribute (_tileheight) found
-tileengine.py:178: Local variable (left) shadows global defined on line 0 in file <unknown>
-tileengine.py:180: Local variable (left) shadows global defined on line 0 in file <unknown>
-tileengine.py:190: No class attribute (_tilewidth) found
-tileengine.py:191: No class attribute (_tileheight) found
-tileengine.py:204: Local variable (left) shadows global defined on line 0 in file <unknown>
-tileengine.py:206: No class attribute (_tilewidth) found
-tileengine.py:207: No class attribute (_tileheight) found
-tileengine.py:208: Local variable (left) shadows global defined on line 0 in file <unknown>
-tileengine.py:212: No class attribute (paintStats) found
-tileengine.py:215: No class attribute (_msgstr) found
-tileengine.py:224: Setting class attribute (_msgstr) not set in __init__
+tileengine.py:149: No class attribute (_tilewidth) found
+tileengine.py:150: No class attribute (_tileheight) found
+tileengine.py:171: Local variable (door) shadows global defined on line 0 in file <unknown>
+tileengine.py:172: Local variable (door) shadows global defined on line 0 in file <unknown>
+tileengine.py:179: No class attribute (_tilewidth) found
+tileengine.py:180: No class attribute (_tileheight) found
+tileengine.py:181: Local variable (left) shadows global defined on line 0 in file <unknown>
+tileengine.py:183: Local variable (left) shadows global defined on line 0 in file <unknown>
+tileengine.py:193: No class attribute (_tilewidth) found
+tileengine.py:194: No class attribute (_tileheight) found
+tileengine.py:207: Local variable (left) shadows global defined on line 0 in file <unknown>
+tileengine.py:209: No class attribute (_tilewidth) found
+tileengine.py:210: No class attribute (_tileheight) found
+tileengine.py:211: Local variable (left) shadows global defined on line 0 in file <unknown>
+tileengine.py:215: No class attribute (paintStats) found
+tileengine.py:228: Setting class attribute (_msgstr) not set in __init__
