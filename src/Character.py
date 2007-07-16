@@ -34,11 +34,6 @@ class Character(object, TileSprite):
                 print "%s is dead!" % self.name
 #            else:
 #                print "%s has %d %s remaining" % (self.name, val, key)
-        elif key == 'hunger':
-            if val > 100:
-                print "%s has starved to death!" % self.name
-            else:
-                print "%s is %d%% hungry" % (self.name, val)
         object.__setattr__(self, key, val)
     
 
