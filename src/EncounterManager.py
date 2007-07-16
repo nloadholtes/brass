@@ -24,6 +24,8 @@ class EncounterEngine:
         '''This method will execute one round of combat'''
         print 'Staring a round'
         for person in self.fightorder:
+            if person.health <= 0:
+                continue
             orders = person.orders
             for order in orders:
                 #print 'Executing: ', order
@@ -88,7 +90,8 @@ class EncounterEngine:
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
-        [ person.orders = [] for person in self.fightorder]
+        for person in self.fightorder:
+            person.orders = []
             
 #
 # Helper functions for these classes
@@ -101,7 +104,7 @@ def createBadGuys(amount, level, type):
 #    badguylist = []
     mngr = EventManager()
     group = Group(mngr, "Gangsters", (0,0), "img/player.png")
-    group.populateClones(Character(mngr, 'Bad Guy', (0,0), 'none'), amount)
+    group.populateClones(Character(mngr, 'Bad Guy', (0,0), None), amount)
     return group
 
 class ActionOrder:
