@@ -17,8 +17,8 @@ tom = None
 def createPlayers():
     global bob, joe, tom
     mngr = EventManager()
-    bob =  Character(mngr, 'Bob', (0,0), 'none')
-    joe =  Character(mngr, 'Joe', (0,0), 'none')
+    bob =  Character(mngr, 'Bob', (0,0), None)
+    joe =  Character(mngr, 'Joe', (0,0), None)
     gun = Gun(mngr)
     ammo = Ammo(mngr)
     gun.updateData(ak47)
@@ -26,7 +26,7 @@ def createPlayers():
     joe.pickup(ammo)
     joe.equipWeapon(gun)
     joe.reload()
-    tom = Character(mngr, 'Tom', (0,0), 'none')
+    tom = Character(mngr, 'Tom', (0,0), None)
     tom.initative = 12
     
 def encounter():
@@ -56,19 +56,14 @@ def displayStats(goodguys, badguys):
         print '\t',dude.name, dude.health
     print '\t------------------------'
    
-def getBadguyOrders(badguys, goodguys, agressivelevel):
-    '''A first attempt at an AI system to control the bad guys
-    and have them attack the goodguys.'''
-    for dude in badguys.characters:
-        print '->',dude.name,'is thinking...'
-         
 def getOrders(party, badguys):
     for x in party:
         print 'Orders for: ', x.name
-        print 'a) Attack'
-        print 'b) Evade'
-        print 'c) Reload'
-        print 'q) Quit'
+        print 'A)ttack'
+        print 'E)vade'
+        print 'R)eload'
+        print 'T)alk'
+        print 'Q)uit'
         action = raw_input()
         print action
         if action == 'a':
@@ -91,6 +86,7 @@ def getOrders(party, badguys):
     
 
 if __name__ == '__main__':
+    print '1 for combat, 2 for talking'
     createPlayers()
     encounter()
     
