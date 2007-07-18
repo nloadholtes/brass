@@ -18,10 +18,7 @@ encounter = {
                       ('There was a bad earthquake!', 'pause(5)'),
                       ('I need you to go check on my neighbors, make sure they\
                       are ok.', 'None')
-
                       ],
-    'talking' : True
-    
     }
 
 
