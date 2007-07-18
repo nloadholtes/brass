@@ -115,4 +115,19 @@ class ActionOrder:
         self.who = who
         self.what = what
         self.target = target
-        
+
+#
+# These are the functions that get called from the
+# encounter scripts.
+#
+def yes_or_no(dest1, dest2):
+    print "Y)es\nN)o"
+    ans = raw_input()
+    if 'y' == ans:
+        return dest1
+    else:
+        return dest2
+
+def pause(dest):
+    print "Need to have the user press something to continue.."
+    return dest
