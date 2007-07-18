@@ -16,8 +16,7 @@ encounter = {
                       ('Good, I\'m glad to hear that', '4'),
                       ('What? Toughen up you crybaby...', 'None'),
                       ('There was a bad earthquake!', 'pause(5)'),
-                      ('I need you to go check on my neighbors, make sure they\
-                      are ok.', 'None')
+                      ('I need you to go check on my neighbors, make sure they are ok.', 'None')
                       ],
     }
 
