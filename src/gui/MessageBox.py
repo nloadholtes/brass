@@ -10,7 +10,7 @@
 import pygame
 
 class BottomMessageBox:
-    def __init__(self, screen):
+    def __init__(self, screen, manager):
         '''The magical init fo rthe MessageBox
         
          justification - 0 (default) left-justified
@@ -18,6 +18,8 @@ class BottomMessageBox:
             2 right-justified  
         '''
         self._screen = screen
+        self.manager = manager
+        self.manager.registerObserver(self)
         screenSize = self._screen.get_size()
         self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
         white = (225, 255, 255)
@@ -29,6 +31,13 @@ class BottomMessageBox:
         self._font = pygame.font.Font(None, 20)
         self._justification = 0
         self._boxvsize = self._screen.get_size()[1] - 200
+
+    def notify(self, evt):
+        '''This method allows anyone to post a message to be displayed on the
+        BottomMessageBox.'''
+        if isinstance( evt, PrintEvent ):
+            self.printtxt(evt.text)
+            self.render()            
         
     def printtext(self, string):
         """This method will take the string and add it to the textbuffer
