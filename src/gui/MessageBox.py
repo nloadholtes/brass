@@ -37,20 +37,20 @@ class BottomMessageBox:
     
         # Create a series of lines that will fit on the provided
         # rectangle.
-    
+        rect = self._rect    
         for requested_line in requested_lines:
-            if font.size(requested_line)[0] > rect.width:
+            if self._font.size(requested_line)[0] > rect.width:
                 words = requested_line.split(' ')
                 # if any of our words are too long to fit, return.
                 for word in words:
-                    if font.size(word)[0] >= rect.width:
+                    if self._font.size(word)[0] >= rect.width:
                         raise TextRectException, "The word " + word + " is too long to fit in the rect passed."
                     # Start a new line
                     accumulated_line = ""
                     for word in words:
                         test_line = accumulated_line + word + " "
                         # Build the line while the words fit.
-                        if font.size(test_line)[0] < rect.width:
+                        if self._font.size(test_line)[0] < rect.width:
                             accumulated_line = test_line
                         else:
                             self._textbuffer.append(accumulated_line)
@@ -58,6 +58,7 @@ class BottomMessageBox:
                             self._textbuffer.append(accumulated_line)
             else:
                 self._textbuffer.append(requested_line)
+            self._textbuffer.append("")
     
     def render(self):
         '''This is where the drawing of the textbuffer takes place.'''
@@ -69,7 +70,7 @@ class BottomMessageBox:
             if accumulated_height + self._font.size(line)[1] >= rect.height:
                 raise TextRectException, "Once word-wrapped, the text string was too tall to fit in the rect."
             if line != "":
-                tempsurface = self._font.render(line, 1, text_color)
+                tempsurface = self._font.render(line, 1, self._textcolor)
                 if self._justification == 0:
                     surface.blit(tempsurface, (0, accumulated_height))
                 elif self._justification == 1:
