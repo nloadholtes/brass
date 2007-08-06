@@ -26,6 +26,7 @@ class Character(object, TileSprite):
         self.value = -2
         self.initative = 10
         self.level = 1
+        self.manager = manager
         #self.sprite = TileSprite(imageFileName, self, position[0], position[1], npc)
     
     def __setattr__(self, key, val):
@@ -137,9 +138,13 @@ class Character(object, TileSprite):
     
     def notify(self, evt):
         '''The result of an encounter'''
-        print self.name,": What do you want?"
+        self.printm(self.name + ": What do you want?")
     
     def updatePosition(self, x, y):
         '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]
+
+    def printm(self, text):
+        '''A helper method to print out messages'''
+        self.manager.notify(PrintEvent(text))
         
