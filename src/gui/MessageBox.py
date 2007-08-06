@@ -9,35 +9,30 @@
 
 import pygame
 
-class MessageBox:
+class BottomMessageBox:
     def __init__(self, screen):
-        '''The magical init fo rthe MessageBox'''
-        self.screen = screen
+        '''The magical init fo rthe MessageBox
         
-    def render_textrect(self, string, font, rect, text_color, background_color, justification=0):
-        """Returns a surface containing the passed text string, reformatted to fit
-        within the given rect, word-wrapping as necessary. The text will be
-        anti-aliased.
-    
-        Takes the following arguments:
-    
-            string - the text you wish to render. \n begins a new line.
-            font - a Font object
-            rect - a rectstyle giving the size of the surface requested.
-            text_color - a three-byte tuple of the rgb value of the
-            text color. ex (0, 0, 0) = BLACK
-            background_color - a three-byte tuple of the rgb value of the surface.
-            justification - 0 (default) left-justified
+         justification - 0 (default) left-justified
             1 horizontally centered
-            2 right-justified
-    
-        Returns the following values:
-    
-            Success - a surface object with the text rendered onto it.
-            Failure - raises a TextRectException if the text won't fit onto the surface.
-        """
-        final_lines = []
-    
+            2 right-justified  
+        '''
+        self._screen = screen
+        screenSize = self._screen.get_size()
+        self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
+        white = (225, 255, 255)
+        backgrnd = (48, 48, 48)
+        self._backgroundcolor = backgrnd
+        self._textcolor = white
+        self._rect = pygame.Rect(( 0, 0, 800, 200))
+        self._textbuffer = []
+        self._font = pygame.font.Font(None, 20)
+        self._justification = 0
+        self._boxvsize = self._screen.get_size()[1] - 200
+        
+    def printtext(self, string):
+        """This method will take the string and add it to the textbuffer
+        that will be drawn to the screen in the render() method. """
         requested_lines = string.splitlines()
     
         # Create a series of lines that will fit on the provided
@@ -58,31 +53,31 @@ class MessageBox:
                         if font.size(test_line)[0] < rect.width:
                             accumulated_line = test_line
                         else:
-                            final_lines.append(accumulated_line)
+                            self._textbuffer.append(accumulated_line)
                             accumulated_line = word + " "
-                            final_lines.append(accumulated_line)
+                            self._textbuffer.append(accumulated_line)
             else:
-                final_lines.append(requested_line)
+                self._textbuffer.append(requested_line)
     
-        # Let's try to write the text out on the surface.
+    def render(self):
+        '''This is where the drawing of the textbuffer takes place.'''
+        rect = self._rect
         surface = pygame.Surface(rect.size)
-        surface.fill(background_color)
+        surface.fill(self._backgroundcolor)
         accumulated_height = 0
-        for line in final_lines:
-            if accumulated_height + font.size(line)[1] >= rect.height:
+        for line in self._textbuffer:
+            if accumulated_height + self._font.size(line)[1] >= rect.height:
                 raise TextRectException, "Once word-wrapped, the text string was too tall to fit in the rect."
             if line != "":
-                tempsurface = font.render(line, 1, text_color)
-                if justification == 0:
+                tempsurface = self._font.render(line, 1, text_color)
+                if self._justification == 0:
                     surface.blit(tempsurface, (0, accumulated_height))
-                elif justification == 1:
+                elif self._justification == 1:
                     surface.blit(tempsurface, ((rect.width - tempsurface.get_width()) / 2, accumulated_height))
-                elif justification == 2:
+                elif self._justification == 2:
                     surface.blit(tempsurface, (rect.width - tempsurface.get_width(), accumulated_height))
                 else:
-                    raise TextRectException, "Invalid justification argument: " + str(justification)
-            accumulated_height += font.size(line)[1]
+                    raise TextRectException, "Invalid justification argument: " + str(self._justification)
+            accumulated_height += self._font.size(line)[1]
         
-        screen.blit(surface, (self._screenCenter[0] - 200, self._screenCenter[1] - 200))
-        self._msgbox = surface
-        self._displaymsg = True
+        self._screen.blit(surface, (0, self._boxvsize))
