@@ -2,12 +2,12 @@ from Character import *
 from EncounterManager import EncounterEngine
 from EventMngr import *
 from Events import *
-from gui import MessageBox, StatsDisplay, EncounterMessageBox
+from gui.MessageBox import BottomMessageBox
 from pygame.constants import *
 import pygame
 from tilesprite import *
 
-screensize = [800,600 ]
+screensize = [800,600]
 fs = 0
 
 up = (0, -1)
@@ -36,11 +36,11 @@ class TileEngine:
 		self._location = gamedata.get('playerlocation')
 		self._map = []
 		self._mapinfo = {}
-		self._font = pygame.font.Font(None, 20);
+		#self._font = pygame.font.Font(None, 20);
 		self._offset = [0, 0]
 		self._display = True
 		self._displaymsg = False
-		self._msgbox = None
+		self._msgbox = BottomMessageBox(self._screen)
 		self._messages = ()
 		self.ego = None
 		screenSize = self._screen.get_size()
@@ -68,7 +68,7 @@ class TileEngine:
 			if(direction != None):
 				self.move(direction)
 		if isinstance(evt, Encounter):
-			print "There's an encounter!"
+			self._msgbox.printtext( "There's an encounter!")
 			self.encounterHandler(evt)
 
 	def encounterHandler(self, evt):
@@ -168,6 +168,7 @@ class TileEngine:
 			return result
 
 	def moveToNewRoom(self, door):
+		'''This method probably should be in a different place'''
 		self.loadMap(door[1][0])
 		loc = door[1][1]
 		print "Old location is: ", self.ego.position, " ", loc
@@ -215,6 +216,7 @@ class TileEngine:
 			self.paintStats(screen,self.ego)
 		self.paintSprite(self.ego)
 		# Paint text in window
+		self._msgbox.render()
 #		if(self._displaymsg):
 #			#self.messageBox(self._msgstr, screen)
 #			#screen.blit(self._msgbox, self._screenCenter)
@@ -243,16 +245,4 @@ class TileEngine:
 		if result == None:
 			self.ego.updatePosition(newX, newY) 
 		return result
- 			
-#	def messageBox(self, message, screen):
-#		msg_rect = pygame.Rect(( 0, 0, 500, 300))
-#		white = (225, 255, 255)
-#		backgrnd = (48, 48, 48)
-#		msgbox = MessageBox(screen)
-#		msgbox.render_textrect(message, self._font, msg_rect, white, backgrnd,  2)
-
-#	def flipMessagePane(self):
-#		self._display = not self._display
-		
-	
-
+ 
