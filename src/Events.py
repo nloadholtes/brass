@@ -38,6 +38,11 @@ class Encounter(Event):
         self.name = "Encounter"
         self.entity = entity
 
+class PrintEvent(Event):
+    def __init__(self, text):
+        Event.__init__(self)        
+        self.name = "Print Event"
+        self.text = text
             
 
 
