@@ -8,6 +8,7 @@
 #
 
 import pygame
+from Events import *
 
 class BottomMessageBox:
     def __init__(self, screen, manager):
@@ -35,8 +36,9 @@ class BottomMessageBox:
     def notify(self, evt):
         '''This method allows anyone to post a message to be displayed on the
         BottomMessageBox.'''
-        if isinstance( evt, PrintEvent ):
-            self.printtxt(evt.text)
+        if isinstance( evt, PrintEvent):
+            print "Found an instance"
+            self.printtext(evt.text)
             self.render()            
         
     def printtext(self, string):
