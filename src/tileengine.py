@@ -21,7 +21,6 @@ class TileEngine:
 	def __init__(self, eventmanager, gamedata):
 		self.evtmngr = eventmanager
 		self.evtmngr.registerObserver(self)
-		
 		pygame.init()
 		screen = pygame.display.set_mode(screensize, DOUBLEBUF | fs)
    		self._tiles = {}
@@ -36,11 +35,10 @@ class TileEngine:
 		self._location = gamedata.get('playerlocation')
 		self._map = []
 		self._mapinfo = {}
-		#self._font = pygame.font.Font(None, 20);
 		self._offset = [0, 0]
 		self._display = True
 		self._displaymsg = False
-		self._msgbox = BottomMessageBox(self._screen)
+		self._msgbox = BottomMessageBox(self._screen, eventmanager)
 		self._messages = ()
 		self.ego = None
 		screenSize = self._screen.get_size()
@@ -93,7 +91,7 @@ class TileEngine:
 		print "Encounter over"
 	
 	def addPlayer(self, image, startpos, stats):
-		self.ego = Character( self, "ego", startpos, image)
+		self.ego = Character( self.evtmngr, "ego", startpos, image)
 		self.ego.image = self.getImage(image)
 
 	def loadMap(self, mapname):
@@ -128,7 +126,7 @@ class TileEngine:
 			img = self.images.get(sprite[2])
 			image = self.getImage(img)
 			if sprite[1] == npc:
-				s = Character( self, "NPC", (sprite[0][0], sprite[0][1]), img)
+				s = Character( self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), img)
 			else:
 				s = TileSprite(img, self, sprite[0][0], sprite[0][1], sprite[1])
 			if len(sprite) == 4:
@@ -162,7 +160,7 @@ class TileEngine:
 			for sprite in self._sprites: 
 				if sprite.getXY() == (newx, newy):
 					#This means we are bumping into something
-					print 'sprite...',sprite
+					#print 'sprite...',sprite
 					sprite.handle()
 					return result
 			return result
@@ -243,6 +241,8 @@ class TileEngine:
 		newY = self.ego.position[1] + dy
 		result = self.moveOk(newX, newY)
 		if result == None:
-			self.ego.updatePosition(newX, newY) 
+			self.ego.updatePosition(newX, newY)
+		else:
+			self._msgbox.printtext("Bump")
 		return result
  
