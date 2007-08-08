@@ -11,7 +11,7 @@ ok_to_move = 0
 ask_to_move = 1
 
 class TileSprite:
-	def __init__(self, imageFilename, parent, x, y, type):
+	def __init__(self, manager,  imageFilename, parent, x, y, type):
 		if imageFilename:
 			image = pygame.image.load(imageFilename)
 			image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
@@ -22,6 +22,7 @@ class TileSprite:
 		self._y = int(y)
 		self._type = type
 		self._doordata = None
+		self.manager = manager
 	
 	def handle(self):
 		'''In the event of someone hitting this tile, we need to decide what to do.'''
@@ -32,7 +33,7 @@ class TileSprite:
 			if d[2] == ok_to_move:
 				return self._parent.moveToNewRoom(d)
 			elif d[2] == ask_to_move:
-				print "We gotta ask about this move"
+				self.printm("We gotta ask about this move")
 		elif typ == npc:
 			print 'NPC standing there'
 			ev = Encounter(self)
@@ -44,6 +45,10 @@ class TileSprite:
 			print "An object with a message of:"
 			
 			
+	def printm(self, text):
+		'''A helper method to print out messages'''
+		self.manager.notify(PrintEvent(text))
+        
 		
 	def getXY(self):
 		return (self._x, self._y)

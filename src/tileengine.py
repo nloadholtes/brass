@@ -128,7 +128,7 @@ class TileEngine:
 			if sprite[1] == npc:
 				s = Character( self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), img)
 			else:
-				s = TileSprite(img, self, sprite[0][0], sprite[0][1], sprite[1])
+				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1], sprite[1])
 			if len(sprite) == 4:
 				s.setDoorData(sprite[3])
 			self._sprites.append(s) 
