@@ -16,7 +16,7 @@ class Character(object, TileSprite):
 #    sprite = None
 
     def __init__(self, manager, name, position, imageFileName):
-        TileSprite.__init__(self, imageFileName, self, position[0], position[1], npc)
+        TileSprite.__init__(self, manager, imageFileName, self, position[0], position[1], npc)
         self.name = name
         self.position = position
         self.equipped = {'weapon' : None, 'armor' :None}
@@ -26,8 +26,6 @@ class Character(object, TileSprite):
         self.value = -2
         self.initative = 10
         self.level = 1
-        self.manager = manager
-        #self.sprite = TileSprite(imageFileName, self, position[0], position[1], npc)
     
     def __setattr__(self, key, val):
         if key == 'health':
@@ -144,7 +142,4 @@ class Character(object, TileSprite):
         '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]
 
-    def printm(self, text):
-        '''A helper method to print out messages'''
-        self.manager.notify(PrintEvent(text))
-        
+
