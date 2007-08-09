@@ -77,9 +77,9 @@ class BottomMessageBox:
         surface = pygame.Surface(rect.size)
         surface.fill(self._backgroundcolor)
         accumulated_height = 0
-        for line in self._textbuffer:
-            if accumulated_height + self._font.size(line)[1] >= rect.height:
-                raise TextRectException, "Once word-wrapped, the text string was too tall to fit in the rect."
+        for line in reverse(self._textbuffer):
+#            if accumulated_height + self._font.size(line)[1] >= rect.height:
+#                raise TextRectException, "Once word-wrapped, the text string was too tall to fit in the rect."
             if line != "":
                 tempsurface = self._font.render(line, 1, self._textcolor)
                 if self._justification == 0:
@@ -93,3 +93,8 @@ class BottomMessageBox:
             accumulated_height += self._font.size(line)[1]
         
         self._screen.blit(surface, (0, self._boxvsize))
+        
+def reverse(data):
+    '''A generator from the tutorial to reverse traverse'''
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
