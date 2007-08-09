@@ -5,6 +5,7 @@
 #
 
 from Entity import Item
+from tilesprite import TileSprite
 
 
 #
@@ -92,9 +93,24 @@ class Food(Item):
     value = 1
     amt = 1
     
-class Door(Item):
+class Door(TileSprite):
     name = 'Door'    
     value = 100
     amt = 1
     
+    def __init__(self, manager, name, position, imageFileName, parent):
+        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1])
+        
+    def handle(self):
+        d = self._parent._mapinfo['door'][self.getDoorData()]
+        from tilesprite import *
+        if d[2] == ok_to_move:
+            return self._parent.moveToNewRoom(d)
+        elif d[2] == ask_to_move:
+            self.printm("We gotta ask about this move")
 
+    def setDoorData(self, dat):
+        self._doordata = dat
+        
+    def getDoorData(self):
+        return self._doordata

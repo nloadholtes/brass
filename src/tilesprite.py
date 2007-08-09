@@ -11,7 +11,7 @@ ok_to_move = 0
 ask_to_move = 1
 
 class TileSprite:
-	def __init__(self, manager,  imageFilename, parent, x, y, type):
+	def __init__(self, manager,  imageFilename, parent, x, y):
 		if imageFilename:
 			image = pygame.image.load(imageFilename)
 			image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
@@ -20,47 +20,20 @@ class TileSprite:
 		self._parent = parent
 		self._x = int(x)
 		self._y = int(y)
-		self._type = type
 		self._doordata = None
 		self.manager = manager
 	
 	def handle(self):
 		'''In the event of someone hitting this tile, we need to decide what to do.'''
-		typ = self._type
-		if typ == door:
-			print 'Door'
-			d = self._parent._mapinfo['door'][self.getDoorData()]
-			if d[2] == ok_to_move:
-				return self._parent.moveToNewRoom(d)
-			elif d[2] == ask_to_move:
-				self.printm("We gotta ask about this move")
-		elif typ == npc:
-			print 'NPC standing there'
-			ev = Encounter(self)
-			self._parent.notify(ev)
-		elif typ == obj_no_msg:
-			print 'Object with no message'
-			
-		elif typ == obj_msg:
-			print "An object with a message of:"
+		self.printm("Default TileSprite handler: Need to replace this with a specific handler.")
 			
 			
 	def printm(self, text):
 		'''A helper method to print out messages'''
 		self.manager.notify(PrintEvent(text))
         
-		
 	def getXY(self):
 		return (self._x, self._y)
-	
-	def setDoorData(self, dat):
-		self._doordata = dat
-		
-	def getDoorData(self):
-		return self._doordata
-
-	def getType(self):
-		return self._type
 	
 	def move(self, direction):
 		dx,dy = direction

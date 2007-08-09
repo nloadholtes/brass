@@ -91,7 +91,7 @@ class TileEngine:
 		print "Encounter over"
 	
 	def addPlayer(self, image, startpos, stats):
-		self.ego = Character( self.evtmngr, "ego", startpos, image)
+		self.ego = Character( self.evtmngr, "ego", startpos, image, self)
 		self.ego.image = self.getImage(image)
 
 	def loadMap(self, mapname):
@@ -126,9 +126,12 @@ class TileEngine:
 			img = self.images.get(sprite[2])
 			image = self.getImage(img)
 			if sprite[1] == npc:
-				s = Character( self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), img)
+				s = Character( self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), img, self)
+			elif sprite[1] == door:
+				s = Door(self.evtmngr, "Door", sprite[0], img, self)
+				s.setDoorData(sprite[3])
 			else:
-				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1], sprite[1])
+				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1])
 			if len(sprite) == 4:
 				s.setDoorData(sprite[3])
 			self._sprites.append(s) 
@@ -215,10 +218,6 @@ class TileEngine:
 		self.paintSprite(self.ego)
 		# Paint text in window
 		self._msgbox.render()
-#		if(self._displaymsg):
-#			#self.messageBox(self._msgstr, screen)
-#			#screen.blit(self._msgbox, self._screenCenter)
-#			self._displaymsg = False
 		pygame.display.flip()
 
 	#
