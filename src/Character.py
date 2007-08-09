@@ -15,8 +15,8 @@ class Character(object, TileSprite):
     orders = []
 #    sprite = None
 
-    def __init__(self, manager, name, position, imageFileName):
-        TileSprite.__init__(self, manager, imageFileName, self, position[0], position[1], npc)
+    def __init__(self, manager, name, position, imageFileName, parent):
+        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1])
         self.name = name
         self.position = position
         self.equipped = {'weapon' : None, 'armor' :None}
@@ -143,3 +143,9 @@ class Character(object, TileSprite):
         self.position = [x,y]
 
 
+    #
+    # Other methods
+    #
+    
+    def handle(self):
+        self.printm("Default Character handler caught this...")
