@@ -43,10 +43,9 @@ class TileEngine:
 		self.ego = None
 		screenSize = self._screen.get_size()
 		self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
-		self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
-		
 		# this is temp I think, probably should be in the game object
 		self.addPlayer(gamedata.get('playerimage'), gamedata.get('playerlocation'), gamedata.get('playerstats'))
+		self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
 		
 	#
 	# Used to update the screen	
@@ -72,7 +71,7 @@ class TileEngine:
 	def encounterHandler(self, evt):
 		"""An encounter might be happening, need to find out what
 		kind it is, and how it should be handled"""
-		print "In encounterHandler()"
+		#print "In encounterHandler()"
 		#Determine if we are even having this fight...
 
 		#Ok, we are having the fight! (this is following the tests/combat_tester.py file)
@@ -95,6 +94,7 @@ class TileEngine:
 		self.ego.image = self.getImage(image)
 
 	def loadMap(self, mapname):
+		#print "loadMap", mapname
 		values = {}
 		execfile(mapname, globals(), values)
 		self.__dict__.update(values)
@@ -117,7 +117,7 @@ class TileEngine:
 	# While this block works, it does duplicate work. It would be nice
 	# if images were only loaded once....
 	def loadSprites(self, spritelist):
-		print "loading sprites"
+		#print "loading sprites"
 		if(len(self._sprites) > 0):
 			tmp = self._sprites[0]
 			self._sprites = []
@@ -145,8 +145,10 @@ class TileEngine:
 		
 	def centerOn(self, sprite):
 		'''convert sprite co-ords to screen co-ords'''
+		#print "centerOn ", sprite
 		screenSize = self._screen.get_size()
 		spriteXY = sprite.position
+		#print spriteXY
 		self._offset[0] = (screenSize[0]/2 - self._location[0] - (spriteXY[0] * self._tilewidth))
 		self._offset[1] = (screenSize[1]/2 - self._location[1] - (spriteXY[1] * self._tileheight))
 
@@ -155,6 +157,7 @@ class TileEngine:
 	# or events that are necessary.
 	def moveOk(self, newx, newy):
 		# Also need to check for out of range
+		#print "moveOK", newx, newy
 		if not self._map[newy][newx] in self.passable:
 			return False
 		else:
@@ -164,18 +167,21 @@ class TileEngine:
 				if sprite.getXY() == (newx, newy):
 					#This means we are bumping into something
 					#print 'sprite...',sprite
-					sprite.handle()
+					result = sprite.handle()
 					return result
 			return result
 
 	def moveToNewRoom(self, door):
 		'''This method probably should be in a different place'''
-		self.loadMap(door[1][0])
+		#print "moveToNewRom ", door
 		loc = door[1][1]
-		print "Old location is: ", self.ego.position, " ", loc
-		self.ego.position = [self._mapinfo['door'][loc][0][0], self._mapinfo['door'][loc][0][1]]
-		print "New Location is: ", self.ego.position
-		
+		self.loadMap(door[1][0])
+		#print "Old location is: ", self.ego.position, " ", loc
+		self.ego.updatePosition(self._mapinfo['door'][loc][0][0], self._mapinfo['door'][loc][0][1])
+		#print "New Location is: ", self.ego.position
+		return "moving to new room"
+
+
 	def paintSprite(self, sprite):
 		x, y = sprite.position
 		x *= self._tilewidth
@@ -235,13 +241,15 @@ class TileEngine:
 		
 	def move(self, direction):
 		'''Updates the sprite on the screen'''
+		#print "move", direction
+		#print "Old location is: ", self.ego.position
 		dx,dy = direction
 		newX = self.ego.position[0] + dx
 		newY = self.ego.position[1] + dy
 		result = self.moveOk(newX, newY)
 		if result == None:
 			self.ego.updatePosition(newX, newY)
-		else:
-			self._msgbox.printtext("Bump")
+#		else:
+#			self._msgbox.printtext("Bump")
 		return result
  
