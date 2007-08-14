@@ -94,7 +94,7 @@ class TileEngine:
 		self.ego.image = self.getImage(image)
 
 	def loadMap(self, mapname):
-		#print "loadMap", mapname
+		print "loadMap", mapname
 		values = {}
 		execfile(mapname, globals(), values)
 		self.__dict__.update(values)
@@ -173,7 +173,7 @@ class TileEngine:
 
 	def moveToNewRoom(self, door):
 		'''This method probably should be in a different place'''
-		#print "moveToNewRom ", door
+		print "moveToNewRoom ", door
 		loc = door[1][1]
 		self.loadMap(door[1][0])
 		#print "Old location is: ", self.ego.position, " ", loc
