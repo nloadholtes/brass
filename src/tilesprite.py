@@ -36,6 +36,7 @@ class TileSprite:
 		return (self._x, self._y)
 	
 	def move(self, direction):
+		print "TileSprite.move() was called, and this might probably shouldn't have happened..."
 		dx,dy = direction
 		newX = self._x + dx
 		newY = self._y + dy
