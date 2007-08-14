@@ -37,7 +37,6 @@ class BottomMessageBox:
         '''This method allows anyone to post a message to be displayed on the
         BottomMessageBox.'''
         if isinstance( evt, PrintEvent):
-            print "Found an instance"
             self.printtext(evt.text)
             self.render()            
         
