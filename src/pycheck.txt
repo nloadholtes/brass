@@ -16,39 +16,41 @@ Warnings...
 /Users/njl/projects/games/brass/src/EncounterManager.py:102: Parameter (level) not used
 /Users/njl/projects/games/brass/src/EncounterManager.py:102: Parameter (type) not used
 /Users/njl/projects/games/brass/src/EncounterManager.py:106: Local variable (group) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/EncounterManager.py:107: Invalid arguments to (__init__), got 4, expected 5
 /Users/njl/projects/games/brass/src/EncounterManager.py:107: Local variable (group) shadows global defined on line 0 in file <unknown>
 /Users/njl/projects/games/brass/src/EncounterManager.py:108: Local variable (group) shadows global defined on line 0 in file <unknown>
 
 /Users/njl/projects/games/brass/src/EventMngr.py:28: (observer) cannot be used after being deleted on line 25
 
 /Users/njl/projects/games/brass/src/Item.py:101: Parameter (name) not used
-/Users/njl/projects/games/brass/src/Item.py:108: No global (ok_to_move) found
-/Users/njl/projects/games/brass/src/Item.py:110: No global (ask_to_move) found
+/Users/njl/projects/games/brass/src/Item.py:107: No global (ok_to_move) found
+/Users/njl/projects/games/brass/src/Item.py:109: No global (ask_to_move) found
 
-/Users/njl/projects/games/brass/src/gui/MessageBox.py:58: No global (TextRectException) found
+/Users/njl/projects/games/brass/src/gui/MessageBox.py:57: No global (TextRectException) found
 
-/Users/njl/projects/games/brass/src/tileengine.py:90: No global (emb) found
-/Users/njl/projects/games/brass/src/tileengine.py:93: Parameter (stats) not used
+/Users/njl/projects/games/brass/src/tileengine.py:89: No global (emb) found
+/Users/njl/projects/games/brass/src/tileengine.py:92: Parameter (stats) not used
 /Users/njl/projects/games/brass/src/tileengine.py:112: Setting class attribute (_tilewidth) not set in __init__
 /Users/njl/projects/games/brass/src/tileengine.py:113: Setting class attribute (_tileheight) not set in __init__
 /Users/njl/projects/games/brass/src/tileengine.py:126: No class attribute (images) found
 /Users/njl/projects/games/brass/src/tileengine.py:127: Local variable (image) not used
-/Users/njl/projects/games/brass/src/tileengine.py:150: No class attribute (_tilewidth) found
-/Users/njl/projects/games/brass/src/tileengine.py:151: No class attribute (_tileheight) found
-/Users/njl/projects/games/brass/src/tileengine.py:173: Local variable (door) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:174: Local variable (door) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:181: No class attribute (_tilewidth) found
-/Users/njl/projects/games/brass/src/tileengine.py:182: No class attribute (_tileheight) found
-/Users/njl/projects/games/brass/src/tileengine.py:183: Local variable (left) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:185: Local variable (left) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:195: No class attribute (_tilewidth) found
-/Users/njl/projects/games/brass/src/tileengine.py:196: No class attribute (_tileheight) found
-/Users/njl/projects/games/brass/src/tileengine.py:209: Local variable (left) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:211: No class attribute (_tilewidth) found
-/Users/njl/projects/games/brass/src/tileengine.py:212: No class attribute (_tileheight) found
-/Users/njl/projects/games/brass/src/tileengine.py:213: Local variable (left) shadows global defined on line 0 in file <unknown>
-/Users/njl/projects/games/brass/src/tileengine.py:217: No class attribute (paintStats) found
-/Users/njl/projects/games/brass/src/tileengine.py:227: Setting class attribute (_msgstr) not set in __init__
+/Users/njl/projects/games/brass/src/tileengine.py:152: No class attribute (_tilewidth) found
+/Users/njl/projects/games/brass/src/tileengine.py:153: No class attribute (_tileheight) found
+/Users/njl/projects/games/brass/src/tileengine.py:176: Local variable (door) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:177: Local variable (door) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:178: Local variable (door) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:187: No class attribute (_tilewidth) found
+/Users/njl/projects/games/brass/src/tileengine.py:188: No class attribute (_tileheight) found
+/Users/njl/projects/games/brass/src/tileengine.py:189: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:191: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:201: No class attribute (_tilewidth) found
+/Users/njl/projects/games/brass/src/tileengine.py:202: No class attribute (_tileheight) found
+/Users/njl/projects/games/brass/src/tileengine.py:215: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:217: No class attribute (_tilewidth) found
+/Users/njl/projects/games/brass/src/tileengine.py:218: No class attribute (_tileheight) found
+/Users/njl/projects/games/brass/src/tileengine.py:219: Local variable (left) shadows global defined on line 0 in file <unknown>
+/Users/njl/projects/games/brass/src/tileengine.py:223: No class attribute (paintStats) found
+/Users/njl/projects/games/brass/src/tileengine.py:233: Setting class attribute (_msgstr) not set in __init__
 
 Group.py:16: Local variable (x) not used
 
