@@ -22,6 +22,7 @@ _mapinfo = { 'startx' :    6,
 # (Door location), (which map it leads to, which door in map), messg type
 'door' : (
 	((2,2), ('map/dungeon.map', 1), 0),
+	((3,2), ('map/jail.map', 0), 0),
 	((4, 2), ('map/dungeon.map', 0), 1),
 	((27, 10), ('map/dungeon.map', 2), 1)
 	),
@@ -41,6 +42,7 @@ sprites = [
 # Metadata for doors - index into door list
 	[(5,5), 0, 'a'],
 	[(2,2), 1, 's', 0],
+	[(3,2), 1, 's', 2],
 	[(4,2), 1, 's', 1],
 	[(27,10), 1, 's', 2],
 	[(2, 8), 4, '$'],

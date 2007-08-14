@@ -37,8 +37,15 @@ images = {
 }
 
 _mapinfo = {
- 'passable' : ['.','g','b','B','t','G']
+ 'passable' : ['.','g','b','B','t','G'],
 
+'door' : (
+	((2, 7), ('map/mailroom.map', 2), 0),
+	)
 }
 
-sprites = []
+sprites = [
+	[(2,7), 1, 'd',0]
+	
+	]
+	
