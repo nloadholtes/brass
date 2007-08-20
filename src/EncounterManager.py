@@ -92,12 +92,12 @@ class EncounterEngine:
         for person in self.fightorder:
             person.orders = []
             
-	def startEncounter(self, encounter):
+    def startEncounter(self, encounter):
 		'''This method is where encounters start.'''
-    	print "Starting encounter:"
-    	print 'Preamble: ', encounter['preamble']
-    	x = 1
-    	while(x):
+		print "Starting encounter:"
+		print 'Preamble: ', encounter['preamble']
+		x = 1
+		while(x):
 		    topic = encounter['conversation'][x]
 		    print "\t",topic[0]
 		    if(len(topic) > 1):
@@ -114,7 +114,7 @@ def createBadGuys(amount, level, type):
 #    badguylist = []
     mngr = EventManager()
     group = Group(mngr, "Gangsters", (0,0), "img/player.png")
-    group.populateClones(Character(mngr, 'Bad Guy', (0,0), None), amount)
+    group.populateClones(Character(mngr, 'Bad Guy', (0,0), "", None), amount)
     return group
 
 class ActionOrder:
