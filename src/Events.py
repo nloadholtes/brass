@@ -32,7 +32,7 @@ class CharPlaceEvent(Event):
         Event.__init__(self)        
         self.name = "Char Place Event"
             
-class Encounter(Event):
+class EncounterEvent(Event):
     def __init__(self, entity):
         Event.__init__(self)
         self.name = "Encounter"
