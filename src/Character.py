@@ -15,7 +15,7 @@ class Character(object, TileSprite):
     orders = []
 #    sprite = None
 
-    def __init__(self, manager, name, position, imageFileName, parent):
+    def __init__(self, manager, name, position, imageFileName, parent, encounter=None):
         TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1])
         self.name = name
         self.position = position
@@ -26,6 +26,8 @@ class Character(object, TileSprite):
         self.value = -2
         self.initative = 10
         self.level = 1
+        self.encoutner = encounter
+        
     
     def __setattr__(self, key, val):
         if key == 'health':
@@ -146,6 +148,10 @@ class Character(object, TileSprite):
     #
     # Other methods
     #
-    
     def handle(self):
+    	'''If there is an encounter associated with this character, then notify
+    	the manager and pass them the encounter event...'''
         self.printm("Default Character handler caught this...")
+        if None != self.encoutner:
+        	#Fire up the encounter handler!!!
+        	self.manager.notify(EncounterEvent(self.encoutner))
