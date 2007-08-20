@@ -36,7 +36,7 @@ def encounter():
     goodguys = [joe, tom]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine(badguys)
-    ee.startEncounter(goodguys)
+    ee.startCombatEncounter(goodguys)
     while ee.stillFighting():
         print 'Next round!'
         displayStats(goodguys, badguys)
