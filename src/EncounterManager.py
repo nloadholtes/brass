@@ -81,8 +81,7 @@ class EncounterEngine:
             dude.orders.append(order)
             print '->',dude.name,'is thinking...', order
 
-
-    def startEncounter(self, goodguys):
+    def startCombatEncounter(self, goodguys):
         '''This starts the encounter, determining the order and then playing
         a round.'''
         print 'Starting!'
@@ -92,6 +91,17 @@ class EncounterEngine:
         #Clear out the orders for everyone
         for person in self.fightorder:
             person.orders = []
+            
+	def startEncounter(self, encounter):
+		'''This method is where encounters start.'''
+    	print "Starting encounter:"
+    	print 'Preamble: ', encounter['preamble']
+    	x = 1
+    	while(x):
+		    topic = encounter['conversation'][x]
+		    print "\t",topic[0]
+		    if(len(topic) > 1):
+		        x = eval(topic[1])
             
 #
 # Helper functions for these classes
