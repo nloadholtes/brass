@@ -64,7 +64,7 @@ class TileEngine:
 				direction = right
 			if(direction != None):
 				self.move(direction)
-		if isinstance(evt, Encounter):
+		if isinstance(evt, EncounterEvent):
 			self._msgbox.printtext( "There's an encounter!")
 			self.encounterHandler(evt)
 
