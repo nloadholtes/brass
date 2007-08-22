@@ -10,15 +10,12 @@ from Group import *
 from random import randint
 
 class EncounterEngine:
-    def __init__(self, opponents):
+    def __init__(self):
         print 'Starting Encounter Engine'
         self.goodguys = []
-        if isinstance(opponents, Group):
-            self.badguys = opponents.characters
-        else:
-            self.badguys = [opponents.entity]
         self.fightorder = []
         self.orders = []
+        self.badguys = []
         
     def playRound(self):
         '''This method will execute one round of combat'''
@@ -92,9 +89,10 @@ class EncounterEngine:
         for person in self.fightorder:
             person.orders = []
             
-    def startEncounter(self, encounter):
+    def startEncounter(self, enc):
 		'''This method is where encounters start.'''
 		print "Starting encounter:"
+		encounter = enc.encounter
 		print 'Preamble: ', encounter['preamble']
 		x = 1
 		while(x):
@@ -102,6 +100,7 @@ class EncounterEngine:
 		    print "\t",topic[0]
 		    if(len(topic) > 1):
 		        x = eval(topic[1])
+		return x
             
 #
 # Helper functions for these classes
