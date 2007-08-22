@@ -23,7 +23,7 @@ if __name__ == "__main__":
     encounters = {}
     execfile('../src/encounter.py', globals(), encounters)
     print encounters['encounter']['title']
-    encmgr = EncounterEngine(createBadGuys(1, 1, 0))
+    encmgr = EncounterEngine()
     encmgr.startEncounter(encounters['encounter'])
 #    target = raw_input()
 #    if target == '1':
