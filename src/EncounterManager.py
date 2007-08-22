@@ -89,10 +89,11 @@ class EncounterEngine:
         for person in self.fightorder:
             person.orders = []
             
-    def startEncounter(self, enc):
+    def startEncounter(self, encounter):
 		'''This method is where encounters start.'''
 		print "Starting encounter:"
-		encounter = enc.encounter
+		if isinstance(encounter, EncounterEvent):
+			encounter = encounter.encounter
 		print 'Preamble: ', encounter['preamble']
 		x = 1
 		while(x):
