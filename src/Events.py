@@ -33,10 +33,10 @@ class CharPlaceEvent(Event):
         self.name = "Char Place Event"
             
 class EncounterEvent(Event):
-    def __init__(self, entity):
+    def __init__(self, encounter):
         Event.__init__(self)
         self.name = "Encounter"
-        self.entity = entity
+        self.encounter = encounter
 
 class PrintEvent(Event):
     def __init__(self, text):
