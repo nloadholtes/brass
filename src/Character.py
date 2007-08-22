@@ -154,4 +154,4 @@ class Character(object, TileSprite):
         self.printm("Default Character handler caught this...")
         if None != self.encoutner:
         	#Fire up the encounter handler!!!
-        	self.manager.notify(EncounterEvent(self.encoutner))
+        	return self.manager.notify(EncounterEvent(self.encoutner))
