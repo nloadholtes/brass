@@ -41,11 +41,14 @@ class TileEngine:
 		self._msgbox = BottomMessageBox(self._screen, eventmanager)
 		self._messages = ()
 		self.ego = None
+		self._encounters = {}
+		execfile('src/encounter.py', globals(), self._encounters)
 		screenSize = self._screen.get_size()
 		self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
 		# this is temp I think, probably should be in the game object
 		self.addPlayer(gamedata.get('playerimage'), gamedata.get('playerlocation'), gamedata.get('playerstats'))
 		self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
+
 		
 	#
 	# Used to update the screen	
@@ -66,7 +69,7 @@ class TileEngine:
 				self.move(direction)
 		if isinstance(evt, EncounterEvent):
 			self._msgbox.printtext( "There's an encounter!")
-			self.encounterHandler(evt)
+			return self.encounterHandler(evt)
 
 	def encounterHandler(self, evt):
 		"""An encounter might be happening, need to find out what
@@ -75,19 +78,19 @@ class TileEngine:
 		#Determine if we are even having this fight...
 
 		#Ok, we are having the fight! (this is following the tests/combat_tester.py file)
-		enceng = EncounterEngine(evt)
+		enceng = EncounterEngine()
 		#emb = EncounterMessageBox()
 		# Get the orders for the good guys
-		enceng.startEncounter([self.ego])
-		while enceng.stillFighting():
-			print "Next round!"
-			#Display the stats
-			#Get the orders for the good guys
-			#Get the orders for the bad guys
-
-			#Play the round and show the results to the EncounterMessageBox
-			emb.display(enceng.playRound())
-		print "Encounter over"
+		return enceng.startEncounter(evt)
+#		while enceng.stillFighting():
+#			print "Next round!"
+#			#Display the stats
+#			#Get the orders for the good guys
+#			#Get the orders for the bad guys
+#
+#			#Play the round and show the results to the EncounterMessageBox
+#			emb.display(enceng.playRound())
+#		print "Encounter over"
 	
 	def addPlayer(self, image, startpos, stats):
 		self.ego = Character( self.evtmngr, "ego", startpos, image, self)
@@ -126,14 +129,16 @@ class TileEngine:
 			img = self.images.get(sprite[2])
 			image = self.getImage(img)
 			if sprite[1] == npc:
-				s = Character( self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), img, self)
+				print sprite[3]
+				s = Character(self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), 
+							img, self, self._encounters[sprite[3]])
 			elif sprite[1] == door:
 				s = Door(self.evtmngr, "Door", sprite[0], img, self)
 				s.setDoorData(sprite[3])
 			else:
 				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1])
-			if len(sprite) == 4:
-				s.setDoorData(sprite[3])
+#			if len(sprite) == 4:
+#				s.setDoorData(sprite[3])
 			self._sprites.append(s) 
 
 	def getImage(self, imagename):
