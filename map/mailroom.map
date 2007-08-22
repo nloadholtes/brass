@@ -40,7 +40,7 @@ sprites = [
 # (x,y location), type of sprite, graphic symbol, metadata
 # types of sprites, 1-door, 0-other
 # Metadata for doors - index into door list
-	[(5,5), 0, 'a'],
+	[(5,5), 0, 'a', "test_encounter"],
 	[(2,2), 1, 's', 0],
 	[(3,2), 1, 's', 2],
 	[(4,2), 1, 's', 1],
