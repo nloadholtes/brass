@@ -10,8 +10,8 @@ _map = [
 "W...-------------------GGW",
 "W...gggggggggggggggggggggW",
 "WL.RL.RL.RL.RL.RL.RL.RL.RW",
-"W|.b|.b|.b|.b|.b|.b|.b|.bW",
-"Wt.Bt.Bt.Bt.Bt.Bt.Bt.Bt.BW",
+"W|.s|.s|.s|.s|.s|.s|.s|.sW",
+"Wt.Dt.Dt.Dt.Dt.Dt.Dt.Dt.DW",
 "WWWWWWWWWWWWWWWWWWWWWWWWWW",
 ]
 
@@ -19,7 +19,9 @@ images = {
 't' : 'img/toilet.png',
 '.' : 'img/cell_floor.png',
 'B' : 'img/bed_top.png',
+'D' : 'img/bed_top2.png',
 'b' : 'img/bed_bottom.png',
+'s' : 'img/bed_bottom2.png',
 '|' : 'img/cell_wall.png',
 'l' : 'img/cell_left.png',
 'r' : 'img/cell_right.png',
@@ -37,7 +39,7 @@ images = {
 }
 
 _mapinfo = {
- 'passable' : ['.','g','b','B','t','G'],
+ 'passable' : ['.','g','b','B','t','G','D','s'],
 
 'door' : (
 	((2, 7), ('map/mailroom.map', 2), 0),
