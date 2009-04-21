@@ -78,11 +78,12 @@ class EncounterEngine:
             dude.orders.append(order)
             print '->',dude.name,'is thinking...', order
 
-    def startCombatEncounter(self, goodguys):
+    def startCombatEncounter(self, goodguys, badguys):
         '''This starts the encounter, determining the order and then playing
         a round.'''
         print 'Starting!'
         self.goodguys = goodguys
+        self.badguys = badguys
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
