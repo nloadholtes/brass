@@ -7,6 +7,7 @@ from EventMngr import *
 from Input import * 
 from tileengine import *
 import sys
+import gui.GUIToolkit
 
 
 
@@ -35,4 +36,4 @@ if __name__== "__main__":
        
        #
        #Game ending, so quit
-       pygame.quit()
+       gui.GUIToolkit.GUIToolkit().quit()

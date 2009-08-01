@@ -3,36 +3,30 @@
 #
 
 from Events import *
-import pygame
-from pygame.locals import *
-
-left = K_LEFT
-right = K_RIGHT
-up = K_UP
-down = K_DOWN
-space = K_SPACE
+from gui.GUIToolkit import GUIToolkit
 
 class Input:
     def __init__(self, manager):
         self.manager = manager
         self.manager.registerObserver(self)
+        self.gtk = GUIToolkit()
 
     def notify(self, event):
         if isinstance(event, TickEvent):
-            for event in pygame.event.get():
+            for event in self.gtk.getEvent():
                 ev = None
-                if event.type == QUIT:
+                if event.type == self.gtk.k_quit:
                     ev = QuitEvent()
-                elif event.type == KEYDOWN: 
-                    if event.key == K_ESCAPE:
+                elif event.type == self.gtk.k_keydown: 
+                    if event.key == self.gtk.k_escape:
                         ev = QuitEvent()
-                    elif event.key == up:
+                    elif event.key == self.gtk.k_up:
                         ev = CharMoveRequestEvent("up")
-                    elif event.key == left:
+                    elif event.key == self.gtk.k_left:
                         ev = CharMoveRequestEvent("left")
-                    elif event.key == down:
+                    elif event.key == self.gtk.k_down:
                         ev = CharMoveRequestEvent("down")
-                    elif event.key == right:
+                    elif event.key == self.gtk.k_right:
                         ev = CharMoveRequestEvent("right")
                     #Need other cases here to catch user input for battles, etc
                         

@@ -3,9 +3,8 @@ from EncounterManager import EncounterEngine
 from EventMngr import *
 from Events import *
 from gui.MessageBox import BottomMessageBox
-from pygame.constants import *
-import pygame
 from tilesprite import *
+from gui.GUIToolkit import GUIToolkit
 
 screensize = [800,600]
 fs = 0
@@ -21,12 +20,12 @@ class TileEngine:
 	def __init__(self, eventmanager, gamedata):
 		self.evtmngr = eventmanager
 		self.evtmngr.registerObserver(self)
-		pygame.init()
-		screen = pygame.display.set_mode(screensize, DOUBLEBUF | fs)
+		self.gtk = GUIToolkit()
+		self.gtk.init()
+		self._screen = self.gtk.setDisplayMode(screensize, fs)
    		self._tiles = {}
-		self._nothing = pygame.image.load("img/nothing.png").convert()
-		self._missing = pygame.image.load("img/missing.png").convert()
-		self._screen = screen
+		self._nothing = self.gtk.getImage("img/nothing.png")
+		self._missing = self.gtk.getImage("img/missing.png")
 		self._sprites = []
 		self.sprites = [] # This is a temp var, the raw data is loaded here then moved to _sprites
 		self._player = None 
@@ -104,11 +103,10 @@ class TileEngine:
 		images = values['images']
 		for tile in images:
 			try:
-				img = pygame.image.load(images.get(tile))
+				img = self.gtk.getImage(images.get(tile))
 			except:
 				img = self._missing
-			img.set_colorkey((0,0,0,0), RLEACCEL)
-			self._tiles[tile] = img.convert()
+			self._tiles[tile] = img
 		self.passable = []
 		for p in self._mapinfo['passable']:
 			self.passable.append(p) #Set the passable tile
@@ -142,11 +140,10 @@ class TileEngine:
 			self._sprites.append(s) 
 
 	def getImage(self, imagename):
-		'''This loads up the image (via the magic of pygame'''
+		'''This loads up the image (via the magic of the GUIToolkit)'''
 		if imagename:
-			image = pygame.image.load(imagename)
-			image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
-		return image.convert()
+			image = self.gtk.getImage(imagename)
+		return image
 		
 	def centerOn(self, sprite):
 		'''convert sprite co-ords to screen co-ords'''
@@ -229,7 +226,7 @@ class TileEngine:
 		self.paintSprite(self.ego)
 		# Paint text in window
 		self._msgbox.render()
-		pygame.display.flip()
+		self.gtk.flipScreen()
 
 	#
 	# Sets the message to be displayed during the paint call

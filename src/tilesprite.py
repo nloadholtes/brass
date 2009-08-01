@@ -1,6 +1,5 @@
-import pygame
-from pygame.constants import *
 from Events import *
+from gui.GUIToolkit import GUIToolkit
 
 door = 1
 npc = 0
@@ -12,10 +11,9 @@ ask_to_move = 1
 
 class TileSprite:
 	def __init__(self, manager,  imageFilename, parent, x, y):
+		self.gtk = GUIToolkit()
 		if imageFilename:
-			image = pygame.image.load(imageFilename)
-			image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
-			self._image = image.convert()
+			self._image = self.gtk.getImage(imageFilename)
 		else: self._image = None
 		self._parent = parent
 		self._x = int(x)
