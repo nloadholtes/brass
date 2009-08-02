@@ -15,8 +15,8 @@ class Character(object, TileSprite):
     orders = []
 #    sprite = None
 
-    def __init__(self, manager, name, position, imageFileName, parent, encounter=None):
-        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1])
+    def __init__(self, manager, name, position, imageFileName, parent, gtk, encounter=None):
+        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
         self.name = name
         self.position = position
         self.equipped = {'weapon' : None, 'armor' :None}

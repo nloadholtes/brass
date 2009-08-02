@@ -17,10 +17,10 @@ right = (1, 0)
 class TileEngine:
 	test= "$"
 	passable = []
-	def __init__(self, eventmanager, gamedata):
+	def __init__(self, eventmanager, gamedata, gtk):
 		self.evtmngr = eventmanager
 		self.evtmngr.registerObserver(self)
-		self.gtk = GUIToolkit()
+		self.gtk = gtk
 		self.gtk.init()
 		self._screen = self.gtk.setDisplayMode(screensize, fs)
    		self._tiles = {}
@@ -92,7 +92,7 @@ class TileEngine:
 #		print "Encounter over"
 	
 	def addPlayer(self, image, startpos, stats):
-		self.ego = Character( self.evtmngr, "ego", startpos, image, self)
+		self.ego = Character( self.evtmngr, "ego", startpos, image, self, self.gtk)
 		self.ego.image = self.getImage(image)
 
 	def loadMap(self, mapname):
@@ -129,12 +129,12 @@ class TileEngine:
 			if sprite[1] == npc:
 				print sprite[3]
 				s = Character(self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), 
-							img, self, self._encounters[sprite[3]])
+							img, self, self.gtk, self._encounters[sprite[3]])
 			elif sprite[1] == door:
-				s = Door(self.evtmngr, "Door", sprite[0], img, self)
+				s = Door(self.evtmngr, "Door", sprite[0], img, self, self.gtk)
 				s.setDoorData(sprite[3])
 			else:
-				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1])
+				s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1], self.gtk)
 #			if len(sprite) == 4:
 #				s.setDoorData(sprite[3])
 			self._sprites.append(s) 

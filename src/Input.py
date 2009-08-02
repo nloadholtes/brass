@@ -6,10 +6,10 @@ from Events import *
 from gui.GUIToolkit import GUIToolkit
 
 class Input:
-    def __init__(self, manager):
+    def __init__(self, manager, gtk):
         self.manager = manager
         self.manager.registerObserver(self)
-        self.gtk = GUIToolkit()
+        self.gtk = gtk
 
     def notify(self, event):
         if isinstance(event, TickEvent):

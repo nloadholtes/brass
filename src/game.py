@@ -24,10 +24,10 @@ if __name__== "__main__":
 
        gamedata = values.get('gamedata')
        evtmngr = EventManager()
-
-       keybd = Input(evtmngr)
+       gtk = GUIToolkit()
+       keybd = Input(evtmngr, gtk)
        spinner = CPUSpinnerController(evtmngr)
-       te = TileEngine(evtmngr, gamedata)
+       te = TileEngine(evtmngr, gamedata, gtk)
        #game = Game( evManager )
 
        #
@@ -36,4 +36,4 @@ if __name__== "__main__":
        
        #
        #Game ending, so quit
-       gui.GUIToolkit.GUIToolkit().quit()
+       gtk.quit()

@@ -98,8 +98,8 @@ class Door(TileSprite):
     value = 100
     amt = 1
     
-    def __init__(self, manager, name, position, imageFileName, parent):
-        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1])
+    def __init__(self, manager, name, position, imageFileName, parent, gtk):
+        TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
         
     def handle(self):
         d = self._parent._mapinfo['door'][self.getDoorData()]

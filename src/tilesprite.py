@@ -10,8 +10,8 @@ ok_to_move = 0
 ask_to_move = 1
 
 class TileSprite:
-	def __init__(self, manager,  imageFilename, parent, x, y):
-		self.gtk = GUIToolkit()
+	def __init__(self, manager,  imageFilename, parent, x, y, gtk):
+		self.gtk = gtk
 		if imageFilename:
 			self._image = self.gtk.getImage(imageFilename)
 		else: self._image = None
