@@ -2,27 +2,27 @@
 # Brass Ring game file
 
 gamedata ={
-	'version' : "1.0",
-	'maplist' : ("map/dungeon.map",
-			   "map/mailroom.map",
-			   "map/jail.map"),
-	'startingmap' : 1,
-	'savegamefilename' : "001.sg",
-	'worldinventory' :(),
+        'version' : "1.0",
+        'maplist' : ("map/dungeon.map",
+                           "map/mailroom.map",
+                           "map/jail.map"),
+        'startingmap' : 1,
+        'savegamefilename' : "001.sg",
+        'worldinventory' :(),
 
-	# These are game specifc details, i.e. what would be saved
-	# to disk when playing the game inorder to preserve the state
-	'playerstats' :  { 'level' : 31,
-					   'str' : 30,
-					   'dex' : 30,
-					   'int' : 30,
-					   'name' : 'Hank Hill',
-					   'rank' : 'Broom Jockey',
-					   'money' : 100,
-					   'inventory' : []
-					   },
-	'playerlocation' : (5,4),
-	'playerimage' : "img/player.png",
-	'partystats' : ()
-	
-	}
+        # These are game specifc details, i.e. what would be saved
+        # to disk when playing the game inorder to preserve the state
+        'playerstats' :  { 'level' : 31,
+                                           'str' : 30,
+                                           'dex' : 30,
+                                           'int' : 30,
+                                           'name' : 'Hank Hill',
+                                           'rank' : 'Broom Jockey',
+                                           'money' : 100,
+                                           'inventory' : []
+                                           },
+        'playerlocation' : (5,4),
+        'playerimage' : "img/player.png",
+        'partystats' : ()
+        
+        }
