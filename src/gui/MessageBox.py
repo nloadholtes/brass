@@ -9,6 +9,7 @@
 
 import pygame
 from Events import *
+from pyglet import font
 
 class BottomMessageBox:
     def __init__(self, screen, manager):
@@ -29,7 +30,7 @@ class BottomMessageBox:
         self._textcolor = white
         self._rect = pygame.Rect(( 0, 0, 800, 200))
         self._textbuffer = []
-        self._font = pygame.font.Font(None, 20)
+        self._font = font.load('Arial', 20)
         self._justification = 0
         self._boxvsize = self._screen.get_size()[1] - 200
 

@@ -6,6 +6,9 @@ Created on Aug 1, 2009
 import pygame
 from pygame.constants import *
 from pygame.locals import *
+from pyglet import window
+from pyglet import image
+from pyglet import font
 
 class GUIToolkit:
         '''
@@ -35,9 +38,8 @@ class GUIToolkit:
         
         def getImage(self, imageFilename):
                 '''Gets an image '''
-                image = pygame.image.load(imageFilename)
-                image.set_colorkey( (0, 0, 0, 0), RLEACCEL)
-                return image.convert()
+                img = image.load(imageFilename)
+                return img
         
         def quit(self):
                 '''Shutdown the platform specific stuff'''
