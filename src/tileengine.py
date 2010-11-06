@@ -41,7 +41,7 @@ class TileEngine:
                 self._messages = ()
                 self.ego = None
                 self._encounters = {}
-                execfile('src/encounter.py', globals(), self._encounters)
+                execfile('src/Encounter.py', globals(), self._encounters)
                 screenSize = self._screen.get_size()
                 self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
                 # this is temp I think, probably should be in the game object
@@ -110,8 +110,8 @@ class TileEngine:
                 self.passable = []
                 for p in self._mapinfo['passable']:
                         self.passable.append(p) #Set the passable tile
-                self._tilewidth = self._tiles['.'].get_size()[0]
-                self._tileheight = self._tiles['.'].get_size()[1]
+                self._tilewidth = self._tiles['.'].width
+                self._tileheight = self._tiles['.'].height
                 self.loadSprites(self.sprites)
 
         #
@@ -190,7 +190,7 @@ class TileEngine:
                 y *= self._tileheight
                 left = self._location[0] + self._offset[0]
                 top = self._location[1] + self._offset[1]
-                self._screen.blit(sprite.image, (x+left, y+ top))
+                sprite.image.blit(x+left, y+ top)
         
         def paint(self):
                 """The main paint method for the big screen."""
@@ -206,9 +206,9 @@ class TileEngine:
                         for col in row:
                                 try:
                                         tile = self._tiles[col]
-                                        screen.blit(tile, (x, y))
+                                        tile.blit(x, y)
                                 except KeyError:
-                                        screen.blit(self._missing, (x, y))
+                                        self._missing.blit(x, y)
                                 x += width
                         x = self._location[0] + self._offset[0]
                         y += height

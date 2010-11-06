@@ -46,7 +46,7 @@ class TileSprite:
        
         def paint(self, screen, location):
                 if(self._image):
-                        screen.blit(self._image, location)
+                        self._image.blit(location[0], location[1])
 
         def occupied(self, intruder):
                 return 0
