@@ -11,6 +11,10 @@ class CPUSpinnerController(pyglet.event.EventDispatcher):
                 self.evManager.registerObserver( self )
 
                 self.keepGoing = 1
+                CPUSpinnerController.register_event_type('key_pressed')
+                
+        def keyPress(self, pressed):
+            self.dispatch_event('key_pressed', pressed)
 
         #----------------------------------------------------------------------
         def run(self):
@@ -18,6 +22,7 @@ class CPUSpinnerController(pyglet.event.EventDispatcher):
                         event = TickEvent()
                         time.sleep(timedelay)
                         self.evManager.notify( event )
+                        
 
         #----------------------------------------------------------------------
         def notify(self, event):

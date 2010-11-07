@@ -3,7 +3,6 @@
 #
 
 from Events import *
-from gui.GUIToolkit import GUIToolkit
 
 class Input:
     def __init__(self, manager, gtk):

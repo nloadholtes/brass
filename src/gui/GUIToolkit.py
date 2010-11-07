@@ -3,9 +3,6 @@ Created on Aug 1, 2009
 
 @author: njl
 '''
-import pygame
-from pygame.constants import *
-from pygame.locals import *
 from pyglet import window
 from pyglet import image
 from pyglet import app
@@ -19,8 +16,8 @@ class GUIToolkit:
         k_up = window.key.UP
         k_down = window.key.DOWN
         k_space = window.key.SPACE
-        k_quit = QUIT
-        k_keydown = KEYDOWN
+#        k_quit = QUIT
+#        k_keydown = KEYDOWN
         k_escape = window.key.ESCAPE
         win = None
         
@@ -32,6 +29,7 @@ class GUIToolkit:
                 This is a library specific initializtion routine 
                 '''
                 self.win = window.Window(screensize[0], screensize[1], visible=True)
+                self.win.clear()
                 app.run()
                 
         def setDisplayMode(self, screensize, fullscreen):
