@@ -7,7 +7,7 @@ from pyglet import window
 from pyglet import image
 from pyglet import app
 
-class GUIToolkit:
+class GUIToolkit(window.Window):
         '''
         This is a wrapper for platform specific libraries like pygame.
         '''
@@ -20,9 +20,17 @@ class GUIToolkit:
 #        k_keydown = KEYDOWN
         k_escape = window.key.ESCAPE
         win = None
+        te = None
         
-        def __init__(self):
-                pass
+        def __init__(self, tileengine):
+                self.te = tileengine
+        
+        def on_draw(self):
+            self.te.paint()
+            
+        def on_key_press(self, symbol, modifiers):
+            if symbol == window.key.ESCAPE:
+                app.exit()
                 
         def init(self, screensize):
                 '''

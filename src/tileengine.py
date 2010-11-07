@@ -17,37 +17,41 @@ right = (1, 0)
 class TileEngine:
         test= "$"
         passable = []
-        def __init__(self, eventmanager, gamedata, gtk):
+        def __init__(self, eventmanager, gamedata):
                 self.evtmngr = eventmanager
                 self.evtmngr.registerObserver(self)
-                self.gtk = gtk
-                self.gtk.init(screensize)
-                self._screen = self.gtk.setDisplayMode(screensize, fs)
                 self._tiles = {}
-                self._nothing = self.gtk.getImage("img/nothing.png")
-                self._missing = self.gtk.getImage("img/missing.png")
                 self._sprites = []
                 self.sprites = [] # This is a temp var, the raw data is loaded here then moved to _sprites
                 self._player = None 
                 self._staff = None
                 self._npc = []
+                self.gamedata = gamedata
                 self._location = gamedata.get('playerlocation')
                 self._map = []
                 self._mapinfo = {}
                 self._offset = [0, 0]
                 self._display = True
                 self._displaymsg = False
-                self._msgbox = BottomMessageBox(self._screen, eventmanager)
                 self._messages = ()
                 self.ego = None
                 self._encounters = {}
-                execfile('src/Encounter.py', globals(), self._encounters)
+
+        def initTE(self, gtk):
+                self.gtk = gtk
+                self.gtk.init(screensize)
+                self._screen = self.gtk.setDisplayMode(screensize, fs)
+                self._nothing = self.gtk.getImage("img/nothing.png")
+                self._missing = self.gtk.getImage("img/missing.png")
+                self._msgbox = BottomMessageBox(self._screen, self.evtmngr)
                 screenSize = self._screen.get_size()
                 self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
+                execfile('src/Encounter.py', globals(), self._encounters)
                 # this is temp I think, probably should be in the game object
+                gamedata = self.gamedata
                 self.addPlayer(gamedata.get('playerimage'), gamedata.get('playerlocation'), gamedata.get('playerstats'))
                 self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
-
+            
                 
         #
         # Used to update the screen     

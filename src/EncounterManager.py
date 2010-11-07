@@ -91,18 +91,18 @@ class EncounterEngine:
             person.orders = []
             
     def startEncounter(self, encounter):
-		'''This method is where encounters start.'''
-		print "Starting encounter:"
-		if isinstance(encounter, EncounterEvent):
-			encounter = encounter.encounter
-		print 'Preamble: ', encounter['preamble']
-		x = 1
-		while(x):
-		    topic = encounter['conversation'][x]
-		    print "\t",topic[0]
-		    if(len(topic) > 1):
-		        x = eval(topic[1])
-		return x
+        '''This method is where encounters start.'''
+        print "Starting encounter:"
+        if isinstance(encounter, EncounterEvent):
+            encounter = encounter.encounter
+        print 'Preamble: ', encounter['preamble']
+        x = 1
+        while(x):
+            topic = encounter['conversation'][x]
+            print "\t",topic[0]
+            if(len(topic) > 1):
+                x = eval(topic[1])
+        return x
             
 #
 # Helper functions for these classes

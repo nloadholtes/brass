@@ -24,10 +24,12 @@ if __name__ == "__main__":
     
     gamedata = values.get('gamedata')
     evtmngr = EventManager()
-    gtk = GUIToolkit()
-    keybd = Input(evtmngr, gtk)
+    
+    #keybd = Input(evtmngr, gtk)
     spinner = CPUSpinnerController(evtmngr)
-    te = TileEngine(evtmngr, gamedata, gtk)
+    te = TileEngine(evtmngr, gamedata)
+    gtk = GUIToolkit(te)
+    te.initTE(gtk)
     #game = Game( evManager )
     
     #
