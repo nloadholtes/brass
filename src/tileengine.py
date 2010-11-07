@@ -21,7 +21,7 @@ class TileEngine:
                 self.evtmngr = eventmanager
                 self.evtmngr.registerObserver(self)
                 self.gtk = gtk
-                self.gtk.init()
+                self.gtk.init(screensize)
                 self._screen = self.gtk.setDisplayMode(screensize, fs)
                 self._tiles = {}
                 self._nothing = self.gtk.getImage("img/nothing.png")

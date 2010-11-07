@@ -8,34 +8,36 @@ from pygame.constants import *
 from pygame.locals import *
 from pyglet import window
 from pyglet import image
-from pyglet import font
+from pyglet import app
 
 class GUIToolkit:
         '''
         This is a wrapper for platform specific libraries like pygame.
         '''
-        k_left = K_LEFT
-        k_right = K_RIGHT
-        k_up = K_UP
-        k_down = K_DOWN
-        k_space = K_SPACE
+        k_left = window.key.LSHIFT
+        k_right = window.key.RIGHT
+        k_up = window.key.UP
+        k_down = window.key.DOWN
+        k_space = window.key.SPACE
         k_quit = QUIT
         k_keydown = KEYDOWN
-        k_escape = K_ESCAPE
+        k_escape = window.key.ESCAPE
+        win = None
         
         def __init__(self):
                 pass
                 
-        def init(self):
+        def init(self, screensize):
                 '''
                 This is a library specific initializtion routine 
                 '''
-                pygame.init()
+                self.win = window.Window(screensize[0], screensize[1], visible=True)
+                app.run()
                 
         def setDisplayMode(self, screensize, fullscreen):
                 ''' Set the mode (resolution, etc.) for the screen '''
-                return pygame.display.set_mode(screensize, DOUBLEBUF | fullscreen)
-        
+                return self.win 
+            
         def getImage(self, imageFilename):
                 '''Gets an image '''
                 img = image.load(imageFilename)
@@ -43,11 +45,12 @@ class GUIToolkit:
         
         def quit(self):
                 '''Shutdown the platform specific stuff'''
-                pygame.quit()
+                app.exit()
                 
         def getEvent(self):
-                return pygame.event.get()
+                return None #pygame.event.get()
         
         def flipScreen(self):
                 '''Double buffering is nice...'''
-                return pygame.display.flip()
+                return self.win.flip()
+            

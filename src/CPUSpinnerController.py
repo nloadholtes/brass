@@ -1,9 +1,10 @@
 from Events import *
 import time
+import pyglet
 
 timedelay = .3
 
-class CPUSpinnerController:
+class CPUSpinnerController(pyglet.event.EventDispatcher):
         """..."""
         def __init__(self, evManager):
                 self.evManager = evManager
