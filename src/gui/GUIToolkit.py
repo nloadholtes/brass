@@ -40,8 +40,7 @@ class GUIToolkit:
             
         def getImage(self, imageFilename):
                 '''Gets an image '''
-                img = image.load(imageFilename)
-                return img
+                return image.load(imageFilename)
         
         def quit(self):
                 '''Shutdown the platform specific stuff'''
