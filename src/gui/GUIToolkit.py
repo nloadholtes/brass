@@ -29,9 +29,15 @@ class GUIToolkit(window.Window):
             self.te.paint()
             
         def on_key_press(self, symbol, modifiers):
+            print "on_key_press()",symbol
             if symbol == window.key.ESCAPE:
                 app.exit()
-                
+            self.te.paint()
+            
+        def on_exit(self):
+            print "on_exit() called"
+            self.quit()
+            
         def init(self, screensize):
                 '''
                 This is a library specific initializtion routine 
@@ -57,5 +63,5 @@ class GUIToolkit(window.Window):
         
         def flipScreen(self):
                 '''Double buffering is nice...'''
-                return self.win.flip()
+                return None #self.win.flip()
             

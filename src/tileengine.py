@@ -199,7 +199,7 @@ class TileEngine:
         def paint(self):
                 """The main paint method for the big screen."""
                 screen = self._screen
-                self._screen.fill( (0, 0, 0) )
+                #self._screen.fill( (0, 0, 0) )
                 self.centerOn(self.ego)
         
                 x = self._location[0] + self._offset[0]

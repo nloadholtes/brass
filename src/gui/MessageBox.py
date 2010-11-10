@@ -92,7 +92,7 @@ class BottomMessageBox:
                     raise TextRectException, "Invalid justification argument: " + str(self._justification)
             accumulated_height += self._font.size(line)[1]
         
-        self._screen.blit(surface, (0, self._boxvsize))
+        #self._screen.blit(surface, (0, self._boxvsize))
         
 def reverse(data):
     '''A generator from the tutorial to reverse traverse'''
