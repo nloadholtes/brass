@@ -7,6 +7,8 @@ from EventMngr import *
 from Input import *
 from tileengine import *
 import gui.GUIToolkit
+from gui.GUIToolkit import startGame
+import pyglet
 import sys
 
 
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     evtmngr = EventManager()
     
     #keybd = Input(evtmngr, gtk)
-    spinner = CPUSpinnerController(evtmngr)
+    #spinner = CPUSpinnerController(evtmngr)
     te = TileEngine(evtmngr, gamedata)
     gtk = GUIToolkit(te)
     te.initTE(gtk)
@@ -34,7 +36,8 @@ if __name__ == "__main__":
     
     #
     #Run the game
-    spinner.run()
+    #spinner.run()
+    pyglet.app.run()
     
     #
     #Game ending, so quit

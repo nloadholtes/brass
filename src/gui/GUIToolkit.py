@@ -26,6 +26,7 @@ class GUIToolkit(window.Window):
                 self.te = tileengine
         
         def on_draw(self):
+            print("on_draw()")
             self.te.paint()
             
         def on_key_press(self, symbol, modifiers):
@@ -44,7 +45,6 @@ class GUIToolkit(window.Window):
                 '''
                 self.win = window.Window(screensize[0], screensize[1], visible=True)
                 self.win.clear()
-                app.run()
                 
         def setDisplayMode(self, screensize, fullscreen):
                 ''' Set the mode (resolution, etc.) for the screen '''
@@ -56,6 +56,7 @@ class GUIToolkit(window.Window):
         
         def quit(self):
                 '''Shutdown the platform specific stuff'''
+                print("GUIToolkit.quit() called")
                 app.exit()
                 
         def getEvent(self):
@@ -65,3 +66,5 @@ class GUIToolkit(window.Window):
                 '''Double buffering is nice...'''
                 return None #self.win.flip()
             
+def startGame():
+    app.run()
