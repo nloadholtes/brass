@@ -39,8 +39,7 @@ class TileEngine:
 
         def initTE(self, gtk):
                 self.gtk = gtk
-                self.gtk.init(screensize)
-                self._screen = self.gtk.setDisplayMode(screensize, fs)
+                self._screen = gtk
                 self._nothing = self.gtk.getImage("img/nothing.png")
                 self._missing = self.gtk.getImage("img/missing.png")
                 self._msgbox = BottomMessageBox(self._screen, self.evtmngr)

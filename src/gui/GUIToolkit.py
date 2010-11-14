@@ -23,7 +23,10 @@ class GUIToolkit(window.Window):
         te = None
         
         def __init__(self, tileengine):
-                self.te = tileengine
+            super(GUIToolkit, self).__init__()
+            self.te = tileengine
+#            self.win = window.Window(800, 600, visible=True)
+            self.clear()
         
         def on_draw(self):
             print("on_draw()")
@@ -32,23 +35,17 @@ class GUIToolkit(window.Window):
         def on_key_press(self, symbol, modifiers):
             print "on_key_press()",symbol
             if symbol == window.key.ESCAPE:
-                app.exit()
-            self.te.paint()
+                self.on_exit()
+            else:
+                self.te.paint()
             
         def on_exit(self):
             print "on_exit() called"
             self.quit()
             
-        def init(self, screensize):
-                '''
-                This is a library specific initializtion routine 
-                '''
-                self.win = window.Window(screensize[0], screensize[1], visible=True)
-                self.win.clear()
-                
         def setDisplayMode(self, screensize, fullscreen):
                 ''' Set the mode (resolution, etc.) for the screen '''
-                return self.win 
+                return self
             
         def getImage(self, imageFilename):
                 '''Gets an image '''
@@ -64,7 +61,7 @@ class GUIToolkit(window.Window):
         
         def flipScreen(self):
                 '''Double buffering is nice...'''
-                return None #self.win.flip()
+                return self.flip() #self.win.flip()
             
 def startGame():
     app.run()
