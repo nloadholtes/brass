@@ -11,7 +11,7 @@ class GUIToolkit(window.Window):
         '''
         This is a wrapper for platform specific libraries like pygame.
         '''
-        k_left = window.key.LSHIFT
+        k_left = window.key.LEFT
         k_right = window.key.RIGHT
         k_up = window.key.UP
         k_down = window.key.DOWN
@@ -19,13 +19,11 @@ class GUIToolkit(window.Window):
 #        k_quit = QUIT
 #        k_keydown = KEYDOWN
         k_escape = window.key.ESCAPE
-        win = None
         te = None
         
         def __init__(self, tileengine):
             super(GUIToolkit, self).__init__()
             self.te = tileengine
-#            self.win = window.Window(800, 600, visible=True)
             self.clear()
         
         def on_draw(self):
@@ -49,7 +47,8 @@ class GUIToolkit(window.Window):
             
         def getImage(self, imageFilename):
                 '''Gets an image '''
-                return image.load(imageFilename)
+                img = image.load(imageFilename)
+                return img
         
         def quit(self):
                 '''Shutdown the platform specific stuff'''
@@ -57,11 +56,11 @@ class GUIToolkit(window.Window):
                 app.exit()
                 
         def getEvent(self):
-                return None #pygame.event.get()
-        
+                return None 
+                    
         def flipScreen(self):
                 '''Double buffering is nice...'''
-                return self.flip() #self.win.flip()
+                return self.flip() 
             
 def startGame():
     app.run()
