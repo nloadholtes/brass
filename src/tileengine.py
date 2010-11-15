@@ -9,8 +9,8 @@ from gui.GUIToolkit import GUIToolkit
 screensize = [800,600]
 fs = 0
 
-up = (0, -1)
-down = (0, 1)
+up = (0, 1)
+down = (0, -1)
 left = (-1, 0)
 right = (1, 0)
 
@@ -55,17 +55,19 @@ class TileEngine:
         #
         # Used to update the screen     
         def notify(self, evt):
+                print("Notify")
                 if isinstance( evt, TickEvent ):
                         self.paint()
                 if isinstance(evt, CharMoveRequestEvent):
+                        print("move event:", evt)
                         direction = None
-                        if(evt.direction == "up"):
+                        if(evt.direction == self.gtk.k_up):
                                 direction = up
-                        elif(evt.direction == "down"):
+                        elif(evt.direction == self.gtk.k_down):
                                 direction = down
-                        elif(evt.direction == "left"):
+                        elif(evt.direction == self.gtk.k_left):
                                 direction = left
-                        elif(evt.direction == "right"):
+                        elif(evt.direction == self.gtk.k_right):
                                 direction = right
                         if(direction != None):
                                 self.move(direction)

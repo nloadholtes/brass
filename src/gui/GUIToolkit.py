@@ -6,6 +6,7 @@ Created on Aug 1, 2009
 from pyglet import window
 from pyglet import image
 from pyglet import app
+from Events import CharMoveRequestEvent as CMRE
 
 class GUIToolkit(window.Window):
         '''
@@ -34,6 +35,9 @@ class GUIToolkit(window.Window):
             print "on_key_press()",symbol
             if symbol == window.key.ESCAPE:
                 self.on_exit()
+            elif symbol in [self.k_left, self.k_right, self.k_up, self.k_down, self.k_space]:
+                m = CMRE(symbol)
+                self.te.notify(m)
             else:
                 self.te.paint()
             

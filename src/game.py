@@ -37,5 +37,5 @@ if __name__ == "__main__":
     #
     #Run the game
     #spinner.run()
-    pyglet.app.run()
+    startGame()
     
