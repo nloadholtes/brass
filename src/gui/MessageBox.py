@@ -28,7 +28,7 @@ class BottomMessageBox:
         backgrnd = (48, 48, 48)
         self._backgroundcolor = backgrnd
         self._textcolor = white
-        self._rect = pygame.Rect(( 0, 0, 800, 200))
+        #self._rect = pygame.Rect(( 0, 0, 800, 200))
         self._textbuffer = []
         self._font = font.load('Arial', 20)
         self._justification = 0

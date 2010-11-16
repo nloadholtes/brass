@@ -42,7 +42,7 @@ class TileEngine:
                 self._screen = gtk
                 self._nothing = self.gtk.getImage("img/nothing.png")
                 self._missing = self.gtk.getImage("img/missing.png")
-                self._msgbox = BottomMessageBox(self._screen, self.evtmngr)
+                #self._msgbox = BottomMessageBox(self._screen, self.evtmngr)
                 screenSize = self._screen.get_size()
                 self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
                 execfile('src/Encounter.py', globals(), self._encounters)
@@ -72,7 +72,7 @@ class TileEngine:
                         if(direction != None):
                                 self.move(direction)
                 if isinstance(evt, EncounterEvent):
-                        self._msgbox.printtext( "There's an encounter!")
+                        #self._msgbox.printtext( "There's an encounter!")
                         return self.encounterHandler(evt)
 
         def encounterHandler(self, evt):
@@ -230,7 +230,7 @@ class TileEngine:
                         self.paintStats(screen,self.ego)
                 self.paintSprite(self.ego)
                 # Paint text in window
-                self._msgbox.render()
+                #self._msgbox.render()
                 self.gtk.flipScreen()
 
         #
