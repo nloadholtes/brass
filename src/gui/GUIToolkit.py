@@ -39,8 +39,6 @@ class GUIToolkit(window.Window):
             elif symbol in [self.k_left, self.k_right, self.k_up, self.k_down, self.k_space]:
                 m = CMRE(symbol)
                 self.te.notify(m)
-            else:
-                self.te.paint()
             
         def on_exit(self):
             print "on_exit() called"
