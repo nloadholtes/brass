@@ -29,6 +29,7 @@ class GUIToolkit(window.Window):
         
         def on_draw(self):
             print("on_draw()")
+            self.clear()
             self.te.paint()
             
         def on_key_press(self, symbol, modifiers):
