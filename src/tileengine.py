@@ -23,7 +23,7 @@ class TileEngine:
                 self._tiles = {}
                 self._sprites = []
                 self.sprites = [] # This is a temp var, the raw data is loaded here then moved to _sprites
-                self._player = None 
+                self._player = None
                 self._staff = None
                 self._npc = []
                 self.gamedata = gamedata
@@ -50,10 +50,10 @@ class TileEngine:
                 gamedata = self.gamedata
                 self.addPlayer(gamedata.get('playerimage'), gamedata.get('playerlocation'), gamedata.get('playerstats'))
                 self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
-            
-                
+
+
         #
-        # Used to update the screen     
+        # Used to update the screen
         def notify(self, evt):
                 print("Notify")
                 if isinstance( evt, TickEvent ):
@@ -95,7 +95,7 @@ class TileEngine:
 #                       #Play the round and show the results to the EncounterMessageBox
 #                       emb.display(enceng.playRound())
 #               print "Encounter over"
-        
+
         def addPlayer(self, image, startpos, stats):
                 self.ego = Character( self.evtmngr, "ego", startpos, image, self, self.gtk)
                 self.ego.image = self.getImage(image)
@@ -133,7 +133,7 @@ class TileEngine:
                         image = self.getImage(img)
                         if sprite[1] == npc:
                                 print sprite[3]
-                                s = Character(self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]), 
+                                s = Character(self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]),
                                                         img, self, self.gtk, self._encounters[sprite[3]])
                         elif sprite[1] == door:
                                 s = Door(self.evtmngr, "Door", sprite[0], img, self, self.gtk)
@@ -142,14 +142,14 @@ class TileEngine:
                                 s = TileSprite(self.evtmngr, img, self, sprite[0][0], sprite[0][1], self.gtk)
 #                       if len(sprite) == 4:
 #                               s.setDoorData(sprite[3])
-                        self._sprites.append(s) 
+                        self._sprites.append(s)
 
         def getImage(self, imagename):
                 '''This loads up the image (via the magic of the GUIToolkit)'''
                 if imagename:
                         image = self.gtk.getImage(imagename)
                 return image
-                
+
         def centerOn(self, sprite):
                 '''convert sprite co-ords to screen co-ords'''
                 #print "centerOn ", sprite
@@ -170,7 +170,7 @@ class TileEngine:
                 else:
                         #New area is not passible, need to find out what to do
                         result = None
-                        for sprite in self._sprites: 
+                        for sprite in self._sprites:
                                 if sprite.getXY() == (newx, newy):
                                         #This means we are bumping into something
                                         #print 'sprite...',sprite
@@ -196,13 +196,13 @@ class TileEngine:
                 left = self._location[0] + self._offset[0]
                 top = self._location[1] + self._offset[1]
                 sprite.image.blit(x+left, y+ top)
-        
+
         def paint(self):
                 """The main paint method for the big screen."""
                 screen = self._screen
                 #self._screen.fill( (0, 0, 0) )
                 self.centerOn(self.ego)
-        
+
                 x = self._location[0] + self._offset[0]
                 y = self._location[1] + self._offset[1]
                 width = self._tilewidth
@@ -238,14 +238,14 @@ class TileEngine:
         def setMessage(self, messagestr):
                 self._displaymsg = True
                 self._msgstr = messagestr
-                
+
         def removeSprite(self, sprite):
                 self._sprites.remove(sprite)
                 try:
                         self._npc.remove(sprite)
                 except ValueError:
                         pass
-                
+
         def move(self, direction):
                 '''Updates the sprite on the screen'''
                 #print "move", direction
@@ -259,4 +259,4 @@ class TileEngine:
 #               else:
 #                       self._msgbox.printtext("Bump")
                 return result
- 
+
