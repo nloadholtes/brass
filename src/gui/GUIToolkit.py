@@ -6,7 +6,9 @@ Created on Aug 1, 2009
 from pyglet import window
 from pyglet import image
 from pyglet import app
+from pyglet import clock
 from Events import CharMoveRequestEvent as CMRE
+# import time
 
 class GUIToolkit(window.Window):
         '''
@@ -21,6 +23,7 @@ class GUIToolkit(window.Window):
 #        k_keydown = KEYDOWN
         k_escape = window.key.ESCAPE
         te = None
+	fps_display = clock.ClockDisplay()
 
         def __init__(self, tileengine):
             super(GUIToolkit, self).__init__()
@@ -31,6 +34,8 @@ class GUIToolkit(window.Window):
             print("on_draw()")
             self.clear()
             self.te.paint()
+	    self.fps_display.draw()
+	    # time.sleep(.1)
 
         def on_key_press(self, symbol, modifiers):
             print "on_key_press()",symbol

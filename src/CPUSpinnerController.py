@@ -12,7 +12,7 @@ class CPUSpinnerController(pyglet.event.EventDispatcher):
 
                 self.keepGoing = 1
                 CPUSpinnerController.register_event_type('key_pressed')
-                
+
         def keyPress(self, pressed):
             self.dispatch_event('key_pressed', pressed)
 
@@ -22,10 +22,11 @@ class CPUSpinnerController(pyglet.event.EventDispatcher):
                         event = TickEvent()
                         time.sleep(timedelay)
                         self.evManager.notify( event )
-                        
+
 
         #----------------------------------------------------------------------
         def notify(self, event):
                 if isinstance( event, QuitEvent ):
                         #this will stop the while loop from running
                         self.keepGoing = 0
+
