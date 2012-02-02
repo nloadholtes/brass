@@ -50,7 +50,7 @@ class TileEngine:
                 gamedata = self.gamedata
                 self.addPlayer(gamedata.get('playerimage'), gamedata.get('playerlocation'), gamedata.get('playerstats'))
                 self.loadMap(gamedata.get('maplist')[gamedata.get('startingmap')])
-
+                self.paint()
 
         #
         # Used to update the screen
