@@ -7,17 +7,15 @@
 # This classwill display messages on the screen
 #
 
-import pygame
 from Events import *
 from pyglet import font
 
 class BottomMessageBox:
     def __init__(self, screen, manager):
         '''The magical init fo rthe MessageBox
-        
          justification - 0 (default) left-justified
             1 horizontally centered
-            2 right-justified  
+            2 right-justified
         '''
         self._screen = screen
         self.manager = manager
@@ -39,16 +37,16 @@ class BottomMessageBox:
         BottomMessageBox.'''
         if isinstance( evt, PrintEvent):
             self.printtext(evt.text)
-            self.render()            
-        
+            self.render()
+
     def printtext(self, string):
         """This method will take the string and add it to the textbuffer
         that will be drawn to the screen in the render() method. """
         requested_lines = string.splitlines()
-    
+
         # Create a series of lines that will fit on the provided
         # rectangle.
-        rect = self._rect    
+        rect = self._rect
         for requested_line in requested_lines:
             if self._font.size(requested_line)[0] > rect.width:
                 words = requested_line.split(' ')
@@ -70,7 +68,7 @@ class BottomMessageBox:
             else:
                 self._textbuffer.append(requested_line)
             self._textbuffer.append("")
-    
+
     def render(self):
         '''This is where the drawing of the textbuffer takes place.'''
         rect = self._rect
@@ -91,9 +89,9 @@ class BottomMessageBox:
                 else:
                     raise TextRectException, "Invalid justification argument: " + str(self._justification)
             accumulated_height += self._font.size(line)[1]
-        
+
         #self._screen.blit(surface, (0, self._boxvsize))
-        
+
 def reverse(data):
     '''A generator from the tutorial to reverse traverse'''
     for index in range(len(data)-1, -1, -1):
