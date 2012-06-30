@@ -37,13 +37,17 @@ def createObjectFromXML(obj, nodes):
 
 def addItem():
     i = {}
-    i['name'] = raw_input("Name:")
-    i['damage'] = raw_input("damage:")
+    i['name'] = raw_input("Name: ")
+    i['damage'] = int(raw_input("Damage: "))
+    i['critical'] = int(raw_input("Critical: "))
+    i['weight'] = int(raw_input("Weight: "))
+    i['size'] = raw_input("Size")
+    i['ammotoype'] = raw_input("Ammo Type: ")
     return i
 
 def saveItems(data):
     f = open(ITEM_FILE, 'w')
-    json.dump(data, f)
+    json.dump(data, f, indent=1)
     f.close()
 
 if __name__ == '__main__':
