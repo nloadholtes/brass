@@ -4,6 +4,10 @@
 # A loader for the items
 from xml.dom import *
 import xml.dom.minidom as dom
+import json
+
+def loadItemsFromJson(filename):
+    return json.loads(filename)
 
 def loadItemsFromXML(filename):
     from Entity import Item
@@ -30,7 +34,12 @@ def createObjectFromXML(obj, nodes):
     return obj
 
 if __name__ == '__main__':
-    output = loadItemsFromXML('data/items.xml')
+    try:
+        f = open('data/items.json')
+        data = f.read()
+    except:
+        exit(1)
+    output = loadItemsFromJson(data)
     for blah in output:
         print blah
     
