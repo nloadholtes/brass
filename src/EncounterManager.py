@@ -8,6 +8,9 @@ from Character import *
 from EventMngr import *
 from Group import *
 from random import randint
+import logging
+
+log = logging.log(__name__)
 
 class EncounterEngine:
     def __init__(self):
@@ -16,7 +19,7 @@ class EncounterEngine:
         self.fightorder = []
         self.orders = []
         self.badguys = []
-        
+
     def playRound(self):
         '''This method will execute one round of combat'''
         print 'Staring a round'
@@ -27,12 +30,12 @@ class EncounterEngine:
             for order in orders:
                 #print 'Executing: ', order
                 who = order.who
-                what = "who." + str(order.what) + "(order.target)" 
+                what = "who." + str(order.what) + "(order.target)"
                 #print "\tWho ->", person.name, "What ->", what
                 eval(what)
             person.orders = []
 
-        
+
     def determineOrder(self):
         '''This method looks at each persons\'s initiative and uses that
         to determine the fight order.'''
@@ -41,7 +44,7 @@ class EncounterEngine:
         self.fightorder.sort(initativeSorter)
         for person in self.fightorder:
             print "fight order =>", person.name
-                
+
     def stillFighting(self):
         '''Checks the good guys and bad guys (separeately) to see if
         either side is all dead. Eventually will need to check to see if they
@@ -51,7 +54,7 @@ class EncounterEngine:
         if self.isPartyDead(self.badguys):
             return False
         return True
-    
+
     def isPartyDead(self, players):
         '''Checks for vital signs. If someone is still kicking then return true'''
         for player in players:
@@ -62,7 +65,7 @@ class EncounterEngine:
             return True
         else:
             return False
-    
+
     def setOrders(self, who, what, target):
         order = ActionOrder(who, what, target)
         self.orders.append(order)
@@ -89,7 +92,7 @@ class EncounterEngine:
         #Clear out the orders for everyone
         for person in self.fightorder:
             person.orders = []
-            
+
     def startEncounter(self, encounter):
         '''This method is where encounters start.'''
         print "Starting encounter:"
@@ -103,7 +106,7 @@ class EncounterEngine:
             if(len(topic) > 1):
                 x = eval(topic[1])
         return x
-            
+
 #
 # Helper functions for these classes
 #
