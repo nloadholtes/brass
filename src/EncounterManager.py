@@ -8,9 +8,7 @@ from Character import *
 from EventMngr import *
 from Group import *
 from random import randint
-import logging
-
-log = logging.log(__name__)
+import logging as log
 
 class EncounterEngine:
     def __init__(self):
