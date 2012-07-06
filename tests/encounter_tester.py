@@ -6,13 +6,12 @@
 # A tester to try out non-fighting encounters
 #
 import EncounterManager as em
+import Encounter
 
 
 if __name__ == "__main__":
-    encounters = {}
-    print encounters['encounter']['title']
     encmgr = em.EncounterEngine()
-    encmgr.startEncounter(encounters['encounter'])
+    encmgr.startEncounter(Encounter.encounter)
 
 
 
