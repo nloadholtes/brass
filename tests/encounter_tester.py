@@ -9,20 +9,20 @@ import EncounterManager as em
 import Encounter
 from Character import Character as pc
 
-def generateParty(num=2):
+def generateParty(num=2, playername='Player'):
     output = []
     for x in xrange(num):
-        c = pc(None, "Player_%s" % x, [0,0], None, None, None)
+        c = pc(None, "%s_%s" % (playername,x), [0,0], None, None, None)
         output.append(c)
     return output
 
 
 if __name__ == "__main__":
-    goodguys = generateParty(1)
-    badguys = generateParty(1)
+    goodguys = generateParty(1, 'GoodGuy')
+    badguys = generateParty(1, 'BadGuy')
     encmgr = em.EncounterEngine()
-    encmgr.startEncounter(Encounter.encounter)
-
+    # encmgr.startEncounter(Encounter.encounter)
+    encmgr.startCombatEncounter(goodguys, badguys)
 
 
 

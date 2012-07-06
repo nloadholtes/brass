@@ -40,8 +40,9 @@ class EncounterEngine:
         [self.fightorder.append(guy) for guy in self.goodguys]
         [self.fightorder.append(guy) for guy in self.badguys]
         self.fightorder.sort(initativeSorter)
+        print "Fight order:"
         for person in self.fightorder:
-            print "fight order =>", person.name
+            print "\t%s" % person.name
 
     def stillFighting(self):
         '''Checks the good guys and bad guys (separeately) to see if
@@ -104,6 +105,11 @@ class EncounterEngine:
             if(len(topic) > 1):
                 x = eval(topic[1])
         return x
+
+    def encounterLoop(self, goodguys, badguys):
+        self.startCombatEncounter(goodguys, badguys)
+        while self.isPartyDead(self.goodguys) or self.isPartyDead(self.badguys):
+            self.playRound()
 
 #
 # Helper functions for these classes
