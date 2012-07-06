@@ -8,7 +8,7 @@ from Item import *
 from tilesprite import *
 
 MAX_ITEMS = 50
-    
+
 class Character(object, TileSprite):
     name = 'person'
     position = []
@@ -27,8 +27,7 @@ class Character(object, TileSprite):
         self.initative = 10
         self.level = 1
         self.encoutner = encounter
-        
-    
+
     def __setattr__(self, key, val):
         if key == 'health':
             if val < 1:
@@ -36,15 +35,15 @@ class Character(object, TileSprite):
 #            else:
 #                print "%s has %d %s remaining" % (self.name, val, key)
         object.__setattr__(self, key, val)
-    
+
 
     #
     # Map and movement related methods
     #
-  
+
     def place(self, location):
         pass
-   
+
     #
     # Inventory related methods
     #
@@ -54,14 +53,14 @@ class Character(object, TileSprite):
     def pickup(self, item):
         if len(self.inventory) < MAX_ITEMS:
             print self.name, " picks up " , item
-            self.inventory.append(item) 
-            
+            self.inventory.append(item)
+
     def equipWeapon(self, weapon):
         self.equipped['weapon'] = weapon
-        
+
     def equipArmor(self, armor):
         self.equipped['armor'] = armor
-        
+
     def reloadWeapon(self, ammo):
         '''Use this method if you want to reload a weapon'''
         weapon = self.equipped['weapon']
@@ -87,18 +86,15 @@ class Character(object, TileSprite):
             weapon.use(target)
         else:
             print self.name," holds off because ", target.name, "is dead"
-                
+
 #        else:
 #            print self.name,'-Needs to hit with the gun'
 #            self.equipWeapon(weapon)
 #            self.use(target)
- 
-        
-    
             #Need to determine if attack is sucessful
-            
+
             #Need to add in other modifiers to determine damage
-            
+
     def use(self, target):
         from random import randint
         s = "@NAME @ADJ @TARGET for @VALUE"
@@ -113,7 +109,7 @@ class Character(object, TileSprite):
         print s
         setattr(target, stat, val)
 
-            
+
     def reload(self):
         '''Use this method to reload the currently equipped weapon'''
         # Need to look through the inventory to make sure they have ammo
@@ -126,20 +122,20 @@ class Character(object, TileSprite):
                 self.reloadWeapon(item)
         if not ammofound:
             print self.name, 'has no ammo to reload the', weaponname, '!'
-            
+
     #
     # Skill related methods
     #
     def adjustSkill(self, name, value):
         self.skills[name] = value
-        
+
     def getInit(self):
         return self.initative
-    
+
     def notify(self, evt):
         '''The result of an encounter'''
         self.printm(self.name + ": What do you want?")
-    
+
     def updatePosition(self, x, y):
         '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]

@@ -135,7 +135,7 @@ class ActionOrder:
 def yes_or_no(dest1, dest2):
     print "Y)es\nN)o"
     ans = raw_input()
-    if 'y' == ans:
+    if 'y' == ans.lower():
         return dest1
     else:
         return dest2
