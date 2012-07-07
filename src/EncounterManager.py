@@ -83,9 +83,7 @@ class EncounterEngine:
     def startCombatEncounter(self, goodguys, badguys):
         '''This starts the encounter, determining the order and then playing
         a round.'''
-        print 'Starting!'
-        self.goodguys = goodguys
-        self.badguys = badguys
+        print 'startingCombatEncounter'
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
@@ -107,6 +105,8 @@ class EncounterEngine:
         return x
 
     def encounterLoop(self, goodguys, badguys):
+        self.goodguys = goodguys
+        self.badguys = badguys
         self.startCombatEncounter(goodguys, badguys)
         while self.isPartyDead(self.goodguys) or self.isPartyDead(self.badguys):
             self.playRound()

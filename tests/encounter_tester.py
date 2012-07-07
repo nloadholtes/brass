@@ -22,7 +22,7 @@ if __name__ == "__main__":
     badguys = generateParty(1, 'BadGuy')
     encmgr = em.EncounterEngine()
     # encmgr.startEncounter(Encounter.encounter)
-    encmgr.startCombatEncounter(goodguys, badguys)
+    encmgr.encounterLoop(goodguys, badguys)
 
 
 
