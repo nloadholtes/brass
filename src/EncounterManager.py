@@ -22,6 +22,7 @@ class EncounterEngine:
         '''This method will execute one round of combat'''
         print 'Staring a round'
         for person in self.fightorder:
+            #print "---%s is executing" % person.name
             if person.health <= 0:
                 continue
             orders = person.orders
@@ -29,7 +30,7 @@ class EncounterEngine:
                 #print 'Executing: ', order
                 who = order.who
                 what = "who." + str(order.what) + "(order.target)"
-                #print "\tWho ->", person.name, "What ->", what
+                print "\tWho ->", person.name, "What ->", what
                 eval(what)
             person.orders = []
 

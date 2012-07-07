@@ -30,15 +30,16 @@ def createPlayers():
     tom.initative = 12
 
 def encounter():
+    """This is an exploded version of the encounter loop to testing/tuning"""
     print 'Staring the Encounter'
     from EncounterManager import createBadGuys
     global bob, joe, tom
     goodguys = [joe, tom]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine()
-    # ee.startCombatEncounter(goodguys, badguys.characters)
     ee.goodguys = goodguys
     ee.badguys = badguys.characters
+    ee.startCombatEncounter()
     while ee.stillFighting():
         print 'Next round!'
         displayStats(ee.goodguys, ee.badguys)
