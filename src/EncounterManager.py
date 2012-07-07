@@ -125,7 +125,7 @@ def createBadGuys(amount, level, type):
 #    badguylist = []
     mngr = EventManager()
     group = Group(mngr, "Gangsters", (0,0), "img/player.png")
-    group.populateClones(Character(mngr, 'Bad Guy', (0,0), "", None), amount)
+    group.populateClones(Character(mngr, 'Bad Guy', (0,0), "", None, None), amount)
     return group
 
 class ActionOrder:

@@ -17,8 +17,8 @@ tom = None
 def createPlayers():
     global bob, joe, tom
     mngr = EventManager()
-    bob =  Character(mngr, 'Bob', (0,0), None, None)
-    joe =  Character(mngr, 'Joe', (0,0), None, None)
+    bob =  Character(mngr, 'Bob', (0,0), None, None, None)
+    joe =  Character(mngr, 'Joe', (0,0), None, None, None)
     gun = Gun(mngr)
     ammo = Ammo(mngr)
     gun.updateData(ak47)
@@ -26,9 +26,9 @@ def createPlayers():
     joe.pickup(ammo)
     joe.equipWeapon(gun)
     joe.reload()
-    tom = Character(mngr, 'Tom', (0,0), None, None)
+    tom = Character(mngr, 'Tom', (0,0), None, None, None)
     tom.initative = 12
-    
+
 def encounter():
     print 'Staring the Encounter'
     from EncounterManager import createBadGuys
@@ -36,12 +36,14 @@ def encounter():
     goodguys = [joe, tom]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine()
-    ee.startCombatEncounter(goodguys, badguys.characters)
+    # ee.startCombatEncounter(goodguys, badguys.characters)
+    ee.goodguys = goodguys
+    ee.badguys = badguys.characters
     while ee.stillFighting():
         print 'Next round!'
         displayStats(goodguys, badguys)
         getOrders(goodguys, badguys)
-        ee.getBadguyOrders(badguys, goodguys, 1)
+        ee.getBadguyOrders(1)
         ee.playRound()
     print '\t\t***************Battle over!********************'
    
