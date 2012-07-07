@@ -41,23 +41,23 @@ def encounter():
     ee.badguys = badguys.characters
     while ee.stillFighting():
         print 'Next round!'
-        displayStats(goodguys, badguys)
-        getOrders(goodguys, badguys)
+        displayStats(ee.goodguys, ee.badguys)
+        getOrders(ee.goodguys, ee.badguys)
         ee.getBadguyOrders(1)
         ee.playRound()
     print '\t\t***************Battle over!********************'
-   
+
 def displayStats(goodguys, badguys):
     print '\t------Good guys:------'
     for guy in goodguys:
         print '\t',guy.name, guy.health
-        
+
     print '\t----Bad guys ------'
     print badguys
-    for dude in badguys.characters:
+    for dude in badguys:
         print '\t',dude.name, dude.health
     print '\t------------------------'
-   
+
 def getOrders(party, badguys):
     for x in party:
         print 'Orders for: ', x.name
@@ -71,12 +71,12 @@ def getOrders(party, badguys):
         if action == 'a':
             print 'Who do you want to attack?'
             y = 1
-            for dude in badguys.characters:
+            for dude in badguys:
                 print '\t',y,')', dude.name
                 y += 1
             target = raw_input()
             #Shove this into the orders for X
-            order = ActionOrder(x, 'attack', badguys.characters[int(target)-1])
+            order = ActionOrder(x, 'attack', badguys[int(target)-1])
             x.orders.append(order)
         elif action == 'b':
             print 'Passing'
@@ -84,12 +84,11 @@ def getOrders(party, badguys):
             print 'Reload'
         elif action == 'q':
             print 'Goodbye!'
-            exit()
-    
+            exit(0)
+
 
 if __name__ == '__main__':
-    print '1 for combat, 2 for talking'
     createPlayers()
     encounter()
-    
+
 
