@@ -67,7 +67,7 @@ def getOrders(party, badguys):
         print 'R)eload'
         print 'T)alk'
         print 'Q)uit'
-        action = raw_input()
+        action = raw_input("Action: ")
         print action
         if action == 'a':
             print 'Who do you want to attack?'

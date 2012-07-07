@@ -59,7 +59,7 @@ class EncounterEngine:
         '''Checks for vital signs. If someone is still kicking then return true'''
         playercount = len(players)
         for player in players:
-            print "Checking: ", player.name, player.health
+            #print "Checking: ", player.name, player.health
             if player.health <= 0:
                 playercount -= 1
         if 0 == playercount:
