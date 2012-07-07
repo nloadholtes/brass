@@ -81,7 +81,7 @@ class EncounterEngine:
             dude.orders.append(order)
             print '->',dude.name,'is thinking...', order
 
-    def startCombatEncounter(self, goodguys, badguys):
+    def startCombatEncounter(self):
         '''This starts the encounter, determining the order and then playing
         a round.'''
         print 'startingCombatEncounter'
@@ -91,8 +91,8 @@ class EncounterEngine:
         for person in self.fightorder:
             person.orders = []
 
-    def startEncounter(self, encounter):
-        '''This method is where encounters start.'''
+    def startSpeakingEncounter(self, encounter):
+        '''This method is where Speaking/interacting encounters start.'''
         print "Starting encounter:"
         if isinstance(encounter, EncounterEvent):
             encounter = encounter.encounter
@@ -108,6 +108,7 @@ class EncounterEngine:
     def encounterLoop(self, goodguys, badguys):
         self.goodguys = goodguys
         self.badguys = badguys
+        #TODO: Logic to determine the type of encoutner?
         self.startCombatEncounter()
         while not self.isPartyDead(self.goodguys) or not self.isPartyDead(self.badguys):
             self.playRound()
