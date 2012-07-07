@@ -71,13 +71,13 @@ class EncounterEngine:
         self.orders.append(order)
         return None
 
-    def getBadguyOrders(self, badguys, goodguys, agressivelevel):
+    def getBadguyOrders(self, agressivelevel):
         '''A first attempt at an AI system to control the bad guys
     and have them attack the goodguys.'''
         for dude in self.badguys:
             gsize = len(self.goodguys)
             t = randint(0, gsize-1)
-            order = ActionOrder(dude, 'attack', goodguys[t])
+            order = ActionOrder(dude, 'attack', self.goodguys[t])
             dude.orders.append(order)
             print '->',dude.name,'is thinking...', order
 
@@ -110,7 +110,8 @@ class EncounterEngine:
         self.badguys = badguys
         #TODO: Logic to determine the type of encoutner?
         self.startCombatEncounter()
-        while not self.isPartyDead(self.goodguys) or not self.isPartyDead(self.badguys):
+        while self.stillFighting():
+            self.getBadguyOrders(1)
             self.playRound()
 
 #
