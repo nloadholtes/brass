@@ -56,11 +56,12 @@ class EncounterEngine:
 
     def isPartyDead(self, players):
         '''Checks for vital signs. If someone is still kicking then return true'''
+        playercount = len(players)
         for player in players:
             print "Checking: ", player.name, player.health
             if player.health <= 0:
-                players.remove(player)
-        if 0 == len(players):
+                playercount -= 1
+        if 0 == playercount:
             return True
         else:
             return False
@@ -107,8 +108,8 @@ class EncounterEngine:
     def encounterLoop(self, goodguys, badguys):
         self.goodguys = goodguys
         self.badguys = badguys
-        self.startCombatEncounter(goodguys, badguys)
-        while self.isPartyDead(self.goodguys) or self.isPartyDead(self.badguys):
+        self.startCombatEncounter()
+        while not self.isPartyDead(self.goodguys) or not self.isPartyDead(self.badguys):
             self.playRound()
 
 #
