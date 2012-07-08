@@ -7,6 +7,8 @@ from Entity import *
 from Item import *
 from tilesprite import *
 
+import copy
+
 MAX_ITEMS = 50
 
 class Character(object, TileSprite):
@@ -73,7 +75,7 @@ class Character(object, TileSprite):
     def attack(self, target):
         weapon = self.equipped['weapon']
         if weapon == None:
-            print '****No weapon equipped!!! Punching and kicking our way out of this one!'
+            print '\t****No weapon equipped!!! Punching and kicking our way out of this one!'
             self.equipWeapon(self)
             weapon = self.equipped['weapon']
         if weapon == self:
@@ -85,7 +87,7 @@ class Character(object, TileSprite):
         if(target.health > 0):
             weapon.use(target)
         else:
-            print self.name," holds off because ", target.name, "is dead"
+            print "\t", self.name," holds off because ", target.name, "is dead"
 
 #        else:
 #            print self.name,'-Needs to hit with the gun'
@@ -139,6 +141,10 @@ class Character(object, TileSprite):
     def updatePosition(self, x, y):
         '''This method will update the Character\'s position (because we can\'t assign the tuple individually)'''
         self.position = [x,y]
+
+    def getInventory(self):
+        output = copy.deepcopy(self.inventory)
+        return output
 
 
     #

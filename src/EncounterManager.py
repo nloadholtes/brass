@@ -30,7 +30,7 @@ class EncounterEngine:
                 #print 'Executing: ', order
                 who = order.who
                 what = "who." + str(order.what) + "(order.target)"
-                print "\tWho ->", person.name, "What ->", what
+                print "Who ->", person.name, "What ->", what
                 eval(what)
             person.orders = []
         for guy in self.goodguys:
