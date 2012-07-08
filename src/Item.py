@@ -20,11 +20,11 @@ class Gun(Item):
     stat = 'health'
     value = -10
     amt = 1
-    range = 100 
+    range = 100
     fmtline = "@TARGET @ADJ @VALUE points"
     adjs = ('gets blasted for', 'sucks it down for', 'eats hot lead and looses', 'gets shot up for', 'gets nailed for', 'isn\'t fast enough and gets hit for' ,
             'feels the kiss of hot lead and looses')
-    
+
     def use(self, target):
         if target.__class__ == Ammo:
             #print "reload!"
@@ -40,7 +40,7 @@ class Gun(Item):
             #setattr(target, target.amt, val)
             #target.amt = val
             #print '\tAmmo has ', target.amt, ' amt'
-            #print '\tgun has ', self.amt, ' amt'  
+            #print '\tgun has ', self.amt, ' amt'
             self.amt += target.amt
             target.amt = 0
         else:
@@ -65,7 +65,7 @@ class Ammo(Item):
         #setattr(target, target.amt, val)
         target.amt = val
         self.amt -= 1
-            
+
 class Bomb(Item):
     name = 'Bomb'
     adj = 'blasts'
@@ -92,15 +92,15 @@ class Food(Item):
     empty = "The %s has already been eaten!"
     value = 1
     amt = 1
-    
+
 class Door(TileSprite):
-    name = 'Door'    
+    name = 'Door'
     value = 100
     amt = 1
-    
+
     def __init__(self, manager, name, position, imageFileName, parent, gtk):
         TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
-        
+
     def handle(self):
         d = self._parent._mapinfo['door'][self.getDoorData()]
         from tilesprite import *
@@ -111,6 +111,6 @@ class Door(TileSprite):
 
     def setDoorData(self, dat):
         self._doordata = dat
-        
+
     def getDoorData(self):
         return self._doordata
