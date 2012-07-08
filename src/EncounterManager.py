@@ -31,7 +31,8 @@ class EncounterEngine:
                 who = order.who
                 what = "who." + str(order.what) + "(order.target)"
                 print "Who ->", person.name, "What ->", what
-                eval(what)
+                #eval(what)
+                who.executeOrder(order)
             person.orders = []
         for guy in self.goodguys:
             if guy.health <= 0:

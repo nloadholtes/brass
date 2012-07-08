@@ -38,6 +38,10 @@ class Character(object, TileSprite):
 #                print "%s has %d %s remaining" % (self.name, val, key)
         object.__setattr__(self, key, val)
 
+    def executeOrder(self, actionorder):
+        """This is our replacement for eval() in the play round loop."""
+        pass
+
 
     #
     # Map and movement related methods
