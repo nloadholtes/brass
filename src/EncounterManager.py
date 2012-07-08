@@ -33,6 +33,12 @@ class EncounterEngine:
                 print "\tWho ->", person.name, "What ->", what
                 eval(what)
             person.orders = []
+        for guy in self.goodguys:
+            if guy.health <= 0:
+                self.goodguys.remove(guy)
+        for badguy in self.badguys:
+            if badguy.health <= 0:
+                self.badguys.remove(badguy)
 
 
     def determineOrder(self):

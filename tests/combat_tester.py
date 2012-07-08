@@ -54,9 +54,9 @@ def displayStats(goodguys, badguys):
         print '\t',guy.name, guy.health
 
     print '\t----Bad guys ------'
-    print badguys
     for dude in badguys:
-        print '\t',dude.name, dude.health
+        if dude.health > 0:
+            print '\t',dude.name, dude.health
     print '\t------------------------'
 
 def getOrders(party, badguys):
@@ -68,7 +68,6 @@ def getOrders(party, badguys):
         print 'T)alk'
         print 'Q)uit'
         action = raw_input("Action: ")
-        print action
         if action == 'a':
             print 'Who do you want to attack?'
             y = 1
