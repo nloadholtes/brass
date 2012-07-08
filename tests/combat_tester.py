@@ -61,30 +61,38 @@ def displayStats(goodguys, badguys):
 
 def getOrders(party, badguys):
     for x in party:
-        print 'Orders for: ', x.name
-        print 'A)ttack'
-        print 'E)vade'
-        print 'R)eload'
-        print 'T)alk'
-        print 'Q)uit'
-        action = raw_input("Action: ")
-        if action == 'a':
-            print 'Who do you want to attack?'
-            y = 1
-            for dude in badguys:
-                print '\t',y,')', dude.name
-                y += 1
-            target = raw_input()
-            #Shove this into the orders for X
-            order = ActionOrder(x, 'attack', badguys[int(target)-1])
-            x.orders.append(order)
-        elif action == 'b':
-            print 'Passing'
-        elif action == 'c':
-            print 'Reload'
-        elif action == 'q':
-            print 'Goodbye!'
-            exit(0)
+        order = None
+        while not order:
+            print 'Orders for: ', x.name
+            print 'A)ttack'
+            print 'E)vade'
+            print 'R)eload'
+            print 'T)alk'
+            print 'I)neventory'
+            print 'Q)uit'
+            action = raw_input("Action: ").lower()
+            if action == 'a':
+                print 'Who do you want to attack?'
+                y = 1
+                for dude in badguys:
+                    print '\t',y,')', dude.name
+                    y += 1
+                target = raw_input()
+                #Shove this into the orders for X
+                order = ActionOrder(x, 'attack', badguys[int(target)-1])
+                x.orders.append(order)
+            elif action == 'b':
+                print 'Passing'
+            elif action == 'c':
+                print 'Reload'
+            elif action == 'q':
+                print 'Goodbye!'
+                exit(0)
+            elif action == 'i':
+                stuff = x.getInventory()
+                print "  Inventory for %s" %  x.name
+                for thing in stuff:
+                    print "\t%s" % thing.name
 
 
 if __name__ == '__main__':
