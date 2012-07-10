@@ -40,14 +40,11 @@ class Character(object, TileSprite):
 
     def executeOrder(self, actionorder):
         """This is our replacement for eval() in the play round loop."""
-        print " (Order seen: %s->%s)" % (actionorder.what, actionorder.who)
-        if actionorder.what == 'attack': #This needs to change
-            self.attack(actionorder.target)
-        if actionorder.what == 'EVADE':
-            print "We'll evade eventually."
-        if actionorder.what == 'USE':
-            print "We'll use something someday."
-
+        print " (Order seen: %s->%s)" % (actionorder.what, actionorder.who.name)
+        e = {'attack' : self.attack(actionorder.target),}
+             # 'EVADE' : (print "We'll evade eventually.") ,
+             # 'USE' : print("We'll use something someday.")}
+        e.get(actionorder.what)
 
     #
     # Map and movement related methods

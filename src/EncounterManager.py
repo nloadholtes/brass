@@ -27,12 +27,7 @@ class EncounterEngine:
                 continue
             orders = person.orders
             for order in orders:
-                #print 'Executing: ', order
-                who = order.who
-                what = "who." + str(order.what) + "(order.target)"
-                print "Who ->", person.name, "What ->", what
-                #eval(what)
-                who.executeOrder(order)
+                order.who.executeOrder(order)
             person.orders = []
         for guy in self.goodguys:
             if guy.health <= 0:
