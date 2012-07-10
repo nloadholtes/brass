@@ -103,8 +103,7 @@ class Door(TileSprite):
 
     def handle(self):
         d = self._parent._mapinfo['door'][self.getDoorData()]
-        from tilesprite import *
-        if d[2] == ok_to_move:
+        if d[2] == ok_to_move: #TODO: Crap, what is this?
             return self._parent.moveToNewRoom(d)
         elif d[2] == ask_to_move:
             self.printm("We gotta ask about this move")
