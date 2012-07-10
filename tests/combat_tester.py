@@ -69,6 +69,7 @@ def getOrders(party, badguys):
             print 'R)eload'
             print 'T)alk'
             print 'I)neventory'
+            print 'P)ass'
             print 'Q)uit'
             action = raw_input("Action: ").lower()
             if action == 'a':
@@ -83,7 +84,7 @@ def getOrders(party, badguys):
                 x.orders.append(order)
             elif action == 'b':
                 print 'Passing'
-            elif action == 'c':
+            elif action == 'r':
                 print 'Reload'
             elif action == 'q':
                 print 'Goodbye!'

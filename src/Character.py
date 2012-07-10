@@ -75,6 +75,7 @@ class Character(object, TileSprite):
         weapon = self.equipped['weapon']
         if weapon != None:
             weapon.use(ammo)
+            self.inventory.remove(ammo)
 
     #
     # Attack related methods
