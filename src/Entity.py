@@ -21,7 +21,7 @@ class Entity:
 
 class Item(Entity):
     name = 'ItemObject'
-    adj = 'affects'
+    adj = ('affects','uhhh')
     stat = 'health'
     empty = 'The %s is empty!'
     value = 0

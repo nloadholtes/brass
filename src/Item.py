@@ -16,13 +16,12 @@ from tilesprite import TileSprite
 
 class Gun(Item):
     name = 'Gun'
-    adj = 'shoots'
     stat = 'health'
     value = -10
     amt = 1
     range = 100
     fmtline = "@TARGET @ADJ @VALUE points"
-    adjs = ('gets blasted for', 'sucks it down for', 'eats hot lead and looses', 'gets shot up for', 'gets nailed for', 'isn\'t fast enough and gets hit for' ,
+    adj = ('gets blasted for', 'sucks it down for', 'eats hot lead and looses', 'gets shot up for', 'gets nailed for', 'isn\'t fast enough and gets hit for' ,
             'feels the kiss of hot lead and looses')
 
     def use(self, target):
