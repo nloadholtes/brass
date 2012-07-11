@@ -10,12 +10,7 @@ from Character import *
 from EventMngr import *
 from EncounterManager import *
 
-bob = None
-joe = None
-tom = None
-
 def createPlayers():
-    global bob, joe, tom
     mngr = EventManager()
     bob =  Character(mngr, 'Bob', (0,0), None, None, None)
     joe =  Character(mngr, 'Joe', (0,0), None, None, None)
@@ -28,13 +23,12 @@ def createPlayers():
     joe.reload()
     tom = Character(mngr, 'Tom', (0,0), None, None, None)
     tom.initative = 12
+    return [joe, tom, bob]
 
-def encounter():
+def encounter(players):
     """This is an exploded version of the encounter loop to testing/tuning"""
     print 'Staring the Encounter'
-    from EncounterManager import createBadGuys
-    global bob, joe, tom
-    goodguys = [joe, tom]
+    goodguys = players[:-1]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine()
     ee.goodguys = goodguys
@@ -97,7 +91,6 @@ def getOrders(party, badguys):
 
 
 if __name__ == '__main__':
-    createPlayers()
-    encounter()
+    encounter(createPlayers())
 
 
