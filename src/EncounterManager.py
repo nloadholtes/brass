@@ -69,11 +69,6 @@ class EncounterEngine:
         else:
             return False
 
-    def setOrders(self, who, what, target):
-        order = ActionOrder(who, what, target)
-        self.orders.append(order)
-        return None
-
     def getBadguyOrders(self, agressivelevel):
         '''A first attempt at an AI system to control the bad guys
     and have them attack the goodguys.'''
@@ -96,7 +91,7 @@ class EncounterEngine:
 
     def startSpeakingEncounter(self, encounter):
         '''This method is where Speaking/interacting encounters start.'''
-        print "Starting encounter:"
+        print "Starting Speaking encounter:"
         if isinstance(encounter, EncounterEvent):
             encounter = encounter.encounter
         print 'Preamble: ', encounter['preamble']

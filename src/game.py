@@ -23,19 +23,18 @@ if __name__ == "__main__":
         execfile(sys.argv[1], globals(), values)
     else :
         raise Exception, "Can't run with out a game file"
-    
+
     gamedata = values.get('gamedata')
     evtmngr = EventManager()
-    
+
     #keybd = Input(evtmngr, gtk)
     #spinner = CPUSpinnerController(evtmngr)
     te = TileEngine(evtmngr, gamedata)
     gtk = GUIToolkit(te)
     te.initTE(gtk)
     #game = Game( evManager )
-    
+
     #
     #Run the game
     #spinner.run()
     startGame()
-    

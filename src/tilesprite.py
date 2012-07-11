@@ -20,19 +20,19 @@ class TileSprite:
                 self._y = int(y)
                 self._doordata = None
                 self.manager = manager
-        
+
         def handle(self):
                 '''In the event of someone hitting this tile, we need to decide what to do.'''
                 self.printm("Default TileSprite handler: Need to replace this with a specific handler.")
-                        
-                        
+
+
         def printm(self, text):
                 '''A helper method to print out messages'''
                 self.manager.notify(PrintEvent(text))
-        
+
         def getXY(self):
                 return (self._x, self._y)
-        
+
         def move(self, direction):
                 print "TileSprite.move() was called, and this might probably shouldn't have happened..."
                 dx,dy = direction
@@ -43,7 +43,7 @@ class TileSprite:
                         self._x += dx
                         self._y += dy
                 return result
-       
+
         def paint(self, screen, location):
                 if(self._image):
                         self._image.blit(location[0], location[1])
