@@ -6,29 +6,29 @@ from random import randint
 
 class Entity:
     image = None
-    
+
     def __init__(self, manager):
         self.manager = manager
         self.manager.registerObserver(self)
-        
+
     def register(self, manager):
         self.manager = manager
         self.manager.registerObserver(self)
-    
+
     def updateData(self, newdict):
         self.__dict__.update(newdict)
-        
+
 
 class Item(Entity):
     name = 'ItemObject'
     adj = 'affects'
     stat = 'health'
-    empty = 'The %s is empty!' 
+    empty = 'The %s is empty!'
     value = 0
     amt = 1
     fmtline = "@NAME @ADJ @TARGET for @VALUE"
     modifier = 0
-    
+
     def use(self, target):
         if self.amt < 1:
             print self.empty % self.name
@@ -46,11 +46,11 @@ class Item(Entity):
             print s
             setattr(target, self.stat, val)
             self.amt -= 1
-            
+
     def randomEntry(self, list):
         size = len(list) - 1
         return list[randint(0,size)]
-    
+
     def place(self):
         pass
 
@@ -65,4 +65,3 @@ class Item(Entity):
 
     def takesdamage(self):
         pass
-
