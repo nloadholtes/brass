@@ -78,6 +78,13 @@ def getOrders(party, badguys):
                 x.orders.append(order)
             elif action == 'b':
                 print 'Passing'
+            elif action == 'e':
+                class Object:
+                    pass
+                o = Object()
+                o.name = "Everyone!"
+                order = ActionOrder(x, 'EVADE', o)
+                x.orders.append(order)
             elif action == 'r':
                 print 'Reload'
             elif action == 'q':

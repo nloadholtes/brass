@@ -30,6 +30,7 @@ class Character(object, TileSprite):
         self.level = 1
         self.encoutner = encounter
         self.agility = 5
+        self.orig_agility = self.agility
 
     def __setattr__(self, key, val):
         if key == 'health':
@@ -42,9 +43,10 @@ class Character(object, TileSprite):
     def executeOrder(self, actionorder):
         """This is our replacement for eval() in the play round loop."""
         print " (Order seen: %s is %s->%s)" % (self.name, actionorder.what, actionorder.target.name)
-        e = {'attack' : self.attack(actionorder.target),}
-             # 'EVADE' : (print "We'll evade eventually.") ,
-             # 'USE' : print("We'll use something someday.")}
+        e = {'attack' : lambda x: self.attack(actionorder.target),
+             'EVADE' : lambda x:self.evade(),
+             # 'USE' : print("We'll use something someday.")
+        }
         e.get(actionorder.what)
 
     def resetAfterCombat(self):
