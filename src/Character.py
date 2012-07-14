@@ -29,6 +29,7 @@ class Character(object, TileSprite):
         self.initative = 10
         self.level = 1
         self.encoutner = encounter
+        self.agility = 5
 
     def __setattr__(self, key, val):
         if key == 'health':
@@ -46,9 +47,19 @@ class Character(object, TileSprite):
              # 'USE' : print("We'll use something someday.")}
         e.get(actionorder.what)
 
+    def resetAfterCombat(self):
+        self.orders = []
+        self.agility = self.orig_agility
+
     #
     # Map and movement related methods
     #
+
+    def evade(self):
+        """Evading basically temporarily sets your stats a little higher
+to reflect the idea you are trying to avoid being hit"""
+        self.orig_agility = self.agility
+        self.agility += 10
 
     def place(self, location):
         pass

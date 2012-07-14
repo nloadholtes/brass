@@ -28,7 +28,8 @@ class EncounterEngine:
             orders = person.orders
             for order in orders:
                 order.who.executeOrder(order)
-            person.orders = []
+        #After fight, reset players
+        [person.resetAfterCombat() for person in self.fightorder]
         for guy in self.goodguys:
             if guy.health <= 0:
                 self.goodguys.remove(guy)
