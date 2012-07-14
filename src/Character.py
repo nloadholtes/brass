@@ -47,7 +47,7 @@ class Character(object, TileSprite):
              'EVADE' : lambda x:self.evade(),
              # 'USE' : print("We'll use something someday.")
         }
-        e.get(actionorder.what)
+        e.get(actionorder.what)(1)
 
     def resetAfterCombat(self):
         self.orders = []
