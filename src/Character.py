@@ -43,11 +43,11 @@ class Character(object, TileSprite):
     def executeOrder(self, actionorder):
         """This is our replacement for eval() in the play round loop."""
         print " (Order seen: %s is %s->%s)" % (self.name, actionorder.what, actionorder.target.name)
-        e = {'attack' : lambda x: self.attack(actionorder.target),
-             'EVADE' : lambda x:self.evade(),
+        e = {'attack' : lambda : self.attack(actionorder.target),
+             'EVADE' : lambda : self.evade(),
              # 'USE' : print("We'll use something someday.")
         }
-        e.get(actionorder.what)(1)
+        e.get(actionorder.what)()
 
     def resetAfterCombat(self):
         self.orders = []
