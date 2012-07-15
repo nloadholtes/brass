@@ -5,6 +5,7 @@ from nose.tools import raises
 from Character import Character as C
 from Entity import Item
 from EventMngr import *
+from Item import *
 
 @raises(Exception)
 def testBadInit():
@@ -35,3 +36,18 @@ def testdrop():
     c.pickup(i)
     c.drop(i)
     assert len(c.inventory) == 0
+
+def testreloadWeapon():
+    c = getChar()
+    mngr = EventManager()
+    i = Item(mngr)
+    c.pickup(i)
+    ammo = Ammo(mngr)
+    c.pickup(ammo)
+    assert len(c.inventory) == 2
+    assert c.inventory[0].amt == 1
+    c.reload()
+    print len(c.inventory)
+    assert len(c.inventory) == 2
+    print c.inventory[0].amt
+    assert c.inventory[0].amt == 10 #Weapon ammo
