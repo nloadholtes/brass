@@ -71,7 +71,7 @@ to reflect the idea you are trying to avoid being hit"""
     # Inventory related methods
     #
     def drop(self, item):
-        pass
+        self.inventory.remove(item)
 
     def pickup(self, item):
         if len(self.inventory) < MAX_ITEMS:
