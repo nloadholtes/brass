@@ -2,7 +2,7 @@
 # test_encountermanager.py
 #
 
-import unittest
+from nose.tools import *
 import EncounterManager as em
 
 def testEncounterEngineInit():
