@@ -21,3 +21,12 @@ def testpickup():
     i = Item(mngr)
     c.pickup(i)
     assert len(c.inventory) == 1
+
+def testdrop():
+    c = C(None, "test", (0,0), None, None, None)
+    assert len(c.inventory) == 0
+    mngr = EventManager()
+    i = Item(mngr)
+    c.pickup(i)
+    c.drop(i)
+    assert len(c.inventory) == 0
