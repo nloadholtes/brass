@@ -4,12 +4,13 @@
 # May 27, 2006
 #
 
+from nose.tools import *
 from Item import *
 from Items import ak47, pistol
 from Character import *
 from EventMngr import *
 
-def singlegunmain():
+def testsinglegunmain():
     print '------------------ Testing single gun ---------------------'
     mngr = EventManager()
     bob = Character(mngr, 'Bob', (0,0), None, None, None)
@@ -25,9 +26,11 @@ def singlegunmain():
     ammo.use(gun)
 
     #Gun shoots again.
+    assert gun.amt == 1
     gun.use(bob)
+    assert gun.amt == 0
 
-def twoguysshooting():
+def testtwoguysshooting():
     print '------------------ Testing two guys shooting at each other ---------------------'
     mngr = EventManager()
     #Meet Joe and Bob
@@ -61,10 +64,7 @@ def twoguysshooting():
 #    joe.attack(bob)
 #    joe.attack(bob)
 
-def longshot():
+@nottest
+def testlongshot():
     print '------------------ Testing ranged weapons ---------------------'
 
-if __name__ == "__main__":
-    singlegunmain()
-    twoguysshooting()
-    longshot()
