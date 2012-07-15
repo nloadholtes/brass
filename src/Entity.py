@@ -66,3 +66,8 @@ class Item(Entity):
 
     def takesdamage(self):
         pass
+
+    def __str__(self):
+        things = [self.name, str(self.amt)]
+        output = "|".join(things)
+        return "<Item: " + output + ">"

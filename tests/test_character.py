@@ -46,8 +46,10 @@ def testreload():
     ammo = Ammo(mngr)
     c.pickup(ammo)
     assert len(c.inventory) == 2
+    print c.inventory[0]
     assert c.inventory[0].amt == 1
     c.reload()
     assert len(c.inventory) == 1
     print c.inventory[0].amt
+    print c.inventory[0]
     assert c.inventory[0].amt == 10 #Weapon ammo
