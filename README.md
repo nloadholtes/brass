@@ -14,7 +14,7 @@ To start:
 The tests are broken down into two types at the moment, automated tests and manual tests.
 
 ### Automated Tests
-To run the automated tests, simply run =nosetests= at the project root.
+To run the automated tests, simply run *nosetests* at the project root.
 
 ### Manual Tests
 To get the manual tests to run, it might be necessary to set the PYTHONPATH in order for it to find the code correctly. This should do the trick:
