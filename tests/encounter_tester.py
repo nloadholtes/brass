@@ -8,6 +8,7 @@
 import EncounterManager as em
 import Encounter
 from Character import Character as pc
+from mock import MagicMock as Mock
 
 def generateParty(num=2, playername='Player'):
     output = []
@@ -16,13 +17,14 @@ def generateParty(num=2, playername='Player'):
         output.append(c)
     return output
 
-
-if __name__ == "__main__":
+def testEncounter():
     goodguys = generateParty(1, 'GoodGuy')
     badguys = generateParty(1, 'BadGuy')
     encmgr = em.EncounterEngine()
-    # encmgr.startEncounter(Encounter.encounter)
-    encmgr.encounterLoop(goodguys, badguys)
+    enc = Encounter.test_encounter
+    ymock = Mock(return_value=2)
+    em.yes_or_no = ymock
+    encmgr.startSpeakingEncounter(enc)
 
 
 
