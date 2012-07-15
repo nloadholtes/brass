@@ -33,6 +33,7 @@ class Item(Entity):
         if self.amt < 1:
             print self.empty % self.name
         else:
+            #Determine the amount of damage done
             val = getattr(target, self.stat, 0) + self.value - self.modifier
             s = self.fmtline
             s = s.replace('@NAME', self.name)

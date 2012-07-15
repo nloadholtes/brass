@@ -31,6 +31,7 @@ class Character(object, TileSprite):
         self.encoutner = encounter
         self.agility = 5
         self.orig_agility = self.agility
+        self.amt = self.health
 
     def __setattr__(self, key, val):
         if key == 'health':
@@ -106,7 +107,12 @@ to reflect the idea you are trying to avoid being hit"""
                 weapon.modifier = self.skills['attack']
         #Check to make sure target is alive first
         if(target.health > 0):
-            weapon.use(target)
+            #Determine if the attack succeeded
+            if (self.initative + self.agility) > (target.initative + target.agility):
+                weapon.use(target)
+            else:
+                weapon.amt -= 1
+                print(" ---%s missed!" % self.name)
         else:
             print "\t", self.name," holds off because ", target.name, "is dead"
 
