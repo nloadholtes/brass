@@ -37,17 +37,17 @@ def testdrop():
     c.drop(i)
     assert len(c.inventory) == 0
 
-def testreloadWeapon():
+def testreload():
     c = getChar()
     mngr = EventManager()
     i = Item(mngr)
     c.pickup(i)
+    c.equipWeapon(i)
     ammo = Ammo(mngr)
     c.pickup(ammo)
     assert len(c.inventory) == 2
     assert c.inventory[0].amt == 1
     c.reload()
-    print len(c.inventory)
-    assert len(c.inventory) == 2
+    assert len(c.inventory) == 1
     print c.inventory[0].amt
     assert c.inventory[0].amt == 10 #Weapon ammo
