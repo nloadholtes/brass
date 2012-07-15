@@ -12,15 +12,15 @@ from EventMngr import *
 def singlegunmain():
     print '------------------ Testing single gun ---------------------'
     mngr = EventManager()
-    bob = Character(mngr, 'Bob')
-    gun = Gun()
+    bob = Character(mngr, 'Bob', (0,0), None, None, None)
+    gun = Gun(mngr)
 
     #Gun shoots man
     gun.use(bob)
     gun.use(bob)
 
     #Gun out of ammo. Reload
-    ammo = Ammo()
+    ammo = Ammo(mngr)
     gun.use(ammo)
     ammo.use(gun)
 
@@ -31,13 +31,13 @@ def twoguysshooting():
     print '------------------ Testing two guys shooting at each other ---------------------'
     mngr = EventManager()
     #Meet Joe and Bob
-    bob = Character(mngr, 'Bob')
-    joe = Character(mngr, 'Joe')
+    bob = Character(mngr, 'Bob', (0,0), None, None, None)
+    joe = Character(mngr, 'Joe', (0,0), None, None, None)
     #joe.adjustSkill('attack', 100) #Joe is now quite dangerous
 
     #Lets give them both guns
-    bobgun = Gun()
-    joegun = Gun()
+    bobgun = Gun(mngr)
+    joegun = Gun(mngr)
     bobgun.name = 'Shotgun'
 
    #bobgun.updateData(pistol)
@@ -51,10 +51,10 @@ def twoguysshooting():
     joe.attack(bob)
     bob.attack(joe)
     joe.reload()
-    joeammo = Ammo()
+    joeammo = Ammo(mngr)
     joe.pickup(joeammo)
     joe.reload()
-    joe.reloadWeapon(joeammo)
+    # joe.reloadWeapon(joeammo)
     joe.attack(bob)
 #    joe.attack(bob)
 #    joe.attack(bob)
