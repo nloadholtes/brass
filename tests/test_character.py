@@ -9,5 +9,5 @@ def testBadInit():
     c = C()
 
 def testInit():
-    c = C(None, "test", (0,0), "none", None, None)
+    c = C(None, "test", (0,0), None, None, None)
     assert c
