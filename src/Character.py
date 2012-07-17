@@ -84,13 +84,6 @@ to reflect the idea you are trying to avoid being hit"""
     def equipArmor(self, armor):
         self.equipped['armor'] = armor
 
-    def reloadWeapon(self, ammo):
-        '''Use this method if you want to reload a weapon'''
-        weapon = self.equipped['weapon']
-        if weapon != None:
-            weapon.use(ammo)
-            self.inventory.remove(ammo)
-
     #
     # Attack related methods
     #
@@ -138,6 +131,12 @@ to reflect the idea you are trying to avoid being hit"""
         print s
         setattr(target, stat, val)
 
+    def reloadWeapon(self, ammo):
+        '''Use this method if you want to reload a weapon'''
+        weapon = self.equipped['weapon']
+        if weapon != None:
+            weapon.use(ammo)
+            self.inventory.remove(ammo)
 
     def reload(self):
         '''Use this method to reload the currently equipped weapon'''
