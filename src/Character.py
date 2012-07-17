@@ -133,21 +133,20 @@ to reflect the idea you are trying to avoid being hit"""
 
     def reloadWeapon(self, ammo):
         '''Use this method if you want to reload a weapon'''
-        weapon = self.equipped['weapon']
-        if weapon != None:
-            weapon.use(ammo)
-            self.inventory.remove(ammo)
 
     def reload(self):
         '''Use this method to reload the currently equipped weapon'''
         # Need to look through the inventory to make sure they have ammo
         ammofound = False
         weaponname = self.equipped['weapon'].name
+        weapon = self.equipped['weapon']
         for item in self.inventory:
             if item.__class__ == Ammo:
                 print self.name, ' reloads the ', weaponname
                 ammofound = True
-                self.reloadWeapon(item)
+                if weapon != None:
+                    weapon.use(item)
+                    self.inventory.remove(item)
         if not ammofound:
             print self.name, 'has no ammo to reload the', weaponname, '!'
 
