@@ -20,7 +20,6 @@ class TestGroup:
 
     def test_populateClones(self):
         group2 = Group(manager, name, position, imageFileName)
-        # import pdb; pdb.set_trace()
         assert_equal(0, len(group2.characters))
         group2.populateClones({}, 20)
         assert_equal(20, len(group2.characters))
