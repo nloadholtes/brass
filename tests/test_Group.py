@@ -23,3 +23,11 @@ class TestGroup:
         assert_equal(0, len(group2.characters))
         group2.populateClones({}, 20)
         assert_equal(20, len(group2.characters))
+
+    def testTwoGroups(self):
+        group = Group(manager, name, position, imageFileName)
+        group.addSingle({})
+        assert_equal(1, len(group.characters))
+        group2 = Group(manager, name, position, imageFileName)
+        assert_equal(0, len(group2.characters))
+        assert_equal(1, len(group.characters))
