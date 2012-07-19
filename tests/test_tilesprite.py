@@ -7,7 +7,7 @@ from tilesprite import TileSprite
 from Events import PrintEvent
 
 manager = Mock()
-imageFilename = ""
+imageFilename = "fakeimage.png"
 parent = None
 x = 0
 y = 0
