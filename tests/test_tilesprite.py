@@ -35,6 +35,14 @@ class TestTileSprite:
         assert_equal(None, tile_sprite.move((0,1)))
         assert_equal((0,1), tile_sprite.getXY())
 
+    def test_moveNotOk(self):
+        parent = Mock()
+        parent.moveOk = Mock(return_value=False)
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        assert_equal((0,0), tile_sprite.getXY())
+        assert_equal(False, tile_sprite.move((0,1)))
+        assert_equal((0,0), tile_sprite.getXY())
+
     def test_occupied(self):
         tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
         assert_equal(0, tile_sprite.occupied((x,y + 1)))
