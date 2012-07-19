@@ -1,10 +1,12 @@
 import unittest
 from nose import SkipTest
 from nose.tools import assert_equal, assert_is_not_none
+from mock import MagicMock as Mock
 
 from tilesprite import TileSprite
+from Events import PrintEvent
 
-manager = None
+manager = Mock()
 imageFilename = ""
 parent = None
 x = 0
@@ -31,9 +33,12 @@ class TestTileSprite:
         raise SkipTest # TODO: implement your test here
 
     def test_occupied(self):
-        # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
-        # assert_equal(expected, tile_sprite.occupied(intruder))
-        raise SkipTest # TODO: implement your test here
+        parent = Mock()
+        parent.moveOk = Mock(return_value=None)
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        assert_equal((0,0), tile_sprite.getXY())
+        assert_equal(0, tile_sprite.occupied((0,1)))
+        assert_equal((0,1), tile_sprite.getXY())
 
     def test_paint(self):
         # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
@@ -41,7 +46,8 @@ class TestTileSprite:
         raise SkipTest # TODO: implement your test here
 
     def test_printm(self):
-        # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
-        # assert_equal(expected, tile_sprite.printm(text))
-        raise SkipTest # TODO: implement your test here
+        manager.notify = Mock()
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        tile_sprite.printm("test text")
+        manager.notify.assert_called_once()
 
