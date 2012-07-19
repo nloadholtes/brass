@@ -28,17 +28,16 @@ class TestTileSprite:
         raise SkipTest # TODO: implement your test here
 
     def test_move(self):
-        # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
-        # assert_equal(expected, tile_sprite.move(direction))
-        raise SkipTest # TODO: implement your test here
-
-    def test_occupied(self):
         parent = Mock()
         parent.moveOk = Mock(return_value=None)
         tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
         assert_equal((0,0), tile_sprite.getXY())
-        assert_equal(0, tile_sprite.occupied((0,1)))
+        assert_equal(None, tile_sprite.move((0,1)))
         assert_equal((0,1), tile_sprite.getXY())
+
+    def test_occupied(self):
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        assert_equal(0, tile_sprite.occupied((0,1)))
 
     def test_paint(self):
         # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
