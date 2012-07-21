@@ -15,8 +15,6 @@ left = (-1, 0)
 right = (1, 0)
 
 class TileEngine:
-        test= "$"
-        passable = []
         def __init__(self, eventmanager, gamedata):
                 self.evtmngr = eventmanager
                 self.evtmngr.registerObserver(self)
