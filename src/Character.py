@@ -12,10 +12,6 @@ import copy
 MAX_ITEMS = 50
 
 class Character(object, TileSprite):
-    name = 'person'
-    position = []
-    orders = []
-#    sprite = None
 
     def __init__(self, manager, name, position, imageFileName, parent, gtk, encounter=None):
         TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
@@ -32,6 +28,7 @@ class Character(object, TileSprite):
         self.agility = 5
         self.orig_agility = self.agility
         self.amt = self.health
+        self.orders = []
 
     def __setattr__(self, key, val):
         if key == 'health':
