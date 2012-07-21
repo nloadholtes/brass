@@ -15,13 +15,15 @@ from tilesprite import TileSprite
 #
 
 class Gun(Item):
-    name = 'Gun'
-    stat = 'health'
-    value = -10
-    amt = 1
-    range = 100
-    fmtline = "@TARGET @ADJ @VALUE points"
-    adj = ('gets blasted for', 'sucks it down for', 'eats hot lead and looses', 'gets shot up for', 'gets nailed for', 'isn\'t fast enough and gets hit for' ,
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Gun'
+        self.stat = 'health'
+        self.value = -10
+        self.amt = 1
+        self.range = 100
+        self.fmtline = "@TARGET @ADJ @VALUE points"
+        self.adj = ('gets blasted for', 'sucks it down for', 'eats hot lead and looses', 'gets shot up for', 'gets nailed for', 'isn\'t fast enough and gets hit for' ,
             'feels the kiss of hot lead and looses')
 
     def use(self, target):
@@ -46,11 +48,13 @@ class Gun(Item):
             Item.use(self, target)
 
 class Ammo(Item):
-    name = 'Ammo'
-    stat = 'ammo'
-    adj = 'reloads'
-    value = 1
-    amt = 10
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Ammo'
+        self.stat = 'ammo'
+        self.adj = 'reloads'
+        self.value = 1
+        self.amt = 10
 
     def use(self, target):
         val = getattr(target, self.stat, 0) + self.value
@@ -66,39 +70,48 @@ class Ammo(Item):
         self.amt -= 1
 
 class Bomb(Item):
-    name = 'Bomb'
-    adj = 'blasts'
-    empty = 'The %s has already been detonated!'
-    value = -100
-    amt = 1
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Bomb'
+        self.adj = 'blasts'
+        self.empty = 'The %s has already been detonated!'
+        self.value = -100
+        self.amt = 1
 
 class HealthPotion(Item):
-    name = 'Health Potion'
-    adj = 'heals'
-    value = 10
-    amt = 1
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Health Potion'
+        self.adj = 'heals'
+        self.value = 10
+        self.amt = 1
 
 class Poison(Item):
-    name = 'Belladonna'
-    adj = 'poisons'
-    value = -1
-    amt = 1
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Belladonna'
+        self.adj = 'poisons'
+        self.value = -1
+        self.amt = 1
 
 class Food(Item):
-    name = 'Food'
-    fmtline = '@TARGET eats the @NAME '
-    stat = 'health'
-    empty = "The %s has already been eaten!"
-    value = 1
-    amt = 1
+    def __init__(self, manager):
+        Item.__init__(self, manager)
+        self.name = 'Food'
+        self.fmtline = '@TARGET eats the @NAME '
+        self.stat = 'health'
+        self.empty = "The %s has already been eaten!"
+        self.value = 1
+        self.amt = 1
 
 class Door(TileSprite):
-    name = 'Door'
-    value = 100
-    amt = 1
 
     def __init__(self, manager, name, position, imageFileName, parent, gtk):
         TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
+        self.name = 'Door'
+        self.value = 100
+        self.amt = 1
+
 
     def handle(self):
         d = self._parent._mapinfo['door'][self.getDoorData()]

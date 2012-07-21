@@ -5,11 +5,11 @@
 from random import randint
 
 class Entity:
-    image = None
 
     def __init__(self, manager):
         self.manager = manager
         self.manager.registerObserver(self)
+        self.image = None
 
     def register(self, manager):
         self.manager = manager
@@ -20,14 +20,16 @@ class Entity:
 
 
 class Item(Entity):
-    name = 'ItemObject'
-    adj = ('affects','uhhh')
-    stat = 'health'
-    empty = 'The %s is empty!'
-    value = 0
-    amt = 1
-    fmtline = "@NAME @ADJ @TARGET for @VALUE"
-    modifier = 0
+    def __init__(self, manager):
+        Entity.__init__(self, manager)
+        self.name = 'ItemObject'
+        self.adj = ('affects','uhhh')
+        self.stat = 'health'
+        self.empty = 'The %s is empty!'
+        self.value = 0
+        self.amt = 1
+        self.fmtline = "@NAME @ADJ @TARGET for @VALUE"
+        self.modifier = 0
 
     def use(self, target):
         if self.amt < 1:
