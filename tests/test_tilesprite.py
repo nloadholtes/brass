@@ -56,9 +56,20 @@ class TestTileSprite:
         assert_equal(False, tile_sprite.occupied((x+1, y+1)))
 
     def test_paint(self):
-        # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
-        # assert_equal(expected, tile_sprite.paint(screen, location))
-        raise SkipTest # TODO: implement your test here
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        tile_sprite._image = None
+        screen = None
+        location = (x,y)
+        tile_sprite.paint(screen, location)
+
+    def test_paintImage(self):
+        tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
+        tile_sprite._image = Mock()
+        tile_sprite._image.blit = Mock()
+        screen = None
+        location = (x,y)
+        tile_sprite.paint(screen, location)
+        tile_sprite._image.blit.assert_called_once()
 
     def test_printm(self):
         manager.notify = Mock()
