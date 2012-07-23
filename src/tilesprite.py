@@ -49,4 +49,6 @@ class TileSprite:
                         self._image.blit(location[0], location[1])
 
         def occupied(self, intruder):
-                return 0
+                if (self._x, self._y) == intruder:
+			return True
+		return False

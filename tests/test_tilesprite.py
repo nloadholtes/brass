@@ -51,9 +51,9 @@ class TestTileSprite:
         tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
         assert_equal(1, tile_sprite.occupied((x,y)))
 
-    def test_occupiedSomeoneElse(self):
+    def test_occupiedSomeoneElseNoOneThere(self):
         tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
-        assert_equal(1, tile_sprite.occupied((x+1, y+1)))
+        assert_equal(False, tile_sprite.occupied((x+1, y+1)))
 
     def test_paint(self):
         # tile_sprite = TileSprite(manager, imageFilename, parent, x, y, gtk)
