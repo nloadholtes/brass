@@ -1,9 +1,19 @@
+from nose.tools import assert_equals, assert_is_not_none
 import unittest
+from mock import MagicMock as Mock
+
+from tileengine import TileEngine
+
+eventmanager = Mock()
+gamedata = Mock()
+eventmanager.registerObserver = Mock()
+gamedata.get = Mock(return_value=(0,0))
 
 class TestTileEngine(unittest.TestCase):
     def test___init__(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        assert False # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        assert_is_not_none(tile_engine)
+
 
     def test_addPlayer(self):
         # tile_engine = TileEngine(eventmanager, gamedata)
