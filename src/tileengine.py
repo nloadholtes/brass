@@ -145,8 +145,8 @@ class TileEngine:
         def getImage(self, imagename):
                 '''This loads up the image (via the magic of the GUIToolkit)'''
                 if imagename:
-                        image = self.gtk.getImage(imagename)
-                return image
+                        return self.gtk.getImage(imagename)
+                return None
 
         def centerOn(self, sprite):
                 '''convert sprite co-ords to screen co-ords'''

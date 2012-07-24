@@ -1,5 +1,5 @@
 from nose import SkipTest
-from nose.tools import assert_equals, assert_is_not_none
+from nose.tools import assert_equals, assert_is_not_none, assert_equal
 from mock import MagicMock as Mock
 
 from tileengine import TileEngine
@@ -31,10 +31,14 @@ class TestTileEngine:
         tile_engine = TileEngine(eventmanager, gamedata)
         tile_engine.encounterHandler(None)
 
+    def test_getImageNone(self):
+        tile_engine = TileEngine(eventmanager, gamedata)
+        assert_equal(None, tile_engine.getImage(None))
+
     def test_getImage(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.getImage(imagename))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine.gtk = gtk
+        assert_equal("something", tile_engine.getImage("Something.png"))
 
     def test_initTE(self):
         tile_engine = TileEngine(eventmanager, gamedata)
