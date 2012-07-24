@@ -238,8 +238,8 @@ class TileEngine:
                 self._msgstr = messagestr
 
         def removeSprite(self, sprite):
-                self._sprites.remove(sprite)
-                try:
+		try:
+			self._sprites.remove(sprite)
                         self._npc.remove(sprite)
                 except ValueError:
                         pass

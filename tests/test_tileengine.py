@@ -87,10 +87,21 @@ class TestTileEngine:
         # assert_equal(expected, tile_engine.paintSprite(sprite))
         raise SkipTest # TODO: implement your test here
 
+    def test_removeSpriteInvalid(self):
+        tile_engine = TileEngine(eventmanager, gamedata)
+        sprite = [(0,0), "b", "image", {}]
+        tile_engine.loadSprites([])
+        tile_engine.removeSprite(sprite)
+        assert_equal(0, len(tile_engine._sprites))
+
     def test_removeSprite(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.removeSprite(sprite))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        sprite = [(0,0), "b", "image", {}]
+        tile_engine.images = {"image": 0}
+        tile_engine.gtk = gtk
+        tile_engine.loadSprites([sprite])
+        tile_engine.removeSprite(sprite)
+        assert_equal(0, len(tile_engine._sprites))
 
     def test_setMessage(self):
         tile_engine = TileEngine(eventmanager, gamedata)
