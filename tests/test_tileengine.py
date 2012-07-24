@@ -5,9 +5,12 @@ from mock import MagicMock as Mock
 from tileengine import TileEngine
 
 eventmanager = Mock()
-gamedata = Mock()
+# gamedata = Mock()
 eventmanager.registerObserver = Mock()
-gamedata.get = Mock(return_value=(0,0))
+gamedata = {'playerlocation':(0,0),'maplist':["mockmap"],
+            'playerimage':"something", 'startingmap':0}
+gtk = Mock()
+gtk.getImage = Mock(return_value="something")
 
 class TestTileEngine:
     def test___init__(self):
@@ -35,9 +38,11 @@ class TestTileEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_initTE(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.initTE(gtk))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine.loadMap = Mock()
+        tile_engine.paint = Mock()
+        tile_engine.initTE(gtk)
+        gtk.assert_called()
 
     def test_loadMap(self):
         # tile_engine = TileEngine(eventmanager, gamedata)
