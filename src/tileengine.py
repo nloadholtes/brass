@@ -83,7 +83,7 @@ class TileEngine:
                 enceng = EncounterEngine()
                 #emb = EncounterMessageBox()
                 # Get the orders for the good guys
-                return enceng.startEncounter(evt)
+                # return enceng.startEncounter(evt) #Not valid any more
 #               while enceng.stillFighting():
 #                       print "Next round!"
 #                       #Display the stats

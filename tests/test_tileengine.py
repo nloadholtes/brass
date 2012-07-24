@@ -28,9 +28,8 @@ class TestTileEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_encounterHandler(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.encounterHandler(evt))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine.encounterHandler(None)
 
     def test_getImage(self):
         # tile_engine = TileEngine(eventmanager, gamedata)
