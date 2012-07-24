@@ -93,7 +93,7 @@ class TestTileEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_setMessage(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.setMessage(messagestr))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine.setMessage("test str")
+        assert_equal("test str", tile_engine._msgstr)
 
