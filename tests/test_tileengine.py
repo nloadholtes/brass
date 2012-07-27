@@ -100,7 +100,8 @@ class TestTileEngine:
         tile_engine.images = {"image": 0}
         tile_engine.gtk = gtk
         tile_engine.loadSprites([sprite])
-        tile_engine.removeSprite(sprite)
+        s = tile_engine._sprites[0]
+        tile_engine.removeSprite(s)
         assert_equal(0, len(tile_engine._sprites))
 
     def test_setMessage(self):
