@@ -58,9 +58,11 @@ class TestTileEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_move(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.move(direction))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine.ego = Mock()
+        tile_engine.ego.position = (0,0)
+        tile_engine.moveOk = Mock(return_value=None)
+        assert_equal(None, tile_engine.move((0,1)))
 
     def test_moveOk(self):
         # tile_engine = TileEngine(eventmanager, gamedata)
