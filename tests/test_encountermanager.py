@@ -4,6 +4,7 @@
 
 from nose import SkipTest
 from nose.tools import assert_equal
+from mock import MagicMock as Mock
 
 from nose.tools import *
 import EncounterManager as em
@@ -70,8 +71,11 @@ class TestActionOrder:
 
 class TestYesOrNo:
     def test_yes_or_no(self):
-        # assert_equal(expected, yes_or_no(dest1, dest2))
-        raise SkipTest # TODO: implement your test here
+        import EncounterManager
+        EncounterManager.raw_input = lambda _: 'y' #Mock(return_value='y')
+        # import pdb; pdb.set_trace()
+        val = EncounterManager.yes_or_no("a", "b")
+        assert_equal("a", val)
 
 class TestPause:
     def test_pause(self):
