@@ -61,8 +61,7 @@ class TestInitativeSorter:
 
 class TestCreateBadGuys:
     def test_create_bad_guys(self):
-        # assert_equal(expected, createBadGuys(amount, level, type))
-        raise SkipTest # TODO: implement your test here
+        assert_true(em.createBadGuys(3, None, "blah") is not None)
 
 class TestActionOrder:
     def test___init__(self):
