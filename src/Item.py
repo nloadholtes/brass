@@ -5,7 +5,7 @@
 #
 
 from Entity import Item
-from tilesprite import TileSprite
+from tilesprite import TileSprite, ok_to_move, ask_to_move
 
 
 #
