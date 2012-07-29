@@ -26,7 +26,6 @@ class BottomMessageBox:
         backgrnd = (48, 48, 48)
         self._backgroundcolor = backgrnd
         self._textcolor = white
-        #self._rect = pygame.Rect(( 0, 0, 800, 200))
         self._textbuffer = []
         self._font = font.load('Arial', 20)
         self._justification = 0
@@ -72,7 +71,7 @@ class BottomMessageBox:
     def render(self):
         '''This is where the drawing of the textbuffer takes place.'''
         rect = self._rect
-        surface = pygame.Surface(rect.size)
+        surface = None #Was a  p y g a m e  reference here
         surface.fill(self._backgroundcolor)
         accumulated_height = 0
         for line in reverse(self._textbuffer):

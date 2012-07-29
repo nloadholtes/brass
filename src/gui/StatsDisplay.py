@@ -4,7 +4,7 @@
 # May 25, 2007
 #
 
-import pygame
+import pyglet
 
 class StatsDisplay:
     size = (100, 200)
@@ -12,13 +12,13 @@ class StatsDisplay:
     backgroundcolor =  (48, 48, 48)
     white = (255, 255, 255)
     textcolor = white
-    
+
     def __init__(self, screen, players):
         '''This class displays the stats for the player'''
         self.screen = screen
 
         #Getting the surface
-        surface = pygame.Surface(self.size)
+        surface = None #pygame.Surface(self.size)
         surface.fill(self.backgroundcolor)
 
         #Loop through the players, write the stats to the surface
