@@ -68,15 +68,3 @@ class TestActionOrder:
         action_order = em.ActionOrder("who", "what", "target")
         assert action_order is not None
 
-class TestYesOrNo:
-    def test_yes_or_no(self):
-        import EncounterManager
-        EncounterManager.raw_input = lambda _: 'y' #Mock(return_value='y')
-        # import pdb; pdb.set_trace()
-        val = EncounterManager.yes_or_no("a", "b")
-        assert_equal("a", val)
-
-class TestPause:
-    def test_pause(self):
-        # assert_equal(expected, pause(dest))
-        raise SkipTest # TODO: implement your test here
