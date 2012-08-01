@@ -85,9 +85,16 @@ class TestTileEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_paintSprite(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.paintSprite(sprite))
-        raise SkipTest # TODO: implement your test here
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine._tilewidth = 32
+        tile_engine._tileheight = 32
+        tile_engine._offset = (0,0)
+        sprite = Mock()
+        sprite.position = (10,10)
+        sprite.image = Mock()
+        sprite.image.blit = Mock()
+        tile_engine.paintSprite(sprite)
+        sprite.image.blit.assert_called_once()
 
     def test_removeSpriteInvalid(self):
         tile_engine = TileEngine(eventmanager, gamedata)
