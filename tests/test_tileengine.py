@@ -64,10 +64,11 @@ class TestTileEngine:
         tile_engine.moveOk = Mock(return_value=None)
         assert_equal(None, tile_engine.move((0,1)))
 
-    def test_moveOk(self):
-        # tile_engine = TileEngine(eventmanager, gamedata)
-        # assert_equal(expected, tile_engine.moveOk(newx, newy))
-        raise SkipTest # TODO: implement your test here
+    def test_moveOkFalse(self):
+        tile_engine = TileEngine(eventmanager, gamedata)
+        tile_engine._map = ([[],[]], [[],[]])
+        tile_engine.passable = []
+        assert_equal(False, tile_engine.moveOk(0, 0))
 
     def test_moveToNewRoom(self):
         # tile_engine = TileEngine(eventmanager, gamedata)
