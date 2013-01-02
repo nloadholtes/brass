@@ -7,13 +7,28 @@ manager = Mock()
 
 class TestGun:
     def test___init__(self):
-        # gun = Gun(manager)
-        raise SkipTest # TODO: implement your test here
+        gun = Gun(manager)
+        assert_true(gun is not None)
 
+    def test_use_ammo(self):
+        target = Mock()
+        target.amt = 10
+        target.name = "9mm"
+        target.__class__ = Ammo
+        gun = Gun(manager)
+        gun.use(target)
+        assert_equal(0, target.amt)
+        assert_equal(11, gun.amt)
+    
     def test_use(self):
-        # gun = Gun(manager)
-        # assert_equal(expected, gun.use(target))
-        raise SkipTest # TODO: implement your test here
+        target = Mock()
+        target.amt = 10
+        target.name = "9mm"
+        target.__class__ = Gun
+        gun = Gun(manager)
+        gun.use(target)
+        assert_equal(10, target.amt)
+        assert_equal(0, gun.amt)
 
 class TestAmmo:
     def test___init__(self):
