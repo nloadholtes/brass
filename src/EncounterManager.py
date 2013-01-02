@@ -8,11 +8,14 @@ from Character import *
 from EventMngr import *
 from Group import *
 from random import randint
-import logging as log
+import logging, logging.config
+
+logging.config.fileConfig("logging.conf")
 
 class EncounterEngine:
     def __init__(self):
-        print 'Starting Encounter Engine'
+        log = logging.getLogger(__name__+".__init__")
+        log.debug('Starting Encounter Engine')
         self.goodguys = []
         self.fightorder = []
         self.orders = []
@@ -41,12 +44,13 @@ class EncounterEngine:
     def determineOrder(self):
         '''This method looks at each persons\'s initiative and uses that
         to determine the fight order.'''
+        log = logging.getLogger(__name__+".determineOrder")
         [self.fightorder.append(guy) for guy in self.goodguys]
         [self.fightorder.append(guy) for guy in self.badguys]
         self.fightorder.sort(initativeSorter)
-        print "Fight order:"
+        log.debug("Fight order:")
         for person in self.fightorder:
-            print "\t%s" % person.name
+            log.debug("\t%s" % person.name)
 
     def stillFighting(self):
         '''Checks the good guys and bad guys (separeately) to see if

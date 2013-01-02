@@ -6,6 +6,7 @@
 
 from Entity import Item
 from tilesprite import TileSprite, ok_to_move, ask_to_move
+import logging
 
 
 #
@@ -27,6 +28,7 @@ class Gun(Item):
             'feels the kiss of hot lead and looses')
 
     def use(self, target):
+        log = logging.getLogger(__name__ + ".use")
         if target.__class__ == Ammo:
             #print "reload!"
             #print target.__class__
@@ -37,7 +39,7 @@ class Gun(Item):
             s = s.replace('@ADJ', 'reloads with')
             s = s.replace('@STAT', self.stat)
             s = s.replace('@VALUE', str(abs(target.amt)))
-            print s
+            log.debug(s)
             #setattr(target, target.amt, val)
             #target.amt = val
             #print '\tAmmo has ', target.amt, ' amt'
