@@ -62,21 +62,29 @@ class TestFood:
 
 class TestDoor:
     def test___init__(self):
-        # door = Door(manager, name, position, imageFileName, parent, gtk)
-        raise SkipTest # TODO: implement your test here
+        door = Door(manager, None, (1,1), None, None, None)
+        assert_true("Door", door.name)
 
-    def test_getDoorData(self):
-        # door = Door(manager, name, position, imageFileName, parent, gtk)
-        # assert_equal(expected, door.getDoorData())
-        raise SkipTest # TODO: implement your test here
+    def test_handle_ok_to_move(self):
+        parent = Mock()
+        parent.mapinfo = {'door': [(0,0,ok_to_move)]}
+        door = Door(manager, None, (1,1), None, parent, None)
+        door.getDoorData = Mock(return_value=(0,0,ok_to_move))
+        door.handle()
 
-    def test_handle(self):
-        # door = Door(manager, name, position, imageFileName, parent, gtk)
-        # assert_equal(expected, door.handle())
-        raise SkipTest # TODO: implement your test here
+    def test_handle_ask_to_move(self):
+        parent = Mock()
+        parent.mapinfo = {'door': []}
+        door = Door(manager, None, (1,1), None, parent, None)
+        door.getDoorData = Mock(return_value=(0,0,ask_to_move))
+        door.handle()
 
     def test_setDoorData(self):
-        # door = Door(manager, name, position, imageFileName, parent, gtk)
-        # assert_equal(expected, door.setDoorData(dat))
-        raise SkipTest # TODO: implement your test here
+        door = Door(manager, None, (1,1), None, None, None)
+        assert_equal(door._doordata, door.setDoorData("wow"))
+
+    def test_setDoorData(self):
+        door = Door(manager, None, (1,1), None, None, None)
+        door.setDoorData("wow")
+        assert_equal("wow", door.getDoorData())
 
