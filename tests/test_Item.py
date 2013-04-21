@@ -41,7 +41,15 @@ class TestAmmo:
         target.value = 10
         target.name = "mock"
         ammo.use(target)
-        assert_equal(9, ammo.amt)
+        assert_equal(0, ammo.amt)
+
+    def test_use_affect_target(self):
+        ammo = Ammo(manager)
+        target = Mock()
+        target.stat = 10
+        target.name = "mock"
+        ammo.use(target)
+        assert_equal(10, target.stat)
 
 class TestBomb:
     def test___init__(self):

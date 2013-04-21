@@ -69,7 +69,7 @@ class Ammo(Item):
         print s, self.amt
         #setattr(target, target.amt, val)
         target.amt = val
-        self.amt -= 1
+        self.amt = 0
 
 class Bomb(Item):
     def __init__(self, manager):
