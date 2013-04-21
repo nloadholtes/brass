@@ -32,13 +32,16 @@ class TestGun:
 
 class TestAmmo:
     def test___init__(self):
-        # ammo = Ammo(manager)
-        raise SkipTest # TODO: implement your test here
+        ammo = Ammo(manager)
+        assert_equal(10, ammo.amt)
 
     def test_use(self):
-        # ammo = Ammo(manager)
-        # assert_equal(expected, ammo.use(target))
-        raise SkipTest # TODO: implement your test here
+        ammo = Ammo(manager)
+        target = Mock()
+        target.value = 10
+        target.name = "mock"
+        ammo.use(target)
+        assert_equal(9, ammo.amt)
 
 class TestBomb:
     def test___init__(self):
