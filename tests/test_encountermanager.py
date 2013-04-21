@@ -77,9 +77,20 @@ class TestEncounterEngine:
         raise SkipTest # TODO: implement your test here
 
 class TestInitativeSorter:
+    def setUp(self):
+        self.x = Mock()
+        self.x.getInit.return_value = 5
+        self.y = Mock()
+        self.y.getInit.return_value = 6
+
     def test_initative_sorter(self):
-        # assert_equal(expected, initativeSorter(x, y))
-        raise SkipTest # TODO: implement your test here
+        assert_equal(1, em.initativeSorter(self.x, self.y))
+
+    def test_initative_sorter_x_last(self):
+        assert_equal(-1, em.initativeSorter(self.y, self.x))
+
+    def test_initative_sorter_equal(self):
+        assert_equal(0, em.initativeSorter(self.x, self.x))
 
 class TestCreateBadGuys:
     def test_create_bad_guys(self):
