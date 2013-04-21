@@ -30,9 +30,31 @@ class TestEncounterEngine:
         raise SkipTest # TODO: implement your test here
 
     def test_isPartyDead(self):
-        # encounter_engine = EncounterEngine()
-        # assert_equal(expected, encounter_engine.isPartyDead(players))
-        raise SkipTest # TODO: implement your test here
+        encounter_engine = em.EncounterEngine()
+        player1 = Mock()
+        player1.health = 0
+        player2 = Mock()
+        player2.health = 0
+        players = [player1, player2]
+        assert_equal(True, encounter_engine.isPartyDead(players))
+
+    def test_isPartyDead_one_alive(self):
+        encounter_engine = em.EncounterEngine()
+        player1 = Mock()
+        player1.health = 0
+        player2 = Mock()
+        player2.health = 1
+        players = [player1, player2]
+        assert_equal(False, encounter_engine.isPartyDead(players))
+
+    def test_isPartyDead_all_alive(self):
+        encounter_engine = em.EncounterEngine()
+        player1 = Mock()
+        player1.health = 10
+        player2 = Mock()
+        player2.health = 1
+        players = [player1, player2]
+        assert_equal(False, encounter_engine.isPartyDead(players))
 
     def test_playRound(self):
         # encounter_engine = EncounterEngine()
