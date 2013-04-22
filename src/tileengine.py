@@ -5,6 +5,7 @@ from Events import *
 from gui.MessageBox import BottomMessageBox
 from tilesprite import *
 from gui.GUIToolkit import GUIToolkit
+import json
 
 screensize = [800,600]
 fs = 0
@@ -101,7 +102,8 @@ class TileEngine:
         def loadMap(self, mapname):
                 print "loadMap", mapname
                 values = {}
-                execfile(mapname, globals(), values)
+                with open(mapname, "r") as f:
+                        values = json.load(f)
                 self.__dict__.update(values)
                 images = values['images']
                 for tile in images:
