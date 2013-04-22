@@ -44,7 +44,7 @@ class TileEngine:
                 #self._msgbox = BottomMessageBox(self._screen, self.evtmngr)
                 screenSize = self._screen.get_size()
                 self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
-                with open("src/Encounter.py", "r") as f:
+                with open("src/encounter.json", "r") as f:
                         self._encounters = json.loads(f.read())
                 # this is temp I think, probably should be in the game object
                 gamedata = self.gamedata
