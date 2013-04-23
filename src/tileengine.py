@@ -2,18 +2,17 @@ from Character import *
 from EncounterManager import EncounterEngine
 from EventMngr import *
 from Events import *
-from gui.MessageBox import BottomMessageBox
 from tilesprite import *
-from gui.GUIToolkit import GUIToolkit
 import json
 
-screensize = [800,600]
+screensize = [800, 600]
 fs = 0
 
 up = (0, 1)
 down = (0, -1)
 left = (-1, 0)
 right = (1, 0)
+
 
 class TileEngine:
         def __init__(self, eventmanager, gamedata):
@@ -43,7 +42,7 @@ class TileEngine:
                 self._missing = self.gtk.getImage("img/missing.png")
                 #self._msgbox = BottomMessageBox(self._screen, self.evtmngr)
                 screenSize = self._screen.get_size()
-                self._screenCenter = [ (screenSize[0]/2), (screenSize[1]/2) ]
+                self._screenCenter = [(screenSize[0]/2), (screenSize[1]/2)]
                 with open("src/encounter.json", "r") as f:
                         self._encounters = json.loads(f.read())
                 # this is temp I think, probably should be in the game object
@@ -56,7 +55,7 @@ class TileEngine:
         # Used to update the screen
         def notify(self, evt):
                 print("Notify")
-                if isinstance( evt, TickEvent ):
+                if isinstance(evt, TickEvent):
                         self.paint()
                 if isinstance(evt, CharMoveRequestEvent):
                         print("move event:", evt)
@@ -69,7 +68,7 @@ class TileEngine:
                                 direction = left
                         elif(evt.direction == self.gtk.k_right):
                                 direction = right
-                        if(direction != None):
+                        if(direction is not None):
                                 self.move(direction)
                 if isinstance(evt, EncounterEvent):
                         #self._msgbox.printtext( "There's an encounter!")
@@ -97,7 +96,7 @@ class TileEngine:
 #               print "Encounter over"
 
         def addPlayer(self, image, startpos, stats):
-                self.ego = Character( self.evtmngr, "ego", startpos, image, self, self.gtk)
+                self.ego = Character(self.evtmngr, "ego", startpos, image, self, self.gtk)
                 self.ego.image = self.getImage(image)
 
         def loadMap(self, mapname):
@@ -189,14 +188,13 @@ class TileEngine:
                 #print "New Location is: ", self.ego.position
                 return "moving to new room"
 
-
         def paintSprite(self, sprite):
                 x, y = sprite.position
                 x *= self._tilewidth
                 y *= self._tileheight
                 left = self._location[0] + self._offset[0]
                 top = self._location[1] + self._offset[1]
-                sprite.image.blit(x+left, y+ top)
+                sprite.image.blit(x + left, y + top)
 
         def paint(self):
                 """The main paint method for the big screen."""
@@ -228,7 +226,7 @@ class TileEngine:
                 if(self._display):
                         pass #print 'Need a better paintMessages() method'
                 else:
-                        self.paintStats(screen,self.ego)
+                        self.paintStats(screen, self.ego)
                 self.paintSprite(self.ego)
                 # Paint text in window
                 #self._msgbox.render()
@@ -241,8 +239,8 @@ class TileEngine:
                 self._msgstr = messagestr
 
         def removeSprite(self, sprite):
-		try:
-			self._sprites.remove(sprite)
+                try:
+                        self._sprites.remove(sprite)
                         self._npc.remove(sprite)
                 except ValueError:
                         pass
@@ -251,11 +249,11 @@ class TileEngine:
                 '''Updates the sprite on the screen'''
                 #print "move", direction
                 #print "Old location is: ", self.ego.position
-                dx,dy = direction
+                dx, dy = direction
                 newX = self.ego.position[0] + dx
                 newY = self.ego.position[1] + dy
                 result = self.moveOk(newX, newY)
-                if result == None:
+                if result is None:
                         self.ego.updatePosition(newX, newY)
 #               else:
 #                       self._msgbox.printtext("Bump")
