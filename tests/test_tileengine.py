@@ -5,12 +5,12 @@ from mock import MagicMock as Mock
 from tileengine import TileEngine
 
 eventmanager = Mock()
-# gamedata = Mock()
 eventmanager.registerObserver = Mock()
-gamedata = {'playerlocation':(0,0),'maplist':["mockmap"],
-            'playerimage':"something", 'startingmap':0}
+gamedata = {'playerlocation': (0, 0), 'maplist': ["mockmap"],
+            'playerimage': "something", 'startingmap': 0}
 gtk = Mock()
 gtk.getImage = Mock(return_value="something")
+
 
 class TestTileEngine:
     def test___init__(self):
