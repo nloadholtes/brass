@@ -8,9 +8,11 @@ from Character import *
 from EventMngr import *
 from Group import *
 from random import randint
-import logging, logging.config
+import logging
+import logging.config
 
 logging.config.fileConfig("logging.conf")
+
 
 class EncounterEngine:
     def __init__(self):
@@ -39,7 +41,6 @@ class EncounterEngine:
         for badguy in self.badguys:
             if badguy.health <= 0:
                 self.badguys.remove(badguy)
-
 
     def determineOrder(self):
         '''This method looks at each persons\'s initiative and uses that
@@ -82,7 +83,7 @@ class EncounterEngine:
             t = randint(0, gsize-1)
             order = ActionOrder(dude, 'attack', self.goodguys[t])
             dude.orders.append(order)
-            print '->',dude.name,'is thinking...', order
+            print('->%s is thinking... %s' % (dude.name, order))
 
     def startCombatEncounter(self):
         '''This starts the encounter, determining the order and then playing
@@ -96,14 +97,14 @@ class EncounterEngine:
 
     def startSpeakingEncounter(self, encounter):
         '''This method is where Speaking/interacting encounters start.'''
-        print "Starting Speaking encounter:"
+        print("Starting Speaking encounter:")
         if isinstance(encounter, EncounterEvent):
             encounter = encounter.encounter
-        print 'Preamble: ', encounter['preamble']
+        print('Preamble: %s' % encounter['preamble'])
         x = 1
         while(x):
             topic = encounter['conversation'][x]
-            print "\t",topic[0]
+            print("\t %s" % topic[0])
             if(len(topic) > 1):
                 x = eval(topic[1])
         return x
@@ -117,28 +118,33 @@ class EncounterEngine:
             self.getBadguyOrders(1)
             self.playRound()
 
+
 #
 # Helper functions for these classes
 #
 def initativeSorter(x, y):
     return cmp(y.getInit(), x.getInit())
 
+
 def createBadGuys(amount, level, type):
     '''Create a list of bad guys'''
 #    badguylist = []
     mngr = EventManager()
-    group = Group(mngr, "Gangsters", (0,0), "img/player.png")
-    group.populateClones(Character(mngr, 'Bad Guy', (0,0), "", None, None), amount)
+    group = Group(mngr, "Gangsters", (0, 0), "img/player.png")
+    group.populateClones(Character(mngr, 'Bad Guy', (0, 0), "", None, None), amount)
     return group
+
 
 class ActionOrder:
     '''This class is that data structure to describe the orders that a character
     should do during an Encounter round.'''
     WHAT = ('attack', 'EVADE', 'USE', 'TALK')
+
     def __init__(self, who, what, target):
         self.who = who
         self.what = what
         self.target = target
+
 
 #
 # These are the functions that get called from the
@@ -152,6 +158,7 @@ def yes_or_no(dest1, dest2):
     else:
         return dest2
 
+
 def pause(dest):
-    print "Need to have the user press something to continue.."
+    print("Need to have the user press something to continue..")
     return dest
