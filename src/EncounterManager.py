@@ -12,11 +12,11 @@ import logging
 import logging.config
 
 logging.config.fileConfig("logging.conf")
+log = logging.getLogger(__name__)
 
 
 class EncounterEngine:
     def __init__(self):
-        log = logging.getLogger(__name__+".__init__")
         log.debug('Starting Encounter Engine')
         self.goodguys = []
         self.fightorder = []
@@ -25,7 +25,7 @@ class EncounterEngine:
 
     def playRound(self):
         '''This method will execute one round of combat'''
-        print 'Staring a round'
+        log('Staring a round')
         for person in self.fightorder:
             #print "---%s is executing" % person.name
             if person.health <= 0:
@@ -88,7 +88,7 @@ class EncounterEngine:
     def startCombatEncounter(self):
         '''This starts the encounter, determining the order and then playing
         a round.'''
-        print 'startingCombatEncounter'
+        log('startingCombatEncounter')
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
