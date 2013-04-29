@@ -25,7 +25,7 @@ class EncounterEngine:
 
     def playRound(self):
         '''This method will execute one round of combat'''
-        log('Staring a round')
+        log.debug('Staring a round')
         for person in self.fightorder:
             #print "---%s is executing" % person.name
             if person.health <= 0:
@@ -83,12 +83,12 @@ class EncounterEngine:
             t = randint(0, gsize-1)
             order = ActionOrder(dude, 'attack', self.goodguys[t])
             dude.orders.append(order)
-            print('->%s is thinking... %s' % (dude.name, order))
+            log.debug('->%s is thinking... %s' % (dude.name, order))
 
     def startCombatEncounter(self):
         '''This starts the encounter, determining the order and then playing
         a round.'''
-        log('startingCombatEncounter')
+        log.debug('startingCombatEncounter')
         stillgoing = True
         self.determineOrder()
         #Clear out the orders for everyone
@@ -97,14 +97,14 @@ class EncounterEngine:
 
     def startSpeakingEncounter(self, encounter):
         '''This method is where Speaking/interacting encounters start.'''
-        print("Starting Speaking encounter:")
+        log.debug("Starting Speaking encounter:")
         if isinstance(encounter, EncounterEvent):
             encounter = encounter.encounter
-        print('Preamble: %s' % encounter['preamble'])
+        log.debug('Preamble: %s' % encounter['preamble'])
         x = 1
         while(x):
             topic = encounter['conversation'][x]
-            print("\t %s" % topic[0])
+            log.debug("\t %s" % topic[0])
             if(len(topic) > 1):
                 x = eval(topic[1])
         return x

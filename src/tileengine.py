@@ -4,6 +4,12 @@ from EventMngr import *
 from Events import *
 from tilesprite import *
 import json
+import logging
+import logging.config
+
+logging.config.fileConfig("logging.conf")
+log = logging.getLogger(__name__)
+
 
 screensize = [800, 600]
 fs = 0
@@ -54,11 +60,11 @@ class TileEngine:
         #
         # Used to update the screen
         def notify(self, evt):
-                print("Notify")
+                log.debug("Notify")
                 if isinstance(evt, TickEvent):
                         self.paint()
                 if isinstance(evt, CharMoveRequestEvent):
-                        print("move event:", evt)
+                        log.debug("move event: %s" % evt)
                         direction = None
                         if(evt.direction == self.gtk.k_up):
                                 direction = up
@@ -100,7 +106,7 @@ class TileEngine:
                 self.ego.image = self.getImage(image)
 
         def loadMap(self, mapname):
-                print "loadMap", mapname
+                log.debug("loadMap %s " % mapname)
                 values = {}
                 with open(mapname, "r") as f:
                         values = json.load(f)
@@ -132,7 +138,7 @@ class TileEngine:
                         img = self.images.get(sprite[2])
                         image = self.getImage(img)
                         if sprite[1] == npc:
-                                print sprite[3]
+                                log.debug(sprite[3])
                                 s = Character(self.evtmngr, "NPC", (sprite[0][0], sprite[0][1]),
                                                         img, self, self.gtk, self._encounters[sprite[3]])
                         elif sprite[1] == door:
@@ -180,7 +186,7 @@ class TileEngine:
 
         def moveToNewRoom(self, door):
                 '''This method probably should be in a different place'''
-                print "moveToNewRoom ", door
+                log.debug("moveToNewRoom %s" % door)
                 loc = door[1][1]
                 self.loadMap(door[1][0])
                 #print "Old location is: ", self.ego.position, " ", loc
