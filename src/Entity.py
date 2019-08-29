@@ -33,7 +33,7 @@ class Item(Entity):
 
     def use(self, target):
         if self.amt < 1:
-            print self.empty % self.name
+            print(self.empty % self.name)
         else:
             #Determine the amount of damage done
             val = getattr(target, self.stat, 0) + self.value - self.modifier
@@ -46,7 +46,7 @@ class Item(Entity):
                 s = s.replace('@ADJ', self.adj)
             s = s.replace('@STAT', self.stat)
             s = s.replace('@VALUE', str(abs(self.value)))
-            print s
+            print(s)
             setattr(target, self.stat, val)
             self.amt -= 1
 

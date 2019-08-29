@@ -27,7 +27,7 @@ def createPlayers():
 
 def encounter(players):
     """This is an exploded version of the encounter loop to testing/tuning"""
-    print 'Staring the Encounter'
+    print('Staring the Encounter')
     goodguys = players[:-1]
     badguys = createBadGuys(2, 2, 0)
     ee = EncounterEngine()
@@ -35,49 +35,49 @@ def encounter(players):
     ee.badguys = badguys.characters
     ee.startCombatEncounter()
     while ee.stillFighting():
-        print 'Next round!'
+        print('Next round!')
         displayStats(ee.goodguys, ee.badguys)
         getOrders(ee.goodguys, ee.badguys)
         ee.getBadguyOrders(1)
         ee.playRound()
-    print '\t\t***************Battle over!********************'
+    print('\t\t***************Battle over!********************')
 
 def displayStats(goodguys, badguys):
-    print '\t------Good guys:------'
+    print('\t------Good guys:------')
     for guy in goodguys:
-        print '\t',guy.name, guy.health
+        print('\t',guy.name, guy.health)
 
-    print '\t----Bad guys ------'
+    print('\t----Bad guys ------')
     for dude in badguys:
         if dude.health > 0:
-            print '\t',dude.name, dude.health
-    print '\t------------------------'
+            print('\t',dude.name, dude.health)
+    print('\t------------------------')
 
 def getOrders(party, badguys):
     for x in party:
         order = None
         while not order:
-            print 'Orders for: ', x.name
-            print 'A)ttack'
-            print 'E)vade'
-            print 'R)eload'
-            print 'T)alk'
-            print 'I)neventory'
-            print 'P)ass'
-            print 'Q)uit'
+            print('Orders for: ', x.name)
+            print('A)ttack')
+            print('E)vade')
+            print('R)eload')
+            print('T)alk')
+            print('I)neventory')
+            print('P)ass')
+            print('Q)uit')
             action = raw_input("Action: ").lower()
             if action == 'a':
-                print 'Who do you want to attack?'
+                print('Who do you want to attack?')
                 y = 1
                 for dude in badguys:
-                    print '\t',y,')', dude.name
+                    print('\t',y,')', dude.name)
                     y += 1
                 target = raw_input()
                 #Shove this into the orders for X
                 order = ActionOrder(x, 'attack', badguys[int(target)-1])
                 x.orders.append(order)
             elif action == 'b':
-                print 'Passing'
+                print('Passing')
             elif action == 'e':
                 class Object:
                     pass
@@ -86,15 +86,15 @@ def getOrders(party, badguys):
                 order = ActionOrder(x, 'EVADE', o)
                 x.orders.append(order)
             elif action == 'r':
-                print 'Reload'
+                print('Reload')
             elif action == 'q':
-                print 'Goodbye!'
+                print('Goodbye!')
                 exit(0)
             elif action == 'i':
                 stuff = x.getInventory()
-                print "  Inventory for %s" %  x.name
+                print("  Inventory for %s" %  x.name)
                 for thing in stuff:
-                    print "\t%s" % thing.name
+                    print("\t%s" % thing.name)
 
 
 if __name__ == '__main__':

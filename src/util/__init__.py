@@ -5,4 +5,4 @@
 # July 2, 2006
 #
 
-from dice import *
+from util.dice import *

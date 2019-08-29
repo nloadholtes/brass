@@ -1,7 +1,7 @@
 from nose import SkipTest
 from nose.tools import assert_equal, assert_true
 from Item import *
-from mock import MagicMock as Mock
+from unittest.mock import MagicMock as Mock
 
 manager = Mock()
 

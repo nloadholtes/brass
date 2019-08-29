@@ -11,7 +11,7 @@ import copy
 
 MAX_ITEMS = 50
 
-class Character(object, TileSprite):
+class Character(TileSprite):
 
     def __init__(self, manager, name, position, imageFileName, parent, gtk, encounter=None):
         TileSprite.__init__(self, manager, imageFileName, parent, position[0], position[1], gtk)
@@ -33,14 +33,14 @@ class Character(object, TileSprite):
     def __setattr__(self, key, val):
         if key == 'health':
             if val < 1:
-                print "%s is dead!" % self.name
+                print("%s is dead!" % self.name)
 #            else:
 #                print "%s has %d %s remaining" % (self.name, val, key)
         object.__setattr__(self, key, val)
 
     def executeOrder(self, actionorder):
         """This is our replacement for eval() in the play round loop."""
-        print " (Order seen: %s is %s->%s)" % (self.name, actionorder.what, actionorder.target.name)
+        print(" (Order seen: %s is %s->%s)" % (self.name, actionorder.what, actionorder.target.name))
         e = {'attack' : lambda : self.attack(actionorder.target),
              'EVADE' : lambda : self.evade(),
              # 'USE' : print("We'll use something someday.")
@@ -72,7 +72,7 @@ to reflect the idea you are trying to avoid being hit"""
 
     def pickup(self, item):
         if len(self.inventory) < MAX_ITEMS:
-            print self.name, " picks up " , item
+            print(self.name, " picks up " , item)
             self.inventory.append(item)
 
     def equipWeapon(self, weapon):
@@ -87,7 +87,7 @@ to reflect the idea you are trying to avoid being hit"""
     def attack(self, target):
         weapon = self.equipped['weapon']
         if weapon == None:
-            print '\t****No weapon equipped!!! Punching and kicking our way out of this one!'
+            print('\t****No weapon equipped!!! Punching and kicking our way out of this one!')
             self.equipWeapon(self)
             weapon = self.equipped['weapon']
         if weapon == self:
@@ -104,7 +104,7 @@ to reflect the idea you are trying to avoid being hit"""
                 weapon.amt -= 1
                 print(" ---%s missed!" % self.name)
         else:
-            print "\t", self.name," holds off because ", target.name, "is dead"
+            print("\t", self.name," holds off because ", target.name, "is dead")
 
 #        else:
 #            print self.name,'-Needs to hit with the gun'
@@ -125,7 +125,7 @@ to reflect the idea you are trying to avoid being hit"""
         s = s.replace('@ADJ', adjs[randint(0, len(adjs) -1)])
         s = s.replace('@STAT', stat)
         s = s.replace('@VALUE', str(abs(self.value)))
-        print s
+        print(s)
         setattr(target, stat, val)
 
     def reloadWeapon(self, ammo):
@@ -139,13 +139,13 @@ to reflect the idea you are trying to avoid being hit"""
         weapon = self.equipped['weapon']
         for item in self.inventory:
             if item.__class__ == Ammo:
-                print self.name, ' reloads the ', weaponname
+                print(self.name, ' reloads the ', weaponname)
                 ammofound = True
                 if weapon != None:
                     weapon.use(item)
                     self.inventory.remove(item)
         if not ammofound:
-            print self.name, 'has no ammo to reload the', weaponname, '!'
+            print(self.name, 'has no ammo to reload the', weaponname, '!')
 
     #
     # Skill related methods
@@ -173,9 +173,9 @@ to reflect the idea you are trying to avoid being hit"""
     # Other methods
     #
     def handle(self):
-    	'''If there is an encounter associated with this character, then notify
-    	the manager and pass them the encounter event...'''
+        '''If there is an encounter associated with this character, then notify
+        the manager and pass them the encounter event...'''
         self.printm("Default Character handler caught this...")
         if None != self.encoutner:
-        	#Fire up the encounter handler!!!
-        	return self.manager.notify(EncounterEvent(self.encoutner))
+            #Fire up the encounter handler!!!
+            return self.manager.notify(EncounterEvent(self.encoutner))

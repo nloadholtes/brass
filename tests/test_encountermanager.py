@@ -4,7 +4,7 @@
 
 from nose import SkipTest
 from nose.tools import assert_equal
-from mock import MagicMock as Mock
+from unittest.mock import MagicMock as Mock
 
 from nose.tools import *
 import EncounterManager as em

@@ -66,7 +66,7 @@ class Ammo(Item):
         s = s.replace('@ADJ', self.adj)
         s = s.replace('@STAT', self.stat)
         s = s.replace('@VALUE', str(abs(self.amt)))
-        print s, self.amt
+        print(s, self.amt)
         #setattr(target, target.amt, val)
         target.amt = val
         self.amt = 0

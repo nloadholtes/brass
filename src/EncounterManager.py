@@ -123,7 +123,9 @@ class EncounterEngine:
 # Helper functions for these classes
 #
 def initativeSorter(x, y):
-    return cmp(y.getInit(), x.getInit())
+    b = x.getInit()
+    a = y.getInit()
+    return (a > b) - (a < b)
 
 
 def createBadGuys(amount, level, type):
@@ -151,7 +153,7 @@ class ActionOrder:
 # encounter scripts.
 #
 def yes_or_no(dest1, dest2):
-    print "Y)es\nN)o"
+    print("Y)es\nN)o")
     ans = raw_input()
     if 'y' == ans.lower():
         return dest1

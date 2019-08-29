@@ -11,7 +11,7 @@ from Character import *
 from EventMngr import *
 
 def testsinglegunmain():
-    print '------------------ Testing single gun ---------------------'
+    print('------------------ Testing single gun ---------------------')
     mngr = EventManager()
     bob = Character(mngr, 'Bob', (0,0), None, None, None)
     gun = Gun(mngr)
@@ -31,7 +31,7 @@ def testsinglegunmain():
     assert gun.amt == 0
 
 def testtwoguysshooting():
-    print '------------------ Testing two guys shooting at each other ---------------------'
+    print('------------------ Testing two guys shooting at each other ---------------------')
     mngr = EventManager()
     #Meet Joe and Bob
     bob = Character(mngr, 'Bob', (0,0), None, None, None)
@@ -66,5 +66,5 @@ def testtwoguysshooting():
 
 @nottest
 def testlongshot():
-    print '------------------ Testing ranged weapons ---------------------'
+    print('------------------ Testing ranged weapons ---------------------')
 

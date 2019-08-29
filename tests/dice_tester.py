@@ -3,7 +3,7 @@
 # July 2, 2006
 #
 
-from util import *
+from util import d6
 
 ONE_MILLION = 1000000
 
@@ -13,8 +13,8 @@ def manualtestd6():
     for x in xrange(ONE_MILLION):
         counts[d6()] += 1
     for i in counts:
-        print i, ',',
-    print ''
+        print(i, ',',)
+    print('')
 
 
 if __name__ == '__main__':

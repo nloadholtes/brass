@@ -7,12 +7,12 @@
 #
 import EncounterManager as em
 from Character import Character as pc
-from mock import MagicMock as Mock
+from unittest.mock import MagicMock as Mock
 import json
 
 def generateParty(num=2, playername='Player'):
     output = []
-    for x in xrange(num):
+    for x in range(num):
         c = pc(None, "%s_%s" % (playername,x), [0,0], None, None, None)
         output.append(c)
     return output

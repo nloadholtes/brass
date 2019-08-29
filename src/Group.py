@@ -13,7 +13,7 @@ class Group:
     def populateClones(self, who, numberof):
         '''Bulk adds clones of who to the group'''
         for x in range(numberof):
-            print "Adding clone %s" %x
+            print("Adding clone %s" %x)
             self.characters.append(copy.deepcopy(who))
 
     def addSingle(self, who):

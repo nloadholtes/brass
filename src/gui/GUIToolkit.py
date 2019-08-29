@@ -23,7 +23,7 @@ class GUIToolkit(window.Window):
 #        k_keydown = KEYDOWN
         k_escape = window.key.ESCAPE
         te = None
-        fps_display = clock.ClockDisplay()
+        # fps_display = clock.ClockDisplay()
         firstdraw = True
 
         def __init__(self, tileengine):
@@ -40,10 +40,10 @@ class GUIToolkit(window.Window):
             print("on_draw()")
             self.clear()
             self.te.paint()
-            self.fps_display.draw()
+            # self.fps_display.draw()
 
         def on_key_press(self, symbol, modifiers):
-            print "on_key_press()",symbol
+            print("on_key_press()",symbol)
             if symbol == window.key.ESCAPE:
                 self.on_exit()
             elif symbol in [self.k_left, self.k_right, self.k_up, self.k_down, self.k_space]:
@@ -52,7 +52,7 @@ class GUIToolkit(window.Window):
                 self.draw()
 
         def on_exit(self):
-            print "on_exit() called"
+            print("on_exit() called")
             self.quit()
 
         def setDisplayMode(self, screensize, fullscreen):
