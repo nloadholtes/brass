@@ -19,19 +19,19 @@ def createMap(xsize, ysize, name):
             f.write(" ")
         f.write("\",\n")
     f.write("]\n\n")
-    
+
     #Map info
     f.write("_mapinfo = {\n\t 'passable' : ['.'], \n\t'door' : ()\n}\n\n")
-    
+
     #Sprites
     f.write("sprites = [[]]\n\n")
-    
+
     #Images
     f.write("images = {\n\t'?' : 'img/missing.png'\n}\n")
     f.close()
     
 if __name__ == "__main__":
-	if(len(sys.argv) == 4):
-		createMap(sys.argv[1], sys.argv[2], sys.argv[3])
-	else:
-		print "Error: Please supply an x size, y size, and a map name"
+    if(len(sys.argv) == 4):
+        createMap(sys.argv[1], sys.argv[2], sys.argv[3])
+    else:
+        print("Error: Please supply an x size, y size, and a map name")

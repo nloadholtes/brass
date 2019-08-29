@@ -9,11 +9,11 @@
 
 class EncounterMessageBox:
     def __init__(self):
-        print "Creating an EncounterMessageBox"
+        print("Creating an EncounterMessageBox")
 
     def display(self, text):
         '''This message will take the input text and display it
         to the EncounterMessageBox'''
-        print text
+        print(text)
 
 

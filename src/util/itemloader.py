@@ -33,7 +33,7 @@ if __name__ == '__main__':
         exit(1)
     output = loadItemsFromJson(data)
     for blah in output:
-        print blah
+        print(blah)
     k = None
     while k is not "q":
         k = raw_input("(a)dd, (l)ist, (s)ave, or (q)uit: ")
@@ -41,6 +41,6 @@ if __name__ == '__main__':
             output.append(addItem())
         if k is "l":
             for i in output:
-                print i
+                print(i)
         if k is "s":
             saveItems(output)

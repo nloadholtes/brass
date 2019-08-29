@@ -12,7 +12,7 @@ import sys,os
 FILENAME = '../Items.py'
 
 def writeItemsOut(values):
-    print 'Not implemented: writeItemsOut()'
+    print('Not implemented: writeItemsOut()')
 
 class ItemMaker(wx.App):
     def __init__(self):
@@ -21,11 +21,11 @@ class ItemMaker(wx.App):
         f = MyFrame(None, 0, "Testing", (0,0))
 
     def startGUI():
-        print 'Starting ItemMaker.py'
+        print('Starting ItemMaker.py')
         values = {}
         execfile(FILENAME, globals(), values)
         for item in values:
-            print item
+            print(item)
         wx.App.__init__(redirect=False)
         f = MyFrame(None, 0, "Testing", (0,0))
         # Start building the GUI

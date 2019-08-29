@@ -12,14 +12,14 @@ class Person(object):
     def __setattr__(self, key, val):
         if key == 'health':
             if val < 1:
-                print "%s is dead!" % self.name
+                print("%s is dead!" % self.name)
             else:
-                print "%s has %d %s remaining" % (self.name, val, key)
+                print("%s has %d %s remaining" % (self.name, val, key))
         elif key == 'hunger':
             if val > 100:
-                print "%s has starved to death!" % self.name
+                print("%s has starved to death!" % self.name)
             else:
-                print "%s is %d%% hungry" % (self.name, val)
+                print("%s is %d%% hungry" % (self.name, val))
         object.__setattr__(self, key, val)
 
 class GameObject(object):
@@ -32,7 +32,7 @@ class GameObject(object):
     fmtline = "@NAME @ADJ @TARGET for @VALUE"
     def Use(self, target):
         if self.amt < 1:
-            print self.empty % self.name
+            print(self.empty % self.name)
         else:
             val = getattr(target, self.stat, 0) + self.value
             s = self.fmtline
@@ -41,7 +41,7 @@ class GameObject(object):
             s = s.replace('@ADJ', self.adj)
             s = s.replace('@STAT', self.stat)
             s = s.replace('@VALUE', str(self.value))
-            print s
+            print(s)
             setattr(target, self.stat, val)
             self.amt -= 1
 

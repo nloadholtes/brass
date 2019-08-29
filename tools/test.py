@@ -71,7 +71,7 @@ class CYOAGUI(Frame):
             self.PARENTLIST.insert(END, "The End")
         for item in sorted(self.nodes.keys()):
             node = self.nodes[item]
-            print "=>", node
+            print("=>", node)
             self.PARENTLIST.insert(END, node[0])
         self.counter = len(self.nodes.keys())
 
@@ -82,7 +82,7 @@ class CYOAGUI(Frame):
 
     def loadnode(self, event):
         selected = self.PARENTLIST.curselection()
-        print selected
+        print(selected)
         if selected == ():
             selected=0
         else:
@@ -103,7 +103,7 @@ class CYOAGUI(Frame):
         nodetitle = self.NAMEFIELD.get(0.0, END).strip()
         nodetext = self.DATAFIELD.get(0.0, END).strip()
         selected = self.PARENTLIST.curselection()
-        print selected
+        print(selected)
         if selected == ():
             selected=0
         if self.editing != None:
@@ -135,7 +135,7 @@ class CYOAGUI(Frame):
         self.populatefields()
 
     def quitapp(self):
-        print "nodes: " + str(self.nodes)
+        print("nodes: " + str(self.nodes))
         self.quit()
 
 
